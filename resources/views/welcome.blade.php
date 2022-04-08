@@ -15,7 +15,7 @@
     <body>
         <div id ="app">
             <div class="body">
-                <example-component></example-component>
+                <subject-list></subject-list>
             </div>
         </div>
     </body>
