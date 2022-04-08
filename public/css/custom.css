@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+.main-heading{
+    font-family: Poppins;
+    font-size : 60px;
+    color : #0B132B;
+}
+
+.sub-heading{
+    font-family: Poppins;
+    font-size : 25px;
+    color : #0B132B;
+}
+
+.subtitle{
+    font-family: Poppins;
+    font-size : 16px;
+    color : #5BC0BE;
+}
+
+.ui-list{
+    list-style-type: none;
+}
+
+.card{
+    border: 0px !important;
+}

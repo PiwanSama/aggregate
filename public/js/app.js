@@ -5315,6 +5315,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "subject-list",
   data: function data() {
@@ -28069,21 +28074,36 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("h3", [_vm._v("All Subjects")]),
+    _c("h2", { staticClass: "my-5 main-heading" }, [_vm._v("All Subjects")]),
     _vm._v(" "),
     (_vm.subjects.lenght = 0)
       ? _c("div", [_c("h1", [_vm._v("Nothing yet!")])])
       : _vm._e(),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "ul",
-        _vm._l(_vm.subjects, function (subject) {
-          return _c("li", { key: subject.id }, [_vm._v(_vm._s(subject.name))])
-        }),
-        0
-      ),
-    ]),
+    _c(
+      "div",
+      _vm._l(_vm.subjects, function (subject) {
+        return _c(
+          "card",
+          {
+            key: subject.id,
+            staticClass: "card shadow p-4 mb-5 bg-body rounded ui-list",
+          },
+          [
+            _c("h4", { staticClass: "sub-heading mb-3" }, [
+              _vm._v(_vm._s(subject.name)),
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v("Category : " + _vm._s(subject.category))]),
+            _vm._v(" "),
+            _c("p", { staticClass: "subtitle" }, [
+              _vm._v(_vm._s(subject.field)),
+            ]),
+          ]
+        )
+      }),
+      1
+    ),
   ])
 }
 var staticRenderFns = []

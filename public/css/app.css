@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Inter);
+@import "../css/custom.css";
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -57,7 +58,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.6;
   --bs-body-color: #212529;
-  --bs-body-bg: #FAFAFA;
+  --bs-body-bg: #FFFFFF;
 }
 
 *,
