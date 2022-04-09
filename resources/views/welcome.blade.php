@@ -14,7 +14,8 @@
     </head>
     <body>
         <div id ="app">
-            <div class="body">
+            <div>
+                <navbar></navbar>
                 <subject-list></subject-list>
             </div>
         </div>

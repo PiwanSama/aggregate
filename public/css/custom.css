@@ -3,13 +3,13 @@
 .main-heading{
     font-family: Poppins;
     font-size : 60px;
-    color : #0B132B;
+    color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;;
 }
 
 .sub-heading{
     font-family: Poppins;
     font-size : 25px;
-    color : #0B132B;
+    color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;;
 }
 
 .subtitle{
@@ -24,4 +24,19 @@
 
 .card{
     border: 0px !important;
+}
+
+.navbar-dark .navbar-brand {
+    color: rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
+    font-family: Poppins;
+    font-size: 20px;
+    margin-left: 2rem;
+}
+
+.bg-custom{
+    background-color: #5BC0BE;
+}
+
+.text-custom{
+    color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity)) !important;
 }
