@@ -11,12 +11,11 @@
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    </head>
     <body>
         <div id ="app">
             <div>
                 <navbar></navbar>
-                <subject-list></subject-list>
+                <router-view></router-view>
             </div>
         </div>
     </body>

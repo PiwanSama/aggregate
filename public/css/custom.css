@@ -26,7 +26,7 @@
     border: 0px !important;
 }
 
-.navbar-dark .navbar-brand {
+.navbar-brand {
     color: rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
     font-family: Poppins;
     font-size: 20px;
@@ -39,4 +39,9 @@
 
 .text-custom{
     color: rgba(var(--bs-danger-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.card-text{
+    font-size: 0.8rem;
+    line-height: 2.2;
 }
