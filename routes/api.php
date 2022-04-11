@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UniversityController;
+use App\Http\Controllers\CombinationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('subjects', SubjectController::class)->only('index', 'show');
 Route::apiResource('universities', UniversityController::class)->only('index', 'show');
+Route::apiResource('combinations', CombinationController::class)->only('index', 'show');

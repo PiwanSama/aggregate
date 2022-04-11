@@ -1,9 +1,15 @@
 <template>
     <div class="container">
         <h2 class="my-5 main-heading">All Universities</h2>
+        <div class="input-group shadow col-md-6 mb-5">
+            <input type="text" class="form-control" placeholder="Type to search" aria-label="Search" v-model="searchQuery" ref="searchQuery">
+            <div class="input-group-append">
+                <span class="input-group-text"><font-awesome-icon icon="fa-solid fa-search" /></span>
+            </div>
+        </div>
         <div v-if="universities.length">
-            <div class="row justify-content-around" v-for="group in groupedUniversities">
-                <div v-for="university in group" v-bind:key = "university.id" class="card shadow p-4 mb-5 bg-body col-4">
+            <div class="row justify-content-around" v-for="group in filteredUniversities">
+                <div v-for="university in group" v-bind:key = "university.id" class="card shadow p-4 mb-5 bg-body col-sm-4">
                     <div class="card-body">
                         <h5 class="card-title sub-heading my-3">{{university.name}}</h5>
                         <h6 class="card-subtitle mb-2 subtitle"><font-awesome-icon icon="fa-solid fa-location-dot" /> {{university.district}}</h6>
@@ -22,8 +28,9 @@ export default {
     name : "local-universities",
     data : function(){
         return{
-            universities : []
-        }
+            universities : [],
+            searchQuery : ""
+        };
     },
     created() {
         this.loadUniversities();
@@ -38,8 +45,9 @@ export default {
         }
     },
     computed : {
-        groupedUniversities(){
-            return _.chunk(this.universities, 2)
+        filteredUniversities(){
+            const dataFilter = university => university.name.toLowerCase().match(this.searchQuery.toLowerCase()) && true;
+            return _.chunk(this.universities.filter(dataFilter), 2); 
         }
     }
 }

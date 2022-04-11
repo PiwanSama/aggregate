@@ -20254,11 +20254,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "local-universities",
   data: function data() {
     return {
-      universities: []
+      universities: [],
+      searchQuery: ""
     };
   },
   created: function created() {
@@ -20276,8 +20283,14 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
-    groupedUniversities: function groupedUniversities() {
-      return _.chunk(this.universities, 2);
+    filteredUniversities: function filteredUniversities() {
+      var _this2 = this;
+
+      var dataFilter = function dataFilter(university) {
+        return university.name.toLowerCase().match(_this2.searchQuery.toLowerCase()) && true;
+      };
+
+      return _.chunk(this.universities.filter(dataFilter), 2);
     }
   }
 });
@@ -20388,7 +20401,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faUniversity);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faUniversity, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch);
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
 Vue.component('navbar', (__webpack_require__(/*! ./components/NavbarComponent.vue */ "./resources/js/components/NavbarComponent.vue")["default"]));
@@ -43166,10 +43179,48 @@ var render = function () {
       _vm._v("All Universities"),
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "input-group shadow col-md-6 mb-5" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.searchQuery,
+            expression: "searchQuery",
+          },
+        ],
+        ref: "searchQuery",
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          placeholder: "Type to search",
+          "aria-label": "Search",
+        },
+        domProps: { value: _vm.searchQuery },
+        on: {
+          input: function ($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.searchQuery = $event.target.value
+          },
+        },
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-group-append" }, [
+        _c(
+          "span",
+          { staticClass: "input-group-text" },
+          [_c("font-awesome-icon", { attrs: { icon: "fa-solid fa-search" } })],
+          1
+        ),
+      ]),
+    ]),
+    _vm._v(" "),
     _vm.universities.length
       ? _c(
           "div",
-          _vm._l(_vm.groupedUniversities, function (group) {
+          _vm._l(_vm.filteredUniversities, function (group) {
             return _c(
               "div",
               { staticClass: "row justify-content-around" },
@@ -43178,7 +43229,7 @@ var render = function () {
                   "div",
                   {
                     key: university.id,
-                    staticClass: "card shadow p-4 mb-5 bg-body col-4",
+                    staticClass: "card shadow p-4 mb-5 bg-body col-sm-4",
                   },
                   [
                     _c("div", { staticClass: "card-body" }, [

@@ -1,10 +1,10 @@
 require('./bootstrap');
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faLocationDot, faUniversity } from '@fortawesome/free-solid-svg-icons'
+import { faLocationDot, faUniversity, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faLocationDot, faUniversity)
+library.add(faLocationDot, faUniversity, faSearch)
 
 window.Vue = require('vue').default;
 
