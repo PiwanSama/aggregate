@@ -8,8 +8,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                  <div class="navbar-nav">
-                    <router-link to = "/subjects" class="nav-item nav-link">Subjects</router-link>
+                    <router-link to = "/my-combination" class="nav-item nav-link">My Combination</router-link>
                     <router-link to = "/universities" class="nav-item nav-link">Local Universities</router-link>
+                    <router-link to = "/subjects" class="nav-item nav-link">A Level Subjects</router-link>
                 </div>
             </div>
         </nav>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Subjects from './components/SubjectListComponent.vue'
 import Universities from './components/LocalUniversityComponent.vue'
+import Combinations from './components/CombinationsComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -9,7 +10,7 @@ const routes = [
     {
         path : '/',
         name : 'Home',
-        component : Subjects
+        component : Combinations
     },
     {
         path : '/subjects',
@@ -20,6 +21,11 @@ const routes = [
         path : '/universities',
         name : 'Universities',
         component :  Universities
+    },
+    {
+        path : '/my-combination',
+        name : 'Combinations',
+        component :  Combinations
     }
 ]
 
