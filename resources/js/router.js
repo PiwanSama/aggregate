@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Subjects from './components/SubjectListComponent.vue'
 import Universities from './components/LocalUniversityComponent.vue'
-import Combinations from './components/CombinationsComponent.vue'
+import Homepage from './components/HomepageComponent.vue'
+import Field from './components/FieldComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,7 @@ const routes = [
     {
         path : '/',
         name : 'Home',
-        component : Combinations
+        component : Homepage
     },
     {
         path : '/subjects',
@@ -23,9 +24,9 @@ const routes = [
         component :  Universities
     },
     {
-        path : '/my-combination',
-        name : 'Combinations',
-        component :  Combinations
+        path : '/field',
+        name : 'Field',
+        component :  Field
     }
 ]
 

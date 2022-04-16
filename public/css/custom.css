@@ -15,7 +15,7 @@
 .sub-heading{
     line-height: inherit;
     font-family: Poppins;
-    font-size : 25px;
+    font-size : 25px !important;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
@@ -99,7 +99,7 @@ input[type=text] {
 }
 
 .btn-wrap{
-    width: 152px;
+    width: 160px;
     font-family: Poppins;
     background-color: #5BC0BE !important;
     color: #fff !important;
@@ -114,7 +114,7 @@ input[type=text] {
     justify-content: center;
     cursor: pointer;
     border-radius: 10px;
-    height: 48px;
+    height: 50px;
     transition: transform .6s;
 }
 
