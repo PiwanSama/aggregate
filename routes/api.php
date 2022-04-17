@@ -24,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('subjects', SubjectController::class)->only('index', 'show');
 Route::apiResource('universities', UniversityController::class)->only('index', 'show');
 Route::apiResource('combinations', CombinationController::class)->only('index', 'show');
+Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
+Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
+Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
