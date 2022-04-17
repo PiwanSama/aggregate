@@ -34,56 +34,38 @@ class CombinationController extends Controller
     }
 
     public function calculatePointsOrdinary(Request $request){
-        $s_one = $request->sub_one;
-        $s_two = $request->sub_two;
-        $s_three = $request->sub_three;
-        $s_four = $request->sub_four;
-        $s_five = $request->sub_five;
-        $s_six = $request->sub_six;
-        $s_seven = $request->sub_seven;
-        $s_eight = $request->sub_eight;
-        $s_nine = $request->sub_nine;
-        $s_ten= $request->sub_ten;
-
-        $s_one_val = $this->getSubjectValue($s_one);
-        $s_two_val = $this->getSubjectValue($s_two);
-        $s_three_val = $this->getSubjectValue($s_three);
-        $s_four_val = $this->getSubjectValue($s_four);
-        $s_five_val = $this->getSubjectValue($s_five);
-        $s_six_val = $this->getSubjectValue($s_six);
-        $s_seven_val = $this->getSubjectValue($s_seven);
-        $s_eight_val = $this->getSubjectValue($s_eight);
-        $s_nine_val = $this->getSubjectValue($s_nine);
-        $s_ten_val = $this->getSubjectValue($s_ten);
-        
-        return $s_one_val+$s_two_val+$s_three_val+$s_four_val+$s_five_val+$s_six_val+$s_seven_val+$s_eight_val+$s_nine_val+$s_ten_val;
+        $total_points = 0;
+        foreach($request->all() as $subject){
+            $total_points+=$this->getSubjectValue($subject);
+        }
+        return $total_points;
     }
 
     public function calculateWeightsOrdinary(Request $request){
         $subjects = array();
-        $s_one = $request->sub_one;
-        $s_two = $request->sub_two;
-        $s_three = $request->sub_three;
-        $s_four = $request->sub_four;
-        $s_five = $request->sub_five;
-        $s_six = $request->sub_six;
-        $s_seven = $request->sub_seven;
-        $s_eight = $request->sub_eight;
-        $s_nine = $request->sub_nine;
-        $s_ten= $request->sub_ten;
+        $best_weight = 0;
+        $total_weight = 0;
 
-        $s_one_val = $this->getOrdinaryWeightValue($s_one);
-        $s_two_val = $this->getOrdinaryWeightValue($s_two);
-        $s_three_val = $this->getOrdinaryWeightValue($s_three);
-        $s_four_val = $this->getOrdinaryWeightValue($s_four);
-        $s_five_val = $this->getOrdinaryWeightValue($s_five);
-        $s_six_val = $this->getOrdinaryWeightValue($s_six);
-        $s_seven_val = $this->getOrdinaryWeightValue($s_seven);
-        $s_eight_val = $this->getOrdinaryWeightValue($s_eight);
-        $s_nine_val = $this->getOrdinaryWeightValue($s_nine);
-        $s_ten_val = $this->getOrdinaryWeightValue($s_ten);
+        foreach ($request->all() as $item){
+            array_push($subjects, $this->getOrdinaryWeightValue($item));
+        }
+
+        sort($subjects);
         
-        return $s_one_val+$s_two_val+$s_three_val+$s_four_val+$s_five_val+$s_six_val+$s_seven_val+$s_eight_val+$s_nine_val+$s_ten_val;
+        for ($i = 0; $i<8; $i++){
+            $current = $subjects[$i];
+            $best_weight+=$current;
+        }
+
+        for ($i = 0; $i<10; $i++){
+            $current = $subjects[$i];
+            $total_weight+=$current;
+        }
+        
+        return response()->json([
+            'best_weight'=>$best_weight,
+            'total_weight'=>$total_weight
+        ]);
     }
 
     private function getGradeValue($grade){
