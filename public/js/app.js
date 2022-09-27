@@ -20249,6 +20249,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "combinations",
   data: function data() {
@@ -20257,9 +20259,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    console.log('Loaded');
     this.loadCombinations();
-    console.log('Finished');
   },
   methods: {
     loadCombinations: function loadCombinations() {
@@ -20270,6 +20270,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this.combinations = res;
       });
+    }
+  },
+  computed: {
+    sortedCombinations: function sortedCombinations() {
+      return _.chunk(this.combinations, 3);
     }
   }
 });
@@ -20288,8 +20293,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_CombinationComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/CombinationComponent.vue */ "./resources/js/components/CombinationComponent.vue");
-//
-//
 //
 //
 //
@@ -43647,20 +43650,27 @@ var render = function () {
               _vm._v("What combination did you do?"),
             ]),
             _vm._v(" "),
-            _vm._l(_vm.combinations, function (combination) {
+            _vm._l(_vm.sortedCombinations, function (group) {
               return _c(
                 "div",
-                {
-                  key: _vm.combinations.id,
-                  staticClass: "card shadow p-2 mb-5 bg-body col-sm-4",
-                },
-                [
-                  _c("div", { staticClass: "card-body text-center" }, [
-                    _c("p", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(combination.combination)),
-                    ]),
-                  ]),
-                ]
+                { staticClass: "row justify-content-around" },
+                _vm._l(group, function (combination) {
+                  return _c(
+                    "div",
+                    {
+                      key: combination.id,
+                      staticClass: "card shadow p-2 mb-5 bg-body col-sm-3",
+                    },
+                    [
+                      _c("div", { staticClass: "card-body text-center" }, [
+                        _c("p", { staticClass: "card-title" }, [
+                          _vm._v(_vm._s(combination.combination)),
+                        ]),
+                      ]),
+                    ]
+                  )
+                }),
+                0
               )
             }),
           ],
@@ -43702,6 +43712,8 @@ var render = function () {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
       _c("div", { staticClass: "row my-2" }, [_c("combinations")], 1),
       _vm._v(" "),
       _c(
@@ -43721,58 +43733,45 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row my-2" }, [
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "div",
-          { staticClass: "custom-control custom-radio custom-control-inline" },
-          [
-            _c("input", {
-              staticClass: "custom-control-input",
-              attrs: {
-                type: "radio",
-                id: "customRadioInline1",
-                name: "customRadioInline1",
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-control-label radio-text",
-                attrs: { for: "customRadioInline1" },
-              },
-              [_vm._v("Arts")]
-            ),
-          ]
-        ),
-      ]),
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: {
+          type: "radio",
+          name: "exampleRadios",
+          id: "exampleRadios1",
+          value: "option1",
+          checked: "",
+        },
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "div",
-          { staticClass: "custom-control custom-radio custom-control-inline" },
-          [
-            _c("input", {
-              staticClass: "custom-control-input",
-              attrs: {
-                type: "radio",
-                id: "customRadioInline2",
-                name: "customRadioInline1",
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "custom-control-label radio-text",
-                attrs: { for: "customRadioInline2" },
-              },
-              [_vm._v("Sciences")]
-            ),
-          ]
-        ),
-      ]),
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "exampleRadios1" } },
+        [_vm._v("\n        Arts\n    ")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-check" }, [
+      _c("input", {
+        staticClass: "form-check-input",
+        attrs: {
+          type: "radio",
+          name: "exampleRadios",
+          id: "exampleRadios2",
+          value: "option2",
+        },
+      }),
+      _vm._v(" "),
+      _c(
+        "label",
+        { staticClass: "form-check-label", attrs: { for: "exampleRadios2" } },
+        [_vm._v("\n        Sciences\n    ")]
+      ),
     ])
   },
 ]

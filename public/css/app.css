@@ -1,30 +1,30 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Poppins:wght@500&display=swap);
 .main-heading{
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 60px;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
 .main-heading-light{
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 60px;
     color : #5BC0BE !important;
 }
 
 .sub-heading{
     line-height: inherit;
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 25px !important;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
 .radio-text{
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 18px;
 }
 
 .subtitle{
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 16px;
     color : #5BC0BE;
 }
@@ -39,7 +39,7 @@
 
 .navbar-brand {
     color: rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
-    font-family: Poppins;
+    font-family: Manrope;
     font-size: 20px;
     margin-left: 2rem;
 }
@@ -64,7 +64,7 @@
 }
 
 input[type=text] {
-    font-family: Poppins;
+    font-family: Manrope;
     font-size : 16px;
     color : #5BC0BE;
 }
@@ -104,7 +104,7 @@ input[type=text] {
 
 .btn-wrap{
     width: 160px;
-    font-family: Poppins;
+    font-family: Manrope;
     background-color: #5BC0BE !important;
     color: #fff !important;
     border-color: transparent !important;

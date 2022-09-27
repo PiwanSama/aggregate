@@ -1,19 +1,17 @@
 <template>
      <div class="container">
         <h2 class="my-5 sub-heading">What's your field of study?</h2>
-        <div class="row my-2">
-            <div class="col-md-6">
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                    <label class="custom-control-label radio-text" for="customRadioInline1">Arts</label>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                    <label class="custom-control-label radio-text" for="customRadioInline2">Sciences</label>
-                </div>
-            </div>
+        <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Arts
+        </label>
+        </div>
+        <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Sciences
+        </label>
         </div>
         <div class="row my-2">
             <combinations></combinations>
