@@ -20248,6 +20248,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "combinations",
   data: function data() {
@@ -20256,7 +20257,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   created: function created() {
-    this.loadCombinations;
+    console.log('Loaded');
+    this.loadCombinations();
+    console.log('Finished');
   },
   methods: {
     loadCombinations: function loadCombinations() {
@@ -20309,33 +20312,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
-  data: function data() {
-    return {
-      combinations: []
-    };
-  },
-  created: function created() {
-    this.loadCombinations();
-  },
-  methods: {
-    loadCombinations: function loadCombinations() {
-      var _this = this;
-
-      fetch('/v1/combinations').then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        _this.combinations = res;
-      });
-    }
+  components: {
+    Combinations: _components_CombinationComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
 });
 
@@ -43661,23 +43642,29 @@ var render = function () {
     _vm.combinations.length
       ? _c(
           "div",
-          _vm._l(_vm.combinations, function (combination) {
-            return _c(
-              "div",
-              {
-                key: combination.id,
-                staticClass: "card shadow p-4 mb-5 bg-body col-sm-4",
-              },
-              [
-                _c("div", { staticClass: "card-body" }, [
-                  _c("h5", { staticClass: "card-title sub-heading my-3" }, [
-                    _vm._v(_vm._s(combination.combination)),
+          [
+            _c("h2", { staticClass: "my-5 sub-heading" }, [
+              _vm._v("What combination did you do?"),
+            ]),
+            _vm._v(" "),
+            _vm._l(_vm.combinations, function (combination) {
+              return _c(
+                "div",
+                {
+                  key: _vm.combinations.id,
+                  staticClass: "card shadow p-2 mb-5 bg-body col-sm-4",
+                },
+                [
+                  _c("div", { staticClass: "card-body text-center" }, [
+                    _c("p", { staticClass: "card-title" }, [
+                      _vm._v(_vm._s(combination.combination)),
+                    ]),
                   ]),
-                ]),
-              ]
-            )
-          }),
-          0
+                ]
+              )
+            }),
+          ],
+          2
         )
       : _vm._e(),
   ])
@@ -43715,30 +43702,7 @@ var render = function () {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "row my-2" }, [
-        _vm.combinations.length
-          ? _c(
-              "div",
-              _vm._l(_vm.combinations, function (combination) {
-                return _c(
-                  "div",
-                  {
-                    key: _vm.combinations.id,
-                    staticClass: "card shadow p-4 mb-5 bg-body col-sm-4",
-                  },
-                  [
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("h5", { staticClass: "card-title sub-heading my-3" }, [
-                        _vm._v(_vm._s(combination.combination)),
-                      ]),
-                    ]),
-                  ]
-                )
-              }),
-              0
-            )
-          : _vm._e(),
-      ]),
+      _c("div", { staticClass: "row my-2" }, [_c("combinations")], 1),
       _vm._v(" "),
       _c(
         "router-link",

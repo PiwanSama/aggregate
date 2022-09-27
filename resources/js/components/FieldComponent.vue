@@ -16,13 +16,7 @@
             </div>
         </div>
         <div class="row my-2">
-            <div v-if="combinations.length">
-            <div v-for="combination in combinations" v-bind:key = "combinations.id" class="card shadow p-4 mb-5 bg-body col-sm-4">
-                <div class="card-body">
-                    <h5 class="card-title sub-heading my-3">{{combination.combination}}</h5>
-                </div>
-            </div>
-        </div>
+            <combinations></combinations>
         </div>
         <router-link tag = "button" class="btn btn-wrap" to = "/combination">Next</router-link>
     </div>
@@ -34,22 +28,8 @@ import Combinations from '../components/CombinationComponent.vue';
 
 export default {
     name : "FieldComponent",
-    data : function(){
-        return{
-            combinations : []
-        }
-    },
-    created(){
-        this.loadCombinations();
-    },
-    methods : {
-        loadCombinations(){
-            fetch('/v1/combinations')
-            .then(res => res.json())
-            .then(res => {
-                this.combinations = res;
-            });
-        }
+    components : {
+        Combinations
     }
 }
 </script>

@@ -1,9 +1,10 @@
 <template>
     <div class="container">
         <div v-if="combinations.length">
-            <div v-for="combination in combinations" v-bind:key = "combination.id" class="card shadow p-4 mb-5 bg-body col-sm-4">
-                <div class="card-body">
-                    <h5 class="card-title sub-heading my-3">{{combination.combination}}</h5>
+            <h2 class="my-5 sub-heading">What combination did you do?</h2>
+            <div v-for="combination in combinations" v-bind:key = "combinations.id" class="card shadow p-2 mb-5 bg-body col-sm-4">
+                <div class="card-body text-center">
+                    <p class="card-title">{{combination.combination}}</p>
                 </div>
             </div>
         </div>
@@ -20,7 +21,9 @@ export default {
         }
     },
     created(){
-        this.loadCombinations
+        console.log('Loaded');
+        this.loadCombinations();
+        console.log('Finished');
     },
     methods : {
         loadCombinations(){
