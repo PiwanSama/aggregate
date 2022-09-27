@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2 class="my-5 main-heading">All Universities</h2>
+        <h2 class="my-5 sub-heading">All Universities</h2>
         <div class="input-group shadow col-md-6 mb-5">
             <input type="text" class="form-control" placeholder="Type to search" aria-label="Search" v-model="searchQuery" ref="searchQuery">
             <div class="input-group-append">

@@ -18,6 +18,11 @@
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
+.radio-text{
+    font-family: Poppins;
+    font-size : 18px;
+}
+
 .subtitle{
     font-family: Poppins;
     font-size : 16px;
@@ -119,6 +124,11 @@ input[type=text] {
 
 .float-right {
     float: right!important;
+}
+
+input[type=radio] {
+    width: 15px;
+    height: 15px;
 }
 @charset "UTF-8";
 /*!
