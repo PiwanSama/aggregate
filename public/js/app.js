@@ -43884,20 +43884,14 @@ var render = function () {
                 ),
                 _vm._v(" "),
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: "/universities" },
-                  },
+                  "a",
+                  { staticClass: "nav-item nav-link", attrs: { href: "#" } },
                   [_vm._v("Scholarships")]
                 ),
                 _vm._v(" "),
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: "/universities" },
-                  },
+                  "a",
+                  { staticClass: "nav-item nav-link", attrs: { href: "#" } },
                   [_vm._v("My Account")]
                 ),
               ],

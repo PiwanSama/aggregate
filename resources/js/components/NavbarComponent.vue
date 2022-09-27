@@ -10,8 +10,8 @@
                  <div class="navbar-nav">
                     <router-link to = "/field" class="nav-item nav-link">My Grades</router-link>
                     <router-link to = "/universities" class="nav-item nav-link">Explore Universities</router-link>
-                    <router-link to = "/universities" class="nav-item nav-link">Scholarships</router-link>
-                    <router-link to = "/universities" class="nav-item nav-link">My Account</router-link>
+                    <a href = "#" class="nav-item nav-link">Scholarships</a>
+                    <a href = "#" class="nav-item nav-link">My Account</a>
                 </div>
             </div>
         </nav>
