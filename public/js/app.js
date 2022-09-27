@@ -20288,6 +20288,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/homepage.png */ "./public/images/homepage.png");
+/* harmony import */ var _public_images_img_card_one_2_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../public/images/img_card_one_2.jpg */ "./public/images/img_card_one_2.jpg");
+/* harmony import */ var _public_images_img_card_two_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../public/images/img_card_two.jpg */ "./public/images/img_card_two.jpg");
+/* harmony import */ var _public_images_img_card_three_jpg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../public/images/img_card_three.jpg */ "./public/images/img_card_three.jpg");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20303,11 +20334,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "CombinationsComponent",
+  name: "HomepageComponent",
   data: function data() {
     return {
-      img_home: _public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0__["default"]
+      img_home: _public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0__["default"],
+      img_apply: _public_images_img_card_one_2_jpg__WEBPACK_IMPORTED_MODULE_1__["default"],
+      img_explore: _public_images_img_card_two_jpg__WEBPACK_IMPORTED_MODULE_2__["default"],
+      img_scholarships: _public_images_img_card_three_jpg__WEBPACK_IMPORTED_MODULE_3__["default"]
     };
   }
 });
@@ -20376,7 +20413,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var dataFilter = function dataFilter(university) {
-        return university.name.toLowerCase().match(_this2.searchQuery.toLowerCase()) && true;
+        return university.university.toLowerCase().match(_this2.searchQuery.toLowerCase()) && true;
       };
 
       return _.chunk(this.universities.filter(dataFilter), 2);
@@ -20397,6 +20434,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -25647,6 +25686,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/homepage.png?1730e70a10302da0a369ee83899823e4");
+
+/***/ }),
+
+/***/ "./public/images/img_card_one_2.jpg":
+/*!******************************************!*\
+  !*** ./public/images/img_card_one_2.jpg ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/img_card_one_2.jpg?d23822ed46f45a5706d5211c26dbf14d");
+
+/***/ }),
+
+/***/ "./public/images/img_card_three.jpg":
+/*!******************************************!*\
+  !*** ./public/images/img_card_three.jpg ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/img_card_three.jpg?f13ca6010dd34e2a0339a2a14dbf5584");
+
+/***/ }),
+
+/***/ "./public/images/img_card_two.jpg":
+/*!****************************************!*\
+  !*** ./public/images/img_card_two.jpg ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/img_card_two.jpg?1af0b6172265cf99fad7d2e2be677a79");
 
 /***/ }),
 
@@ -43562,29 +43646,34 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("div", { staticClass: "row align-items-center my-homepage" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 mt-3" }, [
-          _c("img", {
-            staticClass: "img-homepage float-right",
-            attrs: { src: _vm.img_home },
-          }),
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "section",
+      { attrs: { id: "welcome" } },
+      [
+        _c("div", { staticClass: "row align-items-center my-homepage" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6 mt-3" }, [
+            _c("img", {
+              staticClass: "img-homepage float-right",
+              attrs: { src: _vm.img_home },
+            }),
+          ]),
         ]),
-      ]),
-      _vm._v(" "),
-      _c(
-        "router-link",
-        { staticClass: "btn btn-wrap", attrs: { tag: "button", to: "/field" } },
-        [_vm._v("Start my Journey")]
-      ),
-    ],
-    1
-  )
+        _vm._v(" "),
+        _c(
+          "router-link",
+          {
+            staticClass: "btn btn-wrap",
+            attrs: { tag: "button", to: "/field" },
+          },
+          [_vm._v("Start my Journey")]
+        ),
+      ],
+      1
+    ),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -43686,7 +43775,7 @@ var render = function () {
                   [
                     _c("div", { staticClass: "card-body" }, [
                       _c("h5", { staticClass: "card-title sub-heading my-3" }, [
-                        _vm._v(_vm._s(university.name)),
+                        _vm._v(_vm._s(university.university)),
                       ]),
                       _vm._v(" "),
                       _c(
@@ -43710,9 +43799,9 @@ var render = function () {
                           }),
                           _vm._v(
                             " " +
-                              _vm._s(university.name) +
+                              _vm._s(university.university) +
                               " is a " +
-                              _vm._s(university.type) +
+                              _vm._s(university.type.toLowerCase()) +
                               " institution in the " +
                               _vm._s(university.region) +
                               " part of Uganda. \n                        It operates under the " +
@@ -43781,20 +43870,35 @@ var render = function () {
               [
                 _c(
                   "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: "/universities" },
-                  },
-                  [_vm._v("Local Universities")]
+                  { staticClass: "nav-item nav-link", attrs: { to: "/field" } },
+                  [_vm._v("My Grades")]
                 ),
                 _vm._v(" "),
                 _c(
                   "router-link",
                   {
                     staticClass: "nav-item nav-link",
-                    attrs: { to: "/subjects" },
+                    attrs: { to: "/universities" },
                   },
-                  [_vm._v("A Level Subjects")]
+                  [_vm._v("Explore Universities")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/universities" },
+                  },
+                  [_vm._v("Scholarships")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-item nav-link",
+                    attrs: { to: "/universities" },
+                  },
+                  [_vm._v("My Account")]
                 ),
               ],
               1

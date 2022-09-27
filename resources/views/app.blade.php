@@ -11,6 +11,7 @@
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        
     <body>
         <div id ="app">
             <div>
