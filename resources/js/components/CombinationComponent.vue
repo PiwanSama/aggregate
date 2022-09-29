@@ -26,9 +26,6 @@
                     </div>
                     <div v-if="loaded">
                         <div v-if = "isArts" class = "form-group col-md-4">
-                            <small id="passwordHelpBlock1" class="form-text text-muted">
-                                Select your Arts combination
-                            </small><br>
                             <select class="form-control-sm" v-model = "selected">
                                 <option v-for="(combination, index) in scienceCombinations" :key="index" :value="combination">
                                     {{combination.combination}}
@@ -36,9 +33,6 @@
                             </select>
                         </div>
                         <div v-if = "isSciences" class = "form-group col-md-4">
-                            <small id="passwordHelpBlock2" class="form-text text-muted">
-                                Select your Sciences combination
-                            </small><br>
                             <select class="form-control-sm" v-model = "selected">
                                 <option v-for="(combination, index) in artsCombinations" :key="index" :value="combination">
                                     {{combination.combination}}

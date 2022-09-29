@@ -20346,12 +20346,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
@@ -49565,20 +49559,6 @@ var render = function () {
                 _vm.isArts
                   ? _c("div", { staticClass: "form-group col-md-4" }, [
                       _c(
-                        "small",
-                        {
-                          staticClass: "form-text text-muted",
-                          attrs: { id: "passwordHelpBlock1" },
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Select your Arts combination\n                        "
-                          ),
-                        ]
-                      ),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c(
                         "select",
                         {
                           directives: [
@@ -49629,20 +49609,6 @@ var render = function () {
                 _vm._v(" "),
                 _vm.isSciences
                   ? _c("div", { staticClass: "form-group col-md-4" }, [
-                      _c(
-                        "small",
-                        {
-                          staticClass: "form-text text-muted",
-                          attrs: { id: "passwordHelpBlock2" },
-                        },
-                        [
-                          _vm._v(
-                            "\n                            Select your Sciences combination\n                        "
-                          ),
-                        ]
-                      ),
-                      _c("br"),
-                      _vm._v(" "),
                       _c(
                         "select",
                         {
