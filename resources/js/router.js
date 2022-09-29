@@ -4,7 +4,6 @@ import Subjects from './components/SubjectListComponent.vue'
 import Universities from './components/LocalUniversityComponent.vue'
 import Homepage from './components/HomepageComponent.vue'
 import Field from './components/FieldComponent.vue'
-import Combination from './components/CombinationComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -25,14 +24,9 @@ const routes = [
         component :  Universities
     },
     {
-        path : '/field',
+        path : '/select-field',
         name : 'Field',
         component :  Field
-    },
-    {
-        path : '/combinations',
-        name : 'Combination',
-        component :  Combination
     }
 ]
 

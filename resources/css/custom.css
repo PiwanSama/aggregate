@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&family=Poppins:wght@500&display=swap');
 
+body{
+    background-color: #EDF5FF;
+}
+
 .main-heading{
     font-family: Manrope;
     font-size : 60px;
@@ -9,7 +13,7 @@
 .main-heading-light{
     font-family: Manrope;
     font-size : 60px;
-    color : #5BC0BE !important;
+    color : #4F8FF7 !important;
 }
 
 .sub-heading{
@@ -27,7 +31,7 @@
 .subtitle{
     font-family: Manrope;
     font-size : 16px;
-    color : #5BC0BE;
+    color : #4F8FF7;
 }
 
 .ui-list{
@@ -36,6 +40,7 @@
 
 .card{
     border: none !important;
+    background-color: #fff !important;
 }
 
 .navbar-brand {
@@ -46,7 +51,7 @@
 }
 
 .bg-custom{
-    background-color: #5BC0BE;
+    background-color: #4F8FF7;
 }
 
 .text-custom{
@@ -67,7 +72,7 @@
 input[type=text] {
     font-family: Manrope;
     font-size : 16px;
-    color : #5BC0BE;
+    color : #4F8FF7;
 }
 
 .input-group-append{
@@ -106,7 +111,7 @@ input[type=text] {
 .btn-wrap{
     width: 160px;
     font-family: Manrope;
-    background-color: #5BC0BE !important;
+    background-color: #4F8FF7 !important;
     color: #fff !important;
     border-color: transparent !important;
     font-weight: 700;

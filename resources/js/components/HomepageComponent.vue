@@ -10,11 +10,11 @@
                     <img class="img-homepage float-right" v-bind:src="img_home" />
                 </div>
             </div>
-            <router-link tag = "button" class="btn btn-wrap" to = "/field">Start my Journey</router-link>
+            <router-link tag = "button" class="btn btn-wrap" to = "/select-field">Start my Journey</router-link>
        </section>
         <!--section class="mt-5">
             <h3 class="sub-heading d-flex justify-content-center">What can you do with Aggregate?</h3>
-            <div class="card-group my-5">
+            <div class="card-group my-5">select-field
                 <div class="card mx-2">
                     <img class="card-img-top" v-bind:src="img_apply" alt="Card image cap">
                     <div class="card-body">
