@@ -1,6 +1,6 @@
 <template>
      <div class="container">
-        <h2 class="my-5 sub-heading">What's your field of study?</h2>
+        <h2 class="my-2 sub-heading">What's your field of study?</h2>
         <div class="form-check">
         <input class="form-check-input" type="radio" name="field-radio" id="artsRadio" value="arts" v-on:click="showArts">
         <label class="form-check-label" for="artsRadio">
@@ -14,7 +14,7 @@
         </label>
         </div>
         <div class="row my-2">
-            <h2 class="my-5 sub-heading">What combination did you do?</h2>
+            <h2 class="my-2 sub-heading">What combination did you do?</h2>
         <div class = "" v-if = "loading">
             <half-circle-spinner
                 :animation-duration="1000"
@@ -23,7 +23,13 @@
             />
         </div>
         <div v-if="loaded">
-            <div class="list-group col-sm-3" v-if = "isDefault" v-for="combination in filteredCombinations" v-bind:key = "combination.id">
+            <select class="form-control" v-if = "isDefault">
+                <option value="" disabled selected>Select your combination</option>
+                <option class="mb-1" v-for="(combination, index) in managers" :key="index" :value="combination">
+                    {{combination.combination}}
+                </option> 
+            </select>
+            <div class="list-group col-sm-3" >
                 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div class="d-flex w-100 justify-content-between">
                     <h5 class="card-title">{{combination.combination}}</h5>
@@ -67,7 +73,7 @@ export default {
             combinations : [],
             artsData : [],
             sciencesData : [],
-            activeIndex: undefined,
+            selected: null,
             loading : true,
             loaded : false,
             isDefault : true,
@@ -101,7 +107,7 @@ export default {
     },
     computed : {
         filteredCombinations(){
-            return this.combinations;
+            return this.combinations.sort();
         },
         artsCombinations(){
            return this.combinations.filter(combination => combination.category.indexOf('Arts'));

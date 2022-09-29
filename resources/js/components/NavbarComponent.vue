@@ -8,7 +8,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                  <div class="navbar-nav">
-                    <router-link to = "/select-field" class="nav-item nav-link">My Grades</router-link>
+                    <router-link to = "/select-combination" class="nav-item nav-link">My Grades</router-link>
                     <router-link to = "/universities" class="nav-item nav-link">Explore Universities</router-link>
                     <a href = "#" class="nav-item nav-link">Scholarships</a>
                     <a href = "#" class="nav-item nav-link">My Account</a>
