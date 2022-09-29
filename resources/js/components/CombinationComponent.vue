@@ -1,7 +1,7 @@
 <template>
      <div class="container">
-        <div class="row">
-            <div class="col-5 my-3 ">
+        <div class="row my-3">
+            <div>
             <h2 class="sub-heading">What's your field of study?</h2>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="field-radio" id="artsRadio" value="arts" v-on:click="showArts" checked>
@@ -17,53 +17,55 @@
                 </div>
                 <div class="row my-3">
                     <h2 class="sub-heading">What combination did you do?</h2>
-                <div class = "" v-if = "loading">
-                    <half-circle-spinner
-                        :animation-duration="1000"
-                        :size="60"
-                        :color="'#4F8FF7'"
-                    />
-                </div>
-                <div v-if="loaded">
-                    <div class = "form-group col-md-4">
-                        <select class="form-control-sm" v-if = "isSciences">
-                            <option selected>Select your Sciences combination</option>
-                            <option v-for="(combination, index) in artsCombinations" :key="index" :value="combination">
-                                {{combination.combination}}
-                            </option> 
-                        </select>
+                    <div v-if = "loading">
+                        <half-circle-spinner
+                            :animation-duration="1000"
+                            :size="60"
+                            :color="'#4F8FF7'"
+                        />
                     </div>
-                    <div class = "form-group col-md-4">
-                        <select class="form-control-sm" v-if = "isArts">
-                            <option selected>Select your Arts combination</option>
-                            <option v-for="(combination, index) in scienceCombinations" :key="index" :value="combination">
-                                {{combination.combination}}
-                            </option> 
-                        </select>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="col-7 my-3">
-            <div class="row my-3">
-                <h2 class="sub-heading">What's were your grades in ?</h2>
-                <form>
-                    <div class="form-row">
-                        <div class="form-group mx-sm-2 mb-2">
-                        <input type="text" class="form-controls-sm" placeholder="B">
+                    <div v-if="loaded">
+                        <div v-if = "isArts" class = "form-group col-md-4">
+                            <small id="passwordHelpBlock1" class="form-text text-muted">
+                                Select your Arts combination
+                            </small><br>
+                            <select class="form-control-sm" v-model = "selected" v-on:click = "showValueForTest">
+                                <option v-for="(combination, index) in scienceCombinations" :key="index" :value="combination">
+                                    {{combination.combination}}
+                                </option> 
+                            </select>
                         </div>
-                        <div class="form-group mx-sm-2 mb-2">
-                        <input type="text" class="form-controls-sm" placeholder="C">
-                        </div>
-                        <div class="form-group mx-sm-2 mb-2">
-                        <input type="text" class="form-controls-sm" placeholder="M">
-                        </div>
-                        <div class="form-group mx-sm-2 mb-2">
-                        <input type="text" class="form-controls-sm" placeholder="IT">
+                        <div v-if = "isSciences" class = "form-group col-md-4">
+                            <small id="passwordHelpBlock2" class="form-text text-muted">
+                                Select your Sciences combination
+                 ing           </small><br>
+                            <select class="form-control-sm" v-model = "selected" v-on:click = "showValueForTest">
+                                <option v-for="(combination, index) in artsCombinations" :key="index" :value="combination">
+                                    {{combination.combination}}
+                                </option> 
+                            </select>
                         </div>
                     </div>
-                </form>
-                <button type="submit" class="btn btn-primary float-right">Calculate my grades!</button>
+                </div>
+                <div class="row my-3" v-if= "selected">
+                    <h2 class="sub-heading">What's were your grades in {{selected.combination}}?</h2>
+                    <form>
+                        <div class="form-row">
+                            <div class="form-group mx-sm-2 mb-2">
+                            <input type="text" class="form-controls-sm" placeholder="B">
+                            </div>
+                            <div class="form-group mx-sm-2 mb-2">
+                            <input type="text" class="form-controls-sm" placeholder="C">
+                            </div>
+                            <div class="form-group mx-sm-2 mb-2">
+                            <input type="text" class="form-controls-sm" placeholder="M">
+                            </div>
+                            <div class="form-group mx-sm-2 mb-2">
+                            <input type="text" class="form-controls-sm" placeholder="IT">
+                            </div>
+                        </div>
+                        <input class="btn btn-primary mt-5" type="submit" value="Calculate my grades!"/>
+                    </form>
             </div>
             </div>
         </div>
@@ -102,13 +104,18 @@ export default {
                 this.loading = false;
             });
         },
+        showValueForTest(){
+         console.log(this.selected.combination)
+        },
         showArts(){
             this.isSciences = false;
             this.isArts = true;
+            if(this.selected != null) this.selected = null;
         },
         showSciences(){
             this.isArts = false;
             this.isSciences = true;
+            if(this.selected != null) this.selected = null;
         }
     },
     computed : {
