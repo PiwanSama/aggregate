@@ -13,6 +13,10 @@ class Combination extends Model
     protected $fillable = [
         'id',
         'name',
-        'category'
+        'category',
+        'principal_one',
+        'principal_two',
+        'principal_three',
+        'subsidiary'
     ];
 }

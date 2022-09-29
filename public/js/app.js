@@ -20309,6 +20309,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
@@ -20322,7 +20334,11 @@ __webpack_require__.r(__webpack_exports__);
       loading: true,
       loaded: false,
       isArts: true,
-      isSciences: false
+      isSciences: false,
+      p1: null,
+      p2: null,
+      p3: null,
+      sub: null
     };
   },
   created: function created() {
@@ -20343,10 +20359,12 @@ __webpack_require__.r(__webpack_exports__);
     showArts: function showArts() {
       this.isSciences = false;
       this.isArts = true;
+      if (this.selected != null) this.selected = null;
     },
     showSciences: function showSciences() {
       this.isArts = false;
       this.isSciences = true;
+      if (this.selected != null) this.selected = null;
     }
   },
   computed: {
@@ -49441,8 +49459,8 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-5 my-3 " }, [
+    _c("div", { staticClass: "row my-3" }, [
+      _c("div", [
         _c("h2", { staticClass: "sub-heading" }, [
           _vm._v("What's your field of study?"),
         ]),
@@ -49497,7 +49515,6 @@ var render = function () {
           _vm.loading
             ? _c(
                 "div",
-                {},
                 [
                   _c("half-circle-spinner", {
                     attrs: {
@@ -49513,81 +49530,210 @@ var render = function () {
           _vm._v(" "),
           _vm.loaded
             ? _c("div", [
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _vm.isSciences
-                    ? _c(
-                        "select",
-                        { staticClass: "form-control-sm" },
+                _vm.isArts
+                  ? _c("div", { staticClass: "form-group col-md-4" }, [
+                      _c(
+                        "small",
+                        {
+                          staticClass: "form-text text-muted",
+                          attrs: { id: "passwordHelpBlock1" },
+                        },
                         [
-                          _c("option", { attrs: { selected: "" } }, [
-                            _vm._v("Select your Sciences combination"),
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(
-                            _vm.artsCombinations,
-                            function (combination, index) {
-                              return _c(
-                                "option",
-                                {
-                                  key: index,
-                                  domProps: { value: combination },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                            " +
-                                      _vm._s(combination.combination) +
-                                      "\n                        "
-                                  ),
-                                ]
-                              )
-                            }
+                          _vm._v(
+                            "\n                            Select your Arts combination\n                        "
                           ),
-                        ],
-                        2
-                      )
-                    : _vm._e(),
-                ]),
+                        ]
+                      ),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected,
+                              expression: "selected",
+                            },
+                          ],
+                          staticClass: "form-control-sm",
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        _vm._l(
+                          _vm.scienceCombinations,
+                          function (combination, index) {
+                            return _c(
+                              "option",
+                              { key: index, domProps: { value: combination } },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(combination.combination) +
+                                    "\n                            "
+                                ),
+                              ]
+                            )
+                          }
+                        ),
+                        0
+                      ),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _vm.isArts
-                    ? _c(
-                        "select",
-                        { staticClass: "form-control-sm" },
+                _vm.isSciences
+                  ? _c("div", { staticClass: "form-group col-md-4" }, [
+                      _c(
+                        "small",
+                        {
+                          staticClass: "form-text text-muted",
+                          attrs: { id: "passwordHelpBlock2" },
+                        },
                         [
-                          _c("option", { attrs: { selected: "" } }, [
-                            _vm._v("Select your Arts combination"),
-                          ]),
-                          _vm._v(" "),
-                          _vm._l(
-                            _vm.scienceCombinations,
-                            function (combination, index) {
-                              return _c(
-                                "option",
-                                {
-                                  key: index,
-                                  domProps: { value: combination },
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                            " +
-                                      _vm._s(combination.combination) +
-                                      "\n                        "
-                                  ),
-                                ]
-                              )
-                            }
+                          _vm._v(
+                            "\n                            Select your Sciences combination\n                        "
                           ),
-                        ],
-                        2
-                      )
-                    : _vm._e(),
-                ]),
+                        ]
+                      ),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.selected,
+                              expression: "selected",
+                            },
+                          ],
+                          staticClass: "form-control-sm",
+                          on: {
+                            change: function ($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function (o) {
+                                  return o.selected
+                                })
+                                .map(function (o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.selected = $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            },
+                          },
+                        },
+                        _vm._l(
+                          _vm.artsCombinations,
+                          function (combination, index) {
+                            return _c(
+                              "option",
+                              { key: index, domProps: { value: combination } },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(combination.combination) +
+                                    "\n                            "
+                                ),
+                              ]
+                            )
+                          }
+                        ),
+                        0
+                      ),
+                    ])
+                  : _vm._e(),
               ])
             : _vm._e(),
         ]),
+        _vm._v(" "),
+        _vm.selected
+          ? _c("div", { staticClass: "row my-3" }, [
+              _c("h2", { staticClass: "sub-heading" }, [
+                _vm._v(
+                  "What's were your grades in " +
+                    _vm._s(_vm.selected.combination) +
+                    "?"
+                ),
+              ]),
+              _vm._v(" "),
+              _c("form", [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "staticEmail" },
+                    },
+                    [_vm._v(_vm._s(_vm.selected.principal_one) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "staticEmail" },
+                    },
+                    [_vm._v(_vm._s(_vm.selected.principal_two) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "staticEmail" },
+                    },
+                    [_vm._v(_vm._s(_vm.selected.principal_three) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(2),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "staticEmail" },
+                    },
+                    [_vm._v(_vm._s(_vm.selected.subsidiary) + " : ")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(3),
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "btn btn-primary mt-5",
+                  attrs: { type: "submit", value: "Calculate my grades!" },
+                }),
+              ]),
+            ])
+          : _vm._e(),
       ]),
-      _vm._v(" "),
-      _vm._m(0),
     ]),
   ])
 }
@@ -49596,53 +49742,44 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-7 my-3" }, [
-      _c("div", { staticClass: "row my-3" }, [
-        _c("h2", { staticClass: "sub-heading" }, [
-          _vm._v("What's were your grades in ?"),
-        ]),
-        _vm._v(" "),
-        _c("form", [
-          _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
-              _c("input", {
-                staticClass: "form-controls-sm",
-                attrs: { type: "text", placeholder: "B" },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
-              _c("input", {
-                staticClass: "form-controls-sm",
-                attrs: { type: "text", placeholder: "C" },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
-              _c("input", {
-                staticClass: "form-controls-sm",
-                attrs: { type: "text", placeholder: "M" },
-              }),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
-              _c("input", {
-                staticClass: "form-controls-sm",
-                attrs: { type: "text", placeholder: "IT" },
-              }),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary float-right",
-            attrs: { type: "submit" },
-          },
-          [_vm._v("Calculate my grades!")]
-        ),
-      ]),
+    return _c("div", { staticClass: "col-sm-10" }, [
+      _c("input", {
+        staticClass: "form-controls-sm",
+        attrs: { type: "text", id: "principal_one" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-10" }, [
+      _c("input", {
+        staticClass: "form-controls-sm",
+        attrs: { type: "text", id: "principal_two" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-10" }, [
+      _c("input", {
+        staticClass: "form-controls-sm",
+        attrs: { type: "text", id: "principal_three" },
+      }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-sm-10" }, [
+      _c("input", {
+        staticClass: "form-controls-sm",
+        attrs: { type: "text", id: "subsidiary" },
+      }),
     ])
   },
 ]

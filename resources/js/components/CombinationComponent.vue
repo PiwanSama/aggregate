@@ -29,7 +29,7 @@
                             <small id="passwordHelpBlock1" class="form-text text-muted">
                                 Select your Arts combination
                             </small><br>
-                            <select class="form-control-sm" v-model = "selected" v-on:click = "showValueForTest">
+                            <select class="form-control-sm" v-model = "selected">
                                 <option v-for="(combination, index) in scienceCombinations" :key="index" :value="combination">
                                     {{combination.combination}}
                                 </option> 
@@ -38,8 +38,8 @@
                         <div v-if = "isSciences" class = "form-group col-md-4">
                             <small id="passwordHelpBlock2" class="form-text text-muted">
                                 Select your Sciences combination
-                 ing           </small><br>
-                            <select class="form-control-sm" v-model = "selected" v-on:click = "showValueForTest">
+                            </small><br>
+                            <select class="form-control-sm" v-model = "selected">
                                 <option v-for="(combination, index) in artsCombinations" :key="index" :value="combination">
                                     {{combination.combination}}
                                 </option> 
@@ -50,18 +50,28 @@
                 <div class="row my-3" v-if= "selected">
                     <h2 class="sub-heading">What's were your grades in {{selected.combination}}?</h2>
                     <form>
-                        <div class="form-row">
-                            <div class="form-group mx-sm-2 mb-2">
-                            <input type="text" class="form-controls-sm" placeholder="B">
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_one}} : </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-controls-sm" id="principal_one">
                             </div>
-                            <div class="form-group mx-sm-2 mb-2">
-                            <input type="text" class="form-controls-sm" placeholder="C">
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_two}} : </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-controls-sm" id="principal_two">
                             </div>
-                            <div class="form-group mx-sm-2 mb-2">
-                            <input type="text" class="form-controls-sm" placeholder="M">
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_three}} : </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-controls-sm" id="principal_three">
                             </div>
-                            <div class="form-group mx-sm-2 mb-2">
-                            <input type="text" class="form-controls-sm" placeholder="IT">
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.subsidiary}} : </label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-controls-sm" id="subsidiary">
                             </div>
                         </div>
                         <input class="btn btn-primary mt-5" type="submit" value="Calculate my grades!"/>
@@ -88,7 +98,11 @@ export default {
             loading : true,
             loaded : false,
             isArts : true,
-            isSciences : false
+            isSciences : false,
+            p1 : null,
+            p2 : null,
+            p3 : null,
+            sub : null
         }
     },
     created(){
@@ -103,9 +117,6 @@ export default {
                 this.loaded = true;
                 this.loading = false;
             });
-        },
-        showValueForTest(){
-         console.log(this.selected.combination)
         },
         showArts(){
             this.isSciences = false;
