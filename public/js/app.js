@@ -20321,6 +20321,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
@@ -20330,15 +20361,16 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       combinations: [],
+      msg: [],
       selected: null,
       loading: true,
       loaded: false,
       isArts: true,
       isSciences: false,
-      p1: null,
-      p2: null,
-      p3: null,
-      sub: null
+      principal_one: '',
+      principal_two: '',
+      principal_three: '',
+      subsidiary: ''
     };
   },
   created: function created() {
@@ -49684,7 +49716,56 @@ var render = function () {
                     [_vm._v(_vm._s(_vm.selected.principal_one) + " : ")]
                   ),
                   _vm._v(" "),
-                  _vm._m(0),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.principal_one,
+                            expression: "principal_one",
+                          },
+                        ],
+                        staticClass: "form-control-sm",
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.principal_one = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                        },
+                      },
+                      [
+                        _c("option", { attrs: { disabled: "", value: "" } }, [
+                          _vm._v("Please select one"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("A")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("B")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("C")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("D")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("E")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("O")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("F")]),
+                      ]
+                    ),
+                  ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
@@ -49697,7 +49778,56 @@ var render = function () {
                     [_vm._v(_vm._s(_vm.selected.principal_two) + " : ")]
                   ),
                   _vm._v(" "),
-                  _vm._m(1),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.principal_two,
+                            expression: "principal_two",
+                          },
+                        ],
+                        staticClass: "form-control-sm",
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.principal_two = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                        },
+                      },
+                      [
+                        _c("option", { attrs: { disabled: "", value: "" } }, [
+                          _vm._v("Please select one"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("A")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("B")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("C")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("D")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("E")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("O")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("F")]),
+                      ]
+                    ),
+                  ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
@@ -49710,7 +49840,56 @@ var render = function () {
                     [_vm._v(_vm._s(_vm.selected.principal_three) + " : ")]
                   ),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.principal_three,
+                            expression: "principal_three",
+                          },
+                        ],
+                        staticClass: "form-control-sm",
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.principal_three = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                        },
+                      },
+                      [
+                        _c("option", { attrs: { disabled: "", value: "" } }, [
+                          _vm._v("Please select one"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("A")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("B")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("C")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("D")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("E")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("O")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("F")]),
+                      ]
+                    ),
+                  ]),
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
@@ -49723,7 +49902,46 @@ var render = function () {
                     [_vm._v(_vm._s(_vm.selected.subsidiary) + " : ")]
                   ),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.subsidiary,
+                            expression: "subsidiary",
+                          },
+                        ],
+                        staticClass: "form-control-sm",
+                        on: {
+                          change: function ($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function (o) {
+                                return o.selected
+                              })
+                              .map(function (o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.subsidiary = $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          },
+                        },
+                      },
+                      [
+                        _c("option", { attrs: { disabled: "", value: "" } }, [
+                          _vm._v("Please select one"),
+                        ]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("1")]),
+                        _vm._v(" "),
+                        _c("option", [_vm._v("0")]),
+                      ]
+                    ),
+                  ]),
                 ]),
                 _vm._v(" "),
                 _c("input", {
@@ -49737,52 +49955,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-controls-sm",
-        attrs: { type: "text", id: "principal_one" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-controls-sm",
-        attrs: { type: "text", id: "principal_two" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-controls-sm",
-        attrs: { type: "text", id: "principal_three" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-10" }, [
-      _c("input", {
-        staticClass: "form-controls-sm",
-        attrs: { type: "text", id: "subsidiary" },
-      }),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

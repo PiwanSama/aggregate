@@ -53,25 +53,56 @@
                         <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_one}} : </label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-controls-sm" id="principal_one">
+                                <select class="form-control-sm" v-model="principal_one">
+                                    <option disabled value="">Please select one</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
+                                    <option>E</option>
+                                    <option>O</option>
+                                    <option>F</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_two}} : </label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-controls-sm" id="principal_two">
+                                <select class="form-control-sm" v-model="principal_two">
+                                    <option disabled value="">Please select one</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
+                                    <option>E</option>
+                                    <option>O</option>
+                                    <option>F</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.principal_three}} : </label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-controls-sm" id="principal_three">
+                                <select class="form-control-sm" v-model="principal_three">
+                                    <option disabled value="">Please select one</option>
+                                    <option>A</option>
+                                    <option>B</option>
+                                    <option>C</option>
+                                    <option>D</option>
+                                    <option>E</option>
+                                    <option>O</option>
+                                    <option>F</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">{{selected.subsidiary}} : </label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-controls-sm" id="subsidiary">
+                                <select class="form-control-sm" v-model="subsidiary">
+                                    <option disabled value="">Please select one</option>
+                                    <option>1</option>
+                                    <option>0</option>
+                                </select>
                             </div>
                         </div>
                         <input class="btn btn-primary mt-5" type="submit" value="Calculate my grades!"/>
@@ -94,15 +125,16 @@ export default {
     data : function(){
         return{
             combinations : [],
+            msg: [],
             selected: null,
             loading : true,
             loaded : false,
             isArts : true,
             isSciences : false,
-            p1 : null,
-            p2 : null,
-            p3 : null,
-            sub : null
+            principal_one : '',
+            principal_two : '',
+            principal_three : '',
+            subsidiary : ''
         }
     },
     created(){
@@ -137,6 +169,6 @@ export default {
             return this.combinations.filter(combination => combination.category.indexOf('Sciences'));
         }
     }
-}
+  }
 </script>
 
