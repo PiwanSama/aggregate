@@ -20298,6 +20298,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
@@ -20307,13 +20318,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       combinations: [],
-      artsData: [],
-      sciencesData: [],
       selected: null,
       loading: true,
       loaded: false,
-      isDefault: true,
-      isArts: false,
+      isArts: true,
       isSciences: false
     };
   },
@@ -20333,20 +20341,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     showArts: function showArts() {
-      this.isDefault = false;
       this.isSciences = false;
       this.isArts = true;
     },
     showSciences: function showSciences() {
-      this.isDefault = false;
       this.isArts = false;
       this.isSciences = true;
     }
   },
   computed: {
-    filteredCombinations: function filteredCombinations() {
-      return this.combinations.sort();
-    },
     artsCombinations: function artsCombinations() {
       return this.combinations.filter(function (combination) {
         return combination.category.indexOf('Arts');
@@ -49437,235 +49440,212 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
-      _c("h2", { staticClass: "my-2 sub-heading" }, [
-        _vm._v("What's your field of study?"),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: {
-            type: "radio",
-            name: "field-radio",
-            id: "artsRadio",
-            value: "arts",
-          },
-          on: { click: _vm.showArts },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "artsRadio" } },
-          [_vm._v("\n        Arts\n    ")]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-check" }, [
-        _c("input", {
-          staticClass: "form-check-input",
-          attrs: {
-            type: "radio",
-            name: "field-radio",
-            id: "sciencesRadio",
-            value: "sciences",
-          },
-          on: { click: _vm.showSciences },
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "form-check-label", attrs: { for: "sciencesRadio" } },
-          [_vm._v("\n        Sciences\n    ")]
-        ),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row my-2" }, [
-        _c("h2", { staticClass: "my-2 sub-heading" }, [
-          _vm._v("What combination did you do?"),
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-5 my-3 " }, [
+        _c("h2", { staticClass: "sub-heading" }, [
+          _vm._v("What's your field of study?"),
         ]),
         _vm._v(" "),
-        _vm.loading
-          ? _c(
-              "div",
-              {},
-              [
-                _c("half-circle-spinner", {
-                  attrs: {
-                    "animation-duration": 1000,
-                    size: 60,
-                    color: "#4F8FF7",
-                  },
-                }),
-              ],
-              1
-            )
-          : _vm._e(),
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "field-radio",
+              id: "artsRadio",
+              value: "arts",
+              checked: "",
+            },
+            on: { click: _vm.showArts },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "form-check-label", attrs: { for: "artsRadio" } },
+            [_vm._v("\n                    Arts\n                ")]
+          ),
+        ]),
         _vm._v(" "),
-        _vm.loaded
-          ? _c(
-              "div",
-              [
-                _vm.isDefault
-                  ? _c(
-                      "select",
-                      { staticClass: "form-control" },
-                      [
-                        _c(
-                          "option",
-                          { attrs: { value: "", disabled: "", selected: "" } },
-                          [_vm._v("Select your combination")]
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.managers, function (combination, index) {
-                          return _c(
-                            "option",
-                            {
-                              key: index,
-                              staticClass: "mb-1",
-                              domProps: { value: combination },
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(combination.combination) +
-                                  "\n            "
-                              ),
-                            ]
-                          )
-                        }),
-                      ],
-                      2
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "list-group col-sm-3" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "list-group-item list-group-item-action flex-column align-items-start",
-                      attrs: { href: "#" },
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "radio",
+              name: "field-radio",
+              id: "sciencesRadio",
+              value: "sciences",
+            },
+            on: { click: _vm.showSciences },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "sciencesRadio" },
+            },
+            [_vm._v("\n                    Sciences\n                ")]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row my-3" }, [
+          _c("h2", { staticClass: "sub-heading" }, [
+            _vm._v("What combination did you do?"),
+          ]),
+          _vm._v(" "),
+          _vm.loading
+            ? _c(
+                "div",
+                {},
+                [
+                  _c("half-circle-spinner", {
+                    attrs: {
+                      "animation-duration": 1000,
+                      size: 60,
+                      color: "#4F8FF7",
                     },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "d-flex w-100 justify-content-between" },
+                  }),
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.loaded
+            ? _c("div", [
+                _c("div", { staticClass: "form-group col-md-4" }, [
+                  _vm.isSciences
+                    ? _c(
+                        "select",
+                        { staticClass: "form-control-sm" },
                         [
-                          _c("h5", { staticClass: "card-title" }, [
-                            _vm._v(_vm._s(_vm.combination.combination)),
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Select your Sciences combination"),
                           ]),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "mb-1" }, [
-                        _vm._v(_vm._s(_vm.combination.category)),
-                      ]),
-                    ]
-                  ),
+                          _vm._v(" "),
+                          _vm._l(
+                            _vm.artsCombinations,
+                            function (combination, index) {
+                              return _c(
+                                "option",
+                                {
+                                  key: index,
+                                  domProps: { value: combination },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(combination.combination) +
+                                      "\n                        "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                        ],
+                        2
+                      )
+                    : _vm._e(),
                 ]),
                 _vm._v(" "),
-                _vm._l(_vm.artsCombinations, function (combination) {
-                  return _vm.isSciences
+                _c("div", { staticClass: "form-group col-md-4" }, [
+                  _vm.isArts
                     ? _c(
-                        "div",
-                        {
-                          key: combination.id,
-                          staticClass: "list-group col-sm-3",
-                        },
+                        "select",
+                        { staticClass: "form-control-sm" },
                         [
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "list-group-item list-group-item-action flex-column align-items-start",
-                              attrs: { href: "#" },
-                            },
-                            [
-                              _c(
-                                "div",
+                          _c("option", { attrs: { selected: "" } }, [
+                            _vm._v("Select your Arts combination"),
+                          ]),
+                          _vm._v(" "),
+                          _vm._l(
+                            _vm.scienceCombinations,
+                            function (combination, index) {
+                              return _c(
+                                "option",
                                 {
-                                  staticClass:
-                                    "d-flex w-100 justify-content-between",
+                                  key: index,
+                                  domProps: { value: combination },
                                 },
                                 [
-                                  _c("h5", { staticClass: "card-title" }, [
-                                    _vm._v(_vm._s(combination.combination)),
-                                  ]),
+                                  _vm._v(
+                                    "\n                            " +
+                                      _vm._s(combination.combination) +
+                                      "\n                        "
+                                  ),
                                 ]
-                              ),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _vm._v(_vm._s(combination.category)),
-                              ]),
-                            ]
+                              )
+                            }
                           ),
-                        ]
+                        ],
+                        2
                       )
-                    : _vm._e()
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.scienceCombinations, function (combination) {
-                  return _vm.isArts
-                    ? _c(
-                        "div",
-                        {
-                          key: combination.id,
-                          staticClass: "list-group col-sm-3",
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass:
-                                "list-group-item list-group-item-action flex-column align-items-start",
-                              attrs: { href: "#" },
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "d-flex w-100 justify-content-between",
-                                },
-                                [
-                                  _c("h5", { staticClass: "card-title" }, [
-                                    _vm._v(_vm._s(combination.combination)),
-                                  ]),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mb-1" }, [
-                                _vm._v(_vm._s(combination.category)),
-                              ]),
-                            ]
-                          ),
-                        ]
-                      )
-                    : _vm._e()
-                }),
-              ],
-              2
-            )
-          : _vm._e(),
+                    : _vm._e(),
+                ]),
+              ])
+            : _vm._e(),
+        ]),
       ]),
       _vm._v(" "),
-      _c(
-        "router-link",
-        {
-          staticClass: "btn btn-wrap mb-5",
-          attrs: { tag: "button", to: "/combination" },
-        },
-        [_vm._v("Next")]
-      ),
-    ],
-    1
-  )
+      _vm._m(0),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-7 my-3" }, [
+      _c("div", { staticClass: "row my-3" }, [
+        _c("h2", { staticClass: "sub-heading" }, [
+          _vm._v("What's were your grades in ?"),
+        ]),
+        _vm._v(" "),
+        _c("form", [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
+              _c("input", {
+                staticClass: "form-controls-sm",
+                attrs: { type: "text", placeholder: "B" },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
+              _c("input", {
+                staticClass: "form-controls-sm",
+                attrs: { type: "text", placeholder: "C" },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
+              _c("input", {
+                staticClass: "form-controls-sm",
+                attrs: { type: "text", placeholder: "M" },
+              }),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group mx-sm-2 mb-2" }, [
+              _c("input", {
+                staticClass: "form-controls-sm",
+                attrs: { type: "text", placeholder: "IT" },
+              }),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary float-right",
+            attrs: { type: "submit" },
+          },
+          [_vm._v("Calculate my grades!")]
+        ),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
