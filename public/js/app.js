@@ -20346,11 +20346,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
   components: {
-    HalfCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.HalfCircleSpinner
+    HalfCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.HalfCircleSpinner,
+    FulfillingBouncingCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.FulfillingBouncingCircleSpinner
   },
   data: function data() {
     return {
@@ -20361,10 +20385,15 @@ __webpack_require__.r(__webpack_exports__);
       loaded: false,
       isArts: true,
       isSciences: false,
+      pointsCalculated: false,
+      submitted: false,
+      showSpinner: false,
       principal_one: '',
       principal_two: '',
       principal_three: '',
-      subsidiary: ''
+      subsidiary: '',
+      general_paper: '',
+      points: ''
     };
   },
   created: function created() {
@@ -20391,6 +20420,27 @@ __webpack_require__.r(__webpack_exports__);
       this.isArts = false;
       this.isSciences = true;
       if (this.selected != null) this.selected = null;
+    },
+    submitData: function submitData() {
+      var _this2 = this;
+
+      this.submitted = true;
+      this.showSpinner = true;
+      fetch('/v1/getPointsAdvanced', {
+        method: 'post',
+        headers: {
+          "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        },
+        body: "principal_one=" + this.principal_one + "&principal_two=" + this.principal_two + "&principal_three=" + this.principal_three + "&subsidiary=" + this.subsidiary + "&general_paper=" + this.general_paper
+      }).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this2.points = res.points;
+        _this2.pointsCalculated = true;
+        _this2.showSpinner = false;
+      })["catch"](function (error) {
+        console.log('Request failed', error);
+      });
     }
   },
   computed: {
@@ -49485,439 +49535,567 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row my-3" }, [
-      _c("div", [
-        _c("h2", { staticClass: "sub-heading" }, [
-          _vm._v("What's your field of study?"),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "radio",
-              name: "field-radio",
-              id: "artsRadio",
-              value: "arts",
-              checked: "",
-            },
-            on: { click: _vm.showArts },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            { staticClass: "form-check-label", attrs: { for: "artsRadio" } },
-            [_vm._v("\n                    Arts\n                ")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "radio",
-              name: "field-radio",
-              id: "sciencesRadio",
-              value: "sciences",
-            },
-            on: { click: _vm.showSciences },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "sciencesRadio" },
-            },
-            [_vm._v("\n                    Sciences\n                ")]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "row my-3" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "row my-3 col-6" }, [
+        _c("div", [
           _c("h2", { staticClass: "sub-heading" }, [
-            _vm._v("What combination did you do?"),
+            _vm._v("What's your field of study?"),
           ]),
           _vm._v(" "),
-          _vm.loading
-            ? _c(
-                "div",
-                [
-                  _c("half-circle-spinner", {
-                    attrs: {
-                      "animation-duration": 1000,
-                      size: 60,
-                      color: "#4F8FF7",
-                    },
-                  }),
-                ],
-                1
-              )
-            : _vm._e(),
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: {
+                type: "radio",
+                name: "field-radio",
+                id: "artsRadio",
+                value: "arts",
+                checked: "",
+              },
+              on: { click: _vm.showArts },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              { staticClass: "form-check-label", attrs: { for: "artsRadio" } },
+              [_vm._v("\n                        Arts\n                    ")]
+            ),
+          ]),
           _vm._v(" "),
-          _vm.loaded
-            ? _c("div", [
-                _vm.isArts
-                  ? _c("div", { staticClass: "form-group col-md-4" }, [
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.selected,
-                              expression: "selected",
-                            },
-                          ],
-                          staticClass: "form-control-sm",
-                          on: {
-                            change: function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.selected = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              staticClass: "form-check-input",
+              attrs: {
+                type: "radio",
+                name: "field-radio",
+                id: "sciencesRadio",
+                value: "sciences",
+              },
+              on: { click: _vm.showSciences },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "sciencesRadio" },
+              },
+              [
+                _vm._v(
+                  "\n                        Sciences\n                    "
+                ),
+              ]
+            ),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row my-3" }, [
+            _c("h2", { staticClass: "sub-heading" }, [
+              _vm._v("What combination did you do?"),
+            ]),
+            _vm._v(" "),
+            _vm.loading
+              ? _c(
+                  "div",
+                  [
+                    _c("half-circle-spinner", {
+                      attrs: {
+                        "animation-duration": 1000,
+                        size: 60,
+                        color: "#4F8FF7",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.loaded
+              ? _c("div", [
+                  _vm.isArts
+                    ? _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selected,
+                                expression: "selected",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.selected = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
                             },
                           },
-                        },
-                        _vm._l(
-                          _vm.scienceCombinations,
-                          function (combination, index) {
-                            return _c(
-                              "option",
-                              { key: index, domProps: { value: combination } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(combination.combination) +
-                                    "\n                            "
-                                ),
-                              ]
-                            )
-                          }
+                          _vm._l(
+                            _vm.scienceCombinations,
+                            function (combination, index) {
+                              return _c(
+                                "option",
+                                {
+                                  key: index,
+                                  domProps: { value: combination },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(combination.combination) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
                         ),
-                        0
-                      ),
-                    ])
-                  : _vm._e(),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.isSciences
+                    ? _c("div", { staticClass: "form-group col-md-4" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selected,
+                                expression: "selected",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.selected = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          _vm._l(
+                            _vm.artsCombinations,
+                            function (combination, index) {
+                              return _c(
+                                "option",
+                                {
+                                  key: index,
+                                  domProps: { value: combination },
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(combination.combination) +
+                                      "\n                                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                      ])
+                    : _vm._e(),
+                ])
+              : _vm._e(),
+          ]),
+          _vm._v(" "),
+          _vm.selected
+            ? _c("div", { staticClass: "row my-3" }, [
+                _c("h2", { staticClass: "sub-heading" }, [
+                  _vm._v(
+                    "What's were your grades in " +
+                      _vm._s(_vm.selected.combination) +
+                      "?"
+                  ),
+                ]),
                 _vm._v(" "),
-                _vm.isSciences
-                  ? _c("div", { staticClass: "form-group col-md-4" }, [
+                _c(
+                  "form",
+                  {
+                    staticClass: "form",
+                    attrs: { action: "#" },
+                    on: {
+                      submit: function ($event) {
+                        $event.preventDefault()
+                        return _vm.submitData.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [
+                    _c("div", { staticClass: "form-group row" }, [
                       _c(
-                        "select",
+                        "label",
                         {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.selected,
-                              expression: "selected",
-                            },
-                          ],
-                          staticClass: "form-control-sm",
-                          on: {
-                            change: function ($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function (o) {
-                                  return o.selected
-                                })
-                                .map(function (o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.selected = $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
+                          staticClass: "col-sm-4 col-form-label",
+                          attrs: { for: "staticEmail" },
+                        },
+                        [_vm._v(_vm._s(_vm.selected.principal_one) + " : ")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-6" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.principal_one,
+                                expression: "principal_one",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            attrs: { required: "" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.principal_one = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
                             },
                           },
-                        },
-                        _vm._l(
-                          _vm.artsCombinations,
-                          function (combination, index) {
-                            return _c(
+                          [
+                            _c(
                               "option",
-                              { key: index, domProps: { value: combination } },
-                              [
-                                _vm._v(
-                                  "\n                                " +
-                                    _vm._s(combination.combination) +
-                                    "\n                            "
-                                ),
-                              ]
-                            )
-                          }
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("A")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("B")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("C")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("D")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("E")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("O")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("F")]),
+                          ]
                         ),
-                        0
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-4 col-form-label",
+                          attrs: { for: "staticEmail" },
+                        },
+                        [_vm._v(_vm._s(_vm.selected.principal_two) + " : ")]
                       ),
-                    ])
-                  : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-6" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.principal_two,
+                                expression: "principal_two",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            attrs: { required: "" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.principal_two = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("A")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("B")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("C")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("D")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("E")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("O")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("F")]),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-4 col-form-label",
+                          attrs: { for: "staticEmail" },
+                        },
+                        [_vm._v(_vm._s(_vm.selected.principal_three) + " : ")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-6" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.principal_three,
+                                expression: "principal_three",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            attrs: { required: "" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.principal_three = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("A")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("B")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("C")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("D")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("E")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("O")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("F")]),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-4 col-form-label",
+                          attrs: { for: "staticEmail" },
+                        },
+                        [_vm._v(_vm._s(_vm.selected.subsidiary) + " : ")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-6" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.subsidiary,
+                                expression: "subsidiary",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            attrs: { required: "" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.subsidiary = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("1")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("0")]),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group row" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-sm-4 col-form-label",
+                          attrs: { for: "staticEmail" },
+                        },
+                        [_vm._v("General Paper : ")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-sm-6" }, [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.general_paper,
+                                expression: "general_paper",
+                              },
+                            ],
+                            staticClass: "form-control-sm",
+                            attrs: { required: "" },
+                            on: {
+                              change: function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.general_paper = $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              },
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              { attrs: { disabled: "", value: "" } },
+                              [_vm._v("Please select one")]
+                            ),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("1")]),
+                            _vm._v(" "),
+                            _c("option", [_vm._v("0")]),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "btn btn-primary mt-5",
+                      attrs: { type: "submit", value: "Calculate my grades!" },
+                    }),
+                  ]
+                ),
               ])
             : _vm._e(),
         ]),
-        _vm._v(" "),
-        _vm.selected
-          ? _c("div", { staticClass: "row my-3" }, [
-              _c("h2", { staticClass: "sub-heading" }, [
-                _vm._v(
-                  "What's were your grades in " +
-                    _vm._s(_vm.selected.combination) +
-                    "?"
-                ),
-              ]),
-              _vm._v(" "),
-              _c("form", [
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "staticEmail" },
-                    },
-                    [_vm._v(_vm._s(_vm.selected.principal_one) + " : ")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.principal_one,
-                            expression: "principal_one",
-                          },
-                        ],
-                        staticClass: "form-control-sm",
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.principal_one = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                        },
-                      },
-                      [
-                        _c("option", { attrs: { disabled: "", value: "" } }, [
-                          _vm._v("Please select one"),
-                        ]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("A")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("B")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("C")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("D")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("E")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("O")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("F")]),
-                      ]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "staticEmail" },
-                    },
-                    [_vm._v(_vm._s(_vm.selected.principal_two) + " : ")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.principal_two,
-                            expression: "principal_two",
-                          },
-                        ],
-                        staticClass: "form-control-sm",
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.principal_two = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                        },
-                      },
-                      [
-                        _c("option", { attrs: { disabled: "", value: "" } }, [
-                          _vm._v("Please select one"),
-                        ]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("A")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("B")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("C")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("D")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("E")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("O")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("F")]),
-                      ]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "staticEmail" },
-                    },
-                    [_vm._v(_vm._s(_vm.selected.principal_three) + " : ")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.principal_three,
-                            expression: "principal_three",
-                          },
-                        ],
-                        staticClass: "form-control-sm",
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.principal_three = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                        },
-                      },
-                      [
-                        _c("option", { attrs: { disabled: "", value: "" } }, [
-                          _vm._v("Please select one"),
-                        ]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("A")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("B")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("C")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("D")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("E")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("O")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("F")]),
-                      ]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "staticEmail" },
-                    },
-                    [_vm._v(_vm._s(_vm.selected.subsidiary) + " : ")]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.subsidiary,
-                            expression: "subsidiary",
-                          },
-                        ],
-                        staticClass: "form-control-sm",
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.subsidiary = $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          },
-                        },
-                      },
-                      [
-                        _c("option", { attrs: { disabled: "", value: "" } }, [
-                          _vm._v("Please select one"),
-                        ]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("1")]),
-                        _vm._v(" "),
-                        _c("option", [_vm._v("0")]),
-                      ]
-                    ),
-                  ]),
-                ]),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "btn btn-primary mt-5",
-                  attrs: { type: "submit", value: "Calculate my grades!" },
-                }),
-              ]),
-            ])
-          : _vm._e(),
       ]),
+      _vm._v(" "),
+      _vm.submitted
+        ? _c("div", { staticClass: "my-3 col-6" }, [
+            _vm.showSpinner
+              ? _c(
+                  "div",
+                  [
+                    _c("fulfilling-bouncing-circle-spinner", {
+                      attrs: {
+                        "animation-duration": 1000,
+                        size: 60,
+                        color: "#4F8FF7",
+                      },
+                    }),
+                  ],
+                  1
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.pointsCalculated
+              ? _c("div", [
+                  _c(
+                    "h1",
+                    {
+                      staticClass: "main-heading",
+                      staticStyle: {
+                        "font-size": "8rem",
+                        "font-color": "#4f8ff7",
+                      },
+                    },
+                    [_vm._v(_vm._s(_vm.points) + " points")]
+                  ),
+                ])
+              : _vm._e(),
+          ])
+        : _vm._e(),
     ]),
   ])
 }

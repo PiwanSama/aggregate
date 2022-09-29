@@ -16,9 +16,9 @@ class CombinationController extends Controller
     }
 
     public function calculatePointsAdvanced(Request $request){
-        $p_one = $request->principle_one;
-        $p_two = $request->principle_two;
-        $p_three = $request->principle_three;
+        $p_one = $request->principal_one;
+        $p_two = $request->principal_two;
+        $p_three = $request->principal_three;
         $sub = $request->subsidiary;
         $gp = $request->general_paper;
 
@@ -26,7 +26,10 @@ class CombinationController extends Controller
         $p_two_val = $this->getGradeValue($p_two);
         $p_three_val = $this->getGradeValue($p_three);
         
-        return $p_one_val+$p_two_val+$p_three_val+$sub+$gp;
+        return response()->json([
+            'points'=>$p_one_val+$p_two_val+$p_three_val+$sub+$gp,
+            'message'=>"Fetched data successfully"
+        ]);
     }
 
     public function calculatePointsOrdinary(Request $request){
