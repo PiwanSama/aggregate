@@ -2,13 +2,13 @@
      <div class="container">
         <h2 class="my-5 sub-heading">What's your field of study?</h2>
         <div class="form-check">
-        <input class="form-check-input" type="radio" name="field-radio" id="artsRadio" value="arts" @clicked="showArts">
+        <input class="form-check-input" type="radio" name="field-radio" id="artsRadio" value="arts" v-on:click="showArts">
         <label class="form-check-label" for="artsRadio">
             Arts
         </label>
         </div>
         <div class="form-check">
-        <input class="form-check-input" type="radio" name="field-radio" id="sciencesRadio" value="sciences" @clicked="showSciences">
+        <input class="form-check-input" type="radio" name="field-radio" id="sciencesRadio" value="sciences" v-on:click="showSciences">
         <label class="form-check-label" for="sciencesRadio">
             Sciences
         </label>
@@ -23,7 +23,21 @@
             />
         </div>
         <div v-if="loaded">
-            <div class="row justify-content-around" v-for="group in sortedCombinations">
+            <div class="row justify-content-around" v-if ="isSciences" v-for="group in artsCombinations">
+                <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
+                    <div class="card shadow card-body text-center">
+                        <p class="card-title">{{combination.combination}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-around" v-if = "isArts" v-for="group in scienceCombinations">
+                <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
+                    <div class="card shadow card-body text-center">
+                        <p class="card-title">{{combination.combination}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-around" v-if = "isDefault" v-for="group in filteredCombinations">
                 <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
                     <div class="card shadow card-body text-center">
                         <p class="card-title">{{combination.combination}}</p>
@@ -48,9 +62,13 @@ export default {
     data : function(){
         return{
             combinations : [],
+            artsData : [],
+            sciencesData : [],
             loading : true,
             loaded : false,
-            category : ''
+            isDefault : true,
+            isArts : false,
+            isSciences : false
         }
     },
     created(){
@@ -65,11 +83,29 @@ export default {
                 this.loaded = true;
                 this.loading = false;
             });
+        },
+        showArts(){
+            this.isDefault = false;
+            this.isSciences = false;
+            this.isArts = true;
+        },
+        showSciences(){
+            this.isDefault = false;
+            this.isArts = false;
+            this.isSciences = true;
         }
     },
     computed : {
-        sortedCombinations(){
-            return _.chunk(this.combinations, 3); 
+        filteredCombinations(){
+            return _.chunk(this.combinations, 3);
+        },
+        artsCombinations(){
+            this.artsData = this.combinations.filter(combination => combination.category.indexOf('Arts'));
+            return _.chunk(this.artsData, 3);
+        },
+        scienceCombinations(){
+            this.sciencesData = this.combinations.filter(combination => combination.category.indexOf('Sciences'));
+            return _.chunk(this.sciencesData, 3);
         }
     }
 }
