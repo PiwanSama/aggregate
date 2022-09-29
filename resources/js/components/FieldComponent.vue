@@ -23,26 +23,29 @@
             />
         </div>
         <div v-if="loaded">
-            <div class="row justify-content-around" v-if ="isSciences" v-for="group in artsCombinations">
-                <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
-                    <div class="card shadow card-body text-center">
-                        <p class="card-title">{{combination.combination}}</p>
+            <div class="list-group col-sm-3" v-if = "isDefault" v-for="combination in filteredCombinations" v-bind:key = "combination.id">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="card-title">{{combination.combination}}</h5>
                     </div>
-                </div>
+                    <p class="mb-1">{{combination.category}}</p>
+                </a>
             </div>
-            <div class="row justify-content-around" v-if = "isArts" v-for="group in scienceCombinations">
-                <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
-                    <div class="card shadow card-body text-center">
-                        <p class="card-title">{{combination.combination}}</p>
+            <div class="list-group col-sm-3" v-if = "isSciences" v-for="combination in artsCombinations" v-bind:key = "combination.id">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="card-title">{{combination.combination}}</h5>
                     </div>
-                </div>
+                    <p class="mb-1">{{combination.category}}</p>
+                </a>
             </div>
-            <div class="row justify-content-around" v-if = "isDefault" v-for="group in filteredCombinations">
-                <div v-for="combination in group" v-bind:key = "combination.id" class="card p-2 mb-5 bg-body col-sm-3">
-                    <div class="card shadow card-body text-center">
-                        <p class="card-title">{{combination.combination}}</p>
+            <div class="list-group col-sm-3" v-if = "isArts" v-for="combination in scienceCombinations" v-bind:key = "combination.id">
+                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                    <h5 class="card-title">{{combination.combination}}</h5>
                     </div>
-                </div>
+                    <p class="mb-1">{{combination.category}}</p>
+                </a>
             </div>
         </div>
         </div>
@@ -64,6 +67,7 @@ export default {
             combinations : [],
             artsData : [],
             sciencesData : [],
+            activeIndex: undefined,
             loading : true,
             loaded : false,
             isDefault : true,
@@ -97,15 +101,13 @@ export default {
     },
     computed : {
         filteredCombinations(){
-            return _.chunk(this.combinations, 3);
+            return this.combinations;
         },
         artsCombinations(){
-            this.artsData = this.combinations.filter(combination => combination.category.indexOf('Arts'));
-            return _.chunk(this.artsData, 3);
+           return this.combinations.filter(combination => combination.category.indexOf('Arts'));
         },
         scienceCombinations(){
-            this.sciencesData = this.combinations.filter(combination => combination.category.indexOf('Sciences'));
-            return _.chunk(this.sciencesData, 3);
+            return this.combinations.filter(combination => combination.category.indexOf('Sciences'));
         }
     }
 }

@@ -20289,6 +20289,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "FieldComponent",
@@ -20300,6 +20303,7 @@ __webpack_require__.r(__webpack_exports__);
       combinations: [],
       artsData: [],
       sciencesData: [],
+      activeIndex: undefined,
       loading: true,
       loaded: false,
       isDefault: true,
@@ -20335,19 +20339,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     filteredCombinations: function filteredCombinations() {
-      return _.chunk(this.combinations, 3);
+      return this.combinations;
     },
     artsCombinations: function artsCombinations() {
-      this.artsData = this.combinations.filter(function (combination) {
+      return this.combinations.filter(function (combination) {
         return combination.category.indexOf('Arts');
       });
-      return _.chunk(this.artsData, 3);
     },
     scienceCombinations: function scienceCombinations() {
-      this.sciencesData = this.combinations.filter(function (combination) {
+      return this.combinations.filter(function (combination) {
         return combination.category.indexOf('Sciences');
       });
-      return _.chunk(this.sciencesData, 3);
     }
   }
 });
@@ -49501,101 +49503,122 @@ var render = function () {
           ? _c(
               "div",
               [
-                _vm._l(_vm.artsCombinations, function (group) {
-                  return _vm.isSciences
-                    ? _c(
-                        "div",
-                        { staticClass: "row justify-content-around" },
-                        _vm._l(group, function (combination) {
-                          return _c(
-                            "div",
-                            {
-                              key: combination.id,
-                              staticClass: "card p-2 mb-5 bg-body col-sm-3",
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "card shadow card-body text-center",
-                                },
-                                [
-                                  _c("p", { staticClass: "card-title" }, [
-                                    _vm._v(_vm._s(combination.combination)),
-                                  ]),
-                                ]
-                              ),
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    : _vm._e()
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.scienceCombinations, function (group) {
-                  return _vm.isArts
-                    ? _c(
-                        "div",
-                        { staticClass: "row justify-content-around" },
-                        _vm._l(group, function (combination) {
-                          return _c(
-                            "div",
-                            {
-                              key: combination.id,
-                              staticClass: "card p-2 mb-5 bg-body col-sm-3",
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "card shadow card-body text-center",
-                                },
-                                [
-                                  _c("p", { staticClass: "card-title" }, [
-                                    _vm._v(_vm._s(combination.combination)),
-                                  ]),
-                                ]
-                              ),
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    : _vm._e()
-                }),
-                _vm._v(" "),
-                _vm._l(_vm.filteredCombinations, function (group) {
+                _vm._l(_vm.filteredCombinations, function (combination) {
                   return _vm.isDefault
                     ? _c(
                         "div",
-                        { staticClass: "row justify-content-around" },
-                        _vm._l(group, function (combination) {
-                          return _c(
-                            "div",
+                        {
+                          key: combination.id,
+                          staticClass: "list-group col-sm-3",
+                        },
+                        [
+                          _c(
+                            "a",
                             {
-                              key: combination.id,
-                              staticClass: "card p-2 mb-5 bg-body col-sm-3",
+                              staticClass:
+                                "list-group-item list-group-item-action flex-column align-items-start",
+                              attrs: { href: "#" },
                             },
                             [
                               _c(
                                 "div",
                                 {
                                   staticClass:
-                                    "card shadow card-body text-center",
+                                    "d-flex w-100 justify-content-between",
                                 },
                                 [
-                                  _c("p", { staticClass: "card-title" }, [
+                                  _c("h5", { staticClass: "card-title" }, [
                                     _vm._v(_vm._s(combination.combination)),
                                   ]),
                                 ]
                               ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _vm._v(_vm._s(combination.category)),
+                              ]),
                             ]
-                          )
-                        }),
-                        0
+                          ),
+                        ]
+                      )
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.artsCombinations, function (combination) {
+                  return _vm.isSciences
+                    ? _c(
+                        "div",
+                        {
+                          key: combination.id,
+                          staticClass: "list-group col-sm-3",
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "list-group-item list-group-item-action flex-column align-items-start",
+                              attrs: { href: "#" },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "d-flex w-100 justify-content-between",
+                                },
+                                [
+                                  _c("h5", { staticClass: "card-title" }, [
+                                    _vm._v(_vm._s(combination.combination)),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _vm._v(_vm._s(combination.category)),
+                              ]),
+                            ]
+                          ),
+                        ]
+                      )
+                    : _vm._e()
+                }),
+                _vm._v(" "),
+                _vm._l(_vm.scienceCombinations, function (combination) {
+                  return _vm.isArts
+                    ? _c(
+                        "div",
+                        {
+                          key: combination.id,
+                          staticClass: "list-group col-sm-3",
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass:
+                                "list-group-item list-group-item-action flex-column align-items-start",
+                              attrs: { href: "#" },
+                            },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "d-flex w-100 justify-content-between",
+                                },
+                                [
+                                  _c("h5", { staticClass: "card-title" }, [
+                                    _vm._v(_vm._s(combination.combination)),
+                                  ]),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "mb-1" }, [
+                                _vm._v(_vm._s(combination.category)),
+                              ]),
+                            ]
+                          ),
+                        ]
                       )
                     : _vm._e()
                 }),

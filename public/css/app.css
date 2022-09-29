@@ -42,6 +42,17 @@ body{
     background-color: #fff !important;
 }
 
+.card:hover {
+    top: calc( 5% - 2px );
+    box-shadow: 0 15px 20px rgba(205, 38, 38, 0.05), 0 0 5px rgba(0,0,0,.1);
+    cursor: pointer;
+  }
+  
+.card:active {
+    top: calc( 5% - 2px );
+    border: 0 15px 20px rgba(205, 38, 38, 0.05), 0 0 5px rgba(0,0,0,.1);
+}
+
 .navbar-brand {
     color: rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
     font-family: Manrope;
