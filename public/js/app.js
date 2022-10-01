@@ -49535,8 +49535,8 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "row my-3 col-6" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "my-3 card col-6 p-5" }, [
         _c("div", [
           _c("h2", { staticClass: "sub-heading" }, [
             _vm._v("What's your field of study?"),
@@ -50084,13 +50084,13 @@ var render = function () {
                   _c(
                     "h1",
                     {
-                      staticClass: "main-heading",
+                      staticClass: "points-result",
                       staticStyle: {
-                        "font-size": "8rem",
+                        "font-size": "4rem",
                         "font-color": "#4f8ff7",
                       },
                     },
-                    [_vm._v(_vm._s(_vm.points) + " points")]
+                    [_vm._v("You scored" + _vm._s(_vm.points) + " points")]
                   ),
                 ])
               : _vm._e(),

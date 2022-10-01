@@ -1,7 +1,7 @@
 <template>
      <div class="container">
-        <div class="row">
-            <div class="row my-3 col-6">
+        <div class="row justify-content-center">
+            <div class="my-3 card col-6 p-5">
                 <div>
                 <h2 class="sub-heading">What's your field of study?</h2>
                     <div class="form-check">
@@ -123,7 +123,7 @@
                         :color="'#4F8FF7'"
                     />
                 </div>
-                <div v-if = "pointsCalculated" ><h1 class="main-heading" style="font-size: 8rem; font-color : #4f8ff7">{{points}} points</h1></div>
+                <div v-if = "pointsCalculated" ><h1 class="points-result" style="font-size: 4rem; font-color : #4f8ff7">You scored{{points}} points</h1></div>
             </div>
         </div>
     </div>
