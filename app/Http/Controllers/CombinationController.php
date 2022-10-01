@@ -37,7 +37,10 @@ class CombinationController extends Controller
         foreach($request->all() as $subject){
             $total_points+=$this->getSubjectValue($subject);
         }
-        return $total_points;
+        return response()->json([
+            'points'=>$total_points,
+            'message'=>"Fetched data successfully"
+        ]);
     }
 
     public function calculateWeightsOrdinary(Request $request){
@@ -63,7 +66,8 @@ class CombinationController extends Controller
         
         return response()->json([
             'best_weight'=>$best_weight,
-            'total_weight'=>$total_weight
+            'total_weight'=>$total_weight,
+            'message'=>"Fetched data successfully"
         ]);
     }
 

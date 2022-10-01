@@ -1,7 +1,7 @@
 <template>
      <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="my-3 card col-10 p-5">
+            <div class="my-5 card col-sm-8 col-md-8 col-lg-6 p-5">
                 <div>
                 <h2 class="sub-heading">What's your field of study?</h2>
                     <div class="form-check">
@@ -110,12 +110,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <input class="btn btn-primary mt-5" type="submit" value="Calculate my grades!"/>
+                            <input class="btn btn-primary mt-5 col-12" type="submit" value="Calculate my grades!"/>
                         </form>
                 </div>
                 </div>
-            </div>
-            <div v-if = "submitted" class="my-3 col-6">
+                <div v-if = "submitted">
                 <div v-if = "showSpinner">
                     <fulfilling-bouncing-circle-spinner
                         :animation-duration="1000"
@@ -123,7 +122,17 @@
                         :color="'#4F8FF7'"
                     />
                 </div>
-                <div v-if = "pointsCalculated" ><h1 class="points-result" style="font-size: 4rem; font-color : #4f8ff7">You scored{{points}} points</h1></div>
+                <div v-if = "pointsCalculated" class="alert alert-success" role="alert">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Well done!</h4>
+                        <p>Aww yeah, you scored <span style="color:fff; font-weight: 700;">12</span> points!</p>
+                        <hr>
+                        <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
+                        <button type="button" class="btn btn-white-custom col-12">Create an Account</button>
+                        <button type="button" class="btn btn-white-custom col-12 my-3">Login to an existing account</button><br>
+                </div>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -131,11 +140,10 @@
 
 <script>
 
-import { HalfCircleSpinner } from 'epic-spinners'
-import { FulfillingBouncingCircleSpinner } from 'epic-spinners'
+import { HalfCircleSpinner, FulfillingBouncingCircleSpinner } from 'epic-spinners'
 
 export default {
-    name : "FieldComponent",
+    name : "ALevelPointsComponent",
     components : {
         HalfCircleSpinner,
         FulfillingBouncingCircleSpinner

@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <router-link to = "/select-combination" class="nav-item nav-link">My Grades</router-link>
+            <router-link to = "/a-level-points" class="nav-item nav-link">My Grades</router-link>
         </li>
         <li class="nav-item">
             <router-link to = "/universities" class="nav-item nav-link">Explore Universities</router-link>

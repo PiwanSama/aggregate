@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Subjects from './components/SubjectListComponent.vue'
 import Universities from './components/LocalUniversityComponent.vue'
 import Homepage from './components/HomepageComponent.vue'
-import Field from './components/CombinationComponent.vue'
+import ALevelPoints from './components/ALevelPointsComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -24,9 +24,9 @@ const routes = [
         component :  Universities
     },
     {
-        path : '/select-combination',
-        name : 'Field',
-        component :  Field
+        path : '/a-level-points',
+        name : 'ALevelPoints',
+        component :  ALevelPoints
     }
 ]
 
