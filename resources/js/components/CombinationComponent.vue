@@ -1,7 +1,7 @@
 <template>
-     <div class="container">
+     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="my-3 card col-6 p-5">
+            <div class="my-3 card col-10 p-5">
                 <div>
                 <h2 class="sub-heading">What's your field of study?</h2>
                     <div class="form-check">

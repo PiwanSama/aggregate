@@ -8,6 +8,7 @@ body{
     font-family: Manrope;
     font-size : 60px;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
+    color : #4F8FF7;
 }
 
 .main-heading-light{

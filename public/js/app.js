@@ -20637,6 +20637,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "navbar"
 });
@@ -49534,9 +49541,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "my-3 card col-6 p-5" }, [
+      _c("div", { staticClass: "my-3 card col-10 p-5" }, [
         _c("div", [
           _c("h2", { staticClass: "sub-heading" }, [
             _vm._v("What's your field of study?"),
@@ -50320,68 +50327,73 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-dark bg-custom" },
-      [
-        _c(
-          "router-link",
-          { staticClass: "navbar-brand text-light", attrs: { to: "/" } },
-          [_vm._v("Aggregate")]
-        ),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "collapse navbar-collapse",
-            attrs: { id: "navbarSupportedContent" },
-          },
-          [
-            _c(
-              "div",
-              { staticClass: "navbar-nav" },
-              [
+  return _c(
+    "nav",
+    { staticClass: "navbar navbar-expand-lg navbar-dark bg-custom" },
+    [
+      _c(
+        "div",
+        { staticClass: "container-fluid" },
+        [
+          _c(
+            "router-link",
+            { staticClass: "navbar-brand text-light", attrs: { to: "/" } },
+            [_vm._v("Aggregate")]
+          ),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarSupportedContent" },
+            },
+            [
+              _c("ul", { staticClass: "navbar-nav me-auto mb-2 mb-lg-0" }, [
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: "/select-combination" },
-                  },
-                  [_vm._v("My Grades")]
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-item nav-link",
+                        attrs: { to: "/select-combination" },
+                      },
+                      [_vm._v("My Grades")]
+                    ),
+                  ],
+                  1
                 ),
                 _vm._v(" "),
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "nav-item nav-link",
-                    attrs: { to: "/universities" },
-                  },
-                  [_vm._v("Explore Universities")]
+                  "li",
+                  { staticClass: "nav-item" },
+                  [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-item nav-link",
+                        attrs: { to: "/universities" },
+                      },
+                      [_vm._v("Explore Universities")]
+                    ),
+                  ],
+                  1
                 ),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "nav-item nav-link", attrs: { href: "#" } },
-                  [_vm._v("Scholarships")]
-                ),
+                _vm._m(1),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "nav-item nav-link", attrs: { href: "#" } },
-                  [_vm._v("My Account")]
-                ),
-              ],
-              1
-            ),
-          ]
-        ),
-      ],
-      1
-    ),
-  ])
+                _vm._m(2),
+              ]),
+            ]
+          ),
+        ],
+        1
+      ),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
@@ -50394,8 +50406,8 @@ var staticRenderFns = [
         staticClass: "navbar-toggler",
         attrs: {
           type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#navbarSupportedContent",
           "aria-controls": "navbarSupportedContent",
           "aria-expanded": "false",
           "aria-label": "Toggle navigation",
@@ -50403,6 +50415,26 @@ var staticRenderFns = [
       },
       [_c("span", { staticClass: "navbar-toggler-icon" })]
     )
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-item nav-link", attrs: { href: "#" } }, [
+        _vm._v("Scholarships"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "nav-item" }, [
+      _c("a", { staticClass: "nav-item nav-link", attrs: { href: "#" } }, [
+        _vm._v("My Account"),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
