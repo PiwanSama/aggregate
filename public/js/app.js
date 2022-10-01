@@ -50327,10 +50327,7 @@ var render = function () {
                         { staticClass: "card-subtitle mb-2 subtitle" },
                         [
                           _c("font-awesome-icon", {
-                            attrs: {
-                              icon: "fa-solid fa-location-dot",
-                              size: "6x",
-                            },
+                            attrs: { icon: "fa-solid fa-location-dot" },
                           }),
                           _vm._v(" " + _vm._s(university.district)),
                         ],
