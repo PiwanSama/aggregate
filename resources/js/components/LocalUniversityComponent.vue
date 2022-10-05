@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title sub-heading my-3">{{university.university}}</h5>
                         <h6 class="card-subtitle mb-2 subtitle"><font-awesome-icon icon="fa-solid fa-location-dot"/> {{university.district}}</h6>
-                        <p class="card-text"><font-awesome-icon icon="fa-solid fa-university" /> {{university.university}} is a {{university.type.toLowerCase()}} institution in the {{university.region}} part of Uganda. 
+                        <p class="card-text">{{university.university}} is a {{university.type.toLowerCase()}} institution in the {{university.region}} part of Uganda. 
                             It operates under the {{university.award}} award</p>
                         <button type="button" class="btn btn-custom shadow col-12 my-3">See more</button>
                     </div>

@@ -10,7 +10,7 @@
                     <img class="img-homepage float-right" v-bind:src="img_home" />
                 </div>
             </div>
-            <router-link tag = "button" class="btn btn-wrap" to = "/select-combination">Start my Journey</router-link>
+            <router-link tag = "button" class="btn btn-wrap" to = "/a-level-points">Start my Journey</router-link>
        </section>
         <!--section class="mt-5">
             <h3 class="sub-heading d-flex justify-content-center">What can you do with Aggregate?</h3>
@@ -43,18 +43,12 @@
 <script>
 
 import img_home from '../../../public/images/homepage.png';
-import img_one from '../../../public/images/img_card_one_2.jpg';
-import img_two from '../../../public/images/img_card_two.jpg';
-import img_three from '../../../public/images/img_card_three.jpg';
 
 export default {
     name : "HomepageComponent",
     data : function(){
         return {
-            img_home : img_home,
-            img_apply : img_one,
-            img_explore : img_two,
-            img_scholarships : img_three
+            img_home : img_home
         }
     }
 }
