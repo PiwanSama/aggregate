@@ -6096,16 +6096,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ALevelPointsComponent",
@@ -35461,54 +35451,6 @@ var render = function () {
   return _c("div", { staticClass: "container-fluid" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "my-5 card col-sm-8 col-md-8 col-lg-6 p-5" }, [
-        _c(
-          "div",
-          { staticClass: "alert alert-success", attrs: { role: "alert" } },
-          [
-            _c("h4", { staticClass: "alert-heading" }, [_vm._v("Well done!")]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v("Aww yeah, you scored "),
-              _c(
-                "span",
-                { staticStyle: { color: "fff", "font-weight": "700" } },
-                [_vm._v(_vm._s(13))]
-              ),
-              _vm._v(" points!"),
-            ]),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            _c("p", { staticClass: "mb-0" }, [
-              _vm._v(
-                "Do you want to create an account? You can save your grades and find the best university programs based on your grades!"
-              ),
-            ]),
-            _c("br"),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-white-custom col-12",
-                attrs: { type: "button" },
-              },
-              [
-                _vm._v("Continue with Google"),
-                _c(
-                  "span",
-                  { staticStyle: { "margin-left": "10px" } },
-                  [
-                    _c("font-awesome-icon", {
-                      attrs: { icon: "fa-brands fa-google" },
-                    }),
-                  ],
-                  1
-                ),
-              ]
-            ),
-          ]
-        ),
-        _vm._v(" "),
         _c("div", [
           _c("h2", { staticClass: "sub-heading" }, [
             _vm._v("What's your field of study?"),
@@ -36050,72 +35992,58 @@ var render = function () {
                   )
                 : _vm._e(),
               _vm._v(" "),
-              _vm.pointsCalculated
-                ? _c(
-                    "div",
+              _c(
+                "div",
+                {
+                  staticClass: "alert alert-success",
+                  attrs: { role: "alert" },
+                },
+                [
+                  _c("h4", { staticClass: "alert-heading" }, [
+                    _vm._v("Well done!"),
+                  ]),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v("Aww yeah, you scored "),
+                    _c(
+                      "span",
+                      { staticStyle: { color: "fff", "font-weight": "700" } },
+                      [_vm._v(_vm._s(_vm.points))]
+                    ),
+                    _vm._v(" points!"),
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "mb-0" }, [
+                    _vm._v(
+                      "Do you want to create an account? You can save your grades and find the best university programs based on your grades!"
+                    ),
+                  ]),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c(
+                    "button",
                     {
-                      staticClass: "alert alert-success",
-                      attrs: { role: "alert" },
+                      staticClass: "btn btn-white-custom col-12",
+                      attrs: { type: "button" },
                     },
                     [
+                      _vm._v("Continue with Google"),
                       _c(
-                        "div",
-                        {
-                          staticClass: "alert alert-success",
-                          attrs: { role: "alert" },
-                        },
+                        "span",
+                        { staticStyle: { "margin-left": "10px" } },
                         [
-                          _c("h4", { staticClass: "alert-heading" }, [
-                            _vm._v("Well done!"),
-                          ]),
-                          _vm._v(" "),
-                          _c("p", [
-                            _vm._v("Aww yeah, you scored "),
-                            _c(
-                              "span",
-                              {
-                                staticStyle: {
-                                  color: "fff",
-                                  "font-weight": "700",
-                                },
-                              },
-                              [_vm._v(_vm._s(_vm.points))]
-                            ),
-                            _vm._v(" points!"),
-                          ]),
-                          _vm._v(" "),
-                          _c("hr"),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "mb-0" }, [
-                            _vm._v(
-                              "Do you want to create an account? You can save your grades and find the best university programs based on your grades!"
-                            ),
-                          ]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-white-custom col-12",
-                              attrs: { type: "button" },
-                            },
-                            [_vm._v("Create an Account")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-white-custom col-12 my-3",
-                              attrs: { type: "button" },
-                            },
-                            [_vm._v("Login to an existing account")]
-                          ),
-                          _c("br"),
-                        ]
+                          _c("font-awesome-icon", {
+                            attrs: { icon: "fa-brands fa-google" },
+                          }),
+                        ],
+                        1
                       ),
                     ]
-                  )
-                : _vm._e(),
+                  ),
+                ]
+              ),
             ])
           : _vm._e(),
       ]),
@@ -36266,17 +36194,9 @@ var render = function () {
                         _vm._v(_vm._s(university.university)),
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "h6",
-                        { staticClass: "card-subtitle mb-2 subtitle" },
-                        [
-                          _c("font-awesome-icon", {
-                            attrs: { icon: "fa-solid fa-location-dot" },
-                          }),
-                          _vm._v(" " + _vm._s(university.district)),
-                        ],
-                        1
-                      ),
+                      _c("h6", { staticClass: "card-subtitle mb-2 subtitle" }, [
+                        _vm._v(_vm._s(university.district)),
+                      ]),
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
                         _vm._v(

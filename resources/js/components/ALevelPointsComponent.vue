@@ -2,13 +2,6 @@
      <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="my-5 card col-sm-8 col-md-8 col-lg-6 p-5">
-                <div class="alert alert-success" role="alert">
-                        <h4 class="alert-heading">Well done!</h4>
-                        <p>Aww yeah, you scored <span style="color:fff; font-weight: 700;">{{13}}</span> points!</p>
-                        <hr>
-                        <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
-                        <button type="button" class="btn btn-white-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button>
-                </div>
                 <div>
                 <h2 class="sub-heading">What's your field of study?</h2>
                     <div class="form-check">
@@ -129,15 +122,12 @@
                         :color="'#4F8FF7'"
                     />
                 </div>
-                <div v-if = "pointsCalculated" class="alert alert-success" role="alert">
-                    <div class="alert alert-success" role="alert">
+                <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Well done!</h4>
                         <p>Aww yeah, you scored <span style="color:fff; font-weight: 700;">{{points}}</span> points!</p>
                         <hr>
                         <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
-                        <button type="button" class="btn btn-white-custom col-12">Create an Account</button>
-                        <button type="button" class="btn btn-white-custom col-12 my-3">Login to an existing account</button><br>
-                </div>
+                        <button type="button" class="btn btn-white-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button>
                 </div>
             </div>
             </div>
