@@ -22,6 +22,11 @@ Route::get('/', function () {
     return view('app');
 })->where("any",".*");*/
 
+Route::fallback(function () {
+    return view('app');
+});
 
-Route::get('/auth/redirect', [AuthController::class, 'initiateGoogleLogin']);
-Route::get('/auth/callback', [AuthController::class, 'googleLoginCallback']);
+
+Route::get('/auth/google/signin', [AuthController::class, 'initiateGoogleLogin']);
+Route::get('/auth/google/callback', [AuthController::class, 'googleLoginCallback']);
+Route::get('/callback-url', [AuthController::class, 'googleLoginCallback']);

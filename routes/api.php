@@ -24,5 +24,3 @@ Route::apiResource('field', CombinationController::class)->only('index', 'show')
 Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
-Route::get('/auth/redirect', [AuthController::class, 'initiateGoogleLogin']);
-Route::get('/auth/callback', [AuthController::class, 'googleLoginCallback']);

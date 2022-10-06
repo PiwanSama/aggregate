@@ -10,7 +10,8 @@ class AuthController extends Controller{
     }
 
     public function googleLoginCallback(){
-        $user = Socialite::driver('google')->user();
+        $client = new \GuzzleHttp\Client(['verify' => false ]);
+        $user = Socialite::driver('google')->stateless()->user();
         dd($user);
     }
 }
