@@ -6060,14 +6060,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/homepage.png */ "./public/images/homepage.png");
-/* harmony import */ var _public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/homepage_custom.png */ "./public/images/homepage_custom.png");
+/* harmony import */ var _public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "HomepageComponent",
   data: function data() {
     return {
-      img_home: (_public_images_homepage_png__WEBPACK_IMPORTED_MODULE_0___default())
+      img_home: (_public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0___default())
     };
   }
 });
@@ -6581,7 +6581,7 @@ var render = function render() {
       src: _vm.img_home
     }
   })])]), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-wrap",
+    staticClass: "btn btn-primary btn-wrap",
     attrs: {
       tag: "button",
       to: "/a-level-points"
@@ -6597,7 +6597,7 @@ var staticRenderFns = [function () {
     staticClass: "col-md-6"
   }, [_c("h6", {
     staticClass: "main-heading-light"
-  }, [_vm._v("Here for the kids")]), _vm._v(" "), _c("h6", {
+  }, [_vm._v("Here for the kids...")]), _vm._v(" "), _c("h6", {
     staticClass: "sub-heading mt-4"
   }, [_vm._v("We want each young person to find their place in the career world, or outside of it!")])]);
 }];
@@ -6667,7 +6667,7 @@ var render = function render() {
       }, [_vm._v(_vm._s(university.district))]), _vm._v(" "), _c("p", {
         staticClass: "card-text"
       }, [_vm._v(_vm._s(university.university) + " is a " + _vm._s(university.type.toLowerCase()) + " institution in the " + _vm._s(university.region) + " part of Uganda. \n                        It operates under the " + _vm._s(university.award) + " award")]), _vm._v(" "), _c("button", {
-        staticClass: "btn btn-custom shadow col-12 my-3",
+        staticClass: "btn btn-primary shadow col-12 my-3",
         attrs: {
           type: "button"
         }
@@ -12863,13 +12863,13 @@ module.exports = "/images/badge.jpg?1202a9b8c75923c745437a0cf7c89c18";
 
 /***/ }),
 
-/***/ "./public/images/homepage.png":
-/*!************************************!*\
-  !*** ./public/images/homepage.png ***!
-  \************************************/
+/***/ "./public/images/homepage_custom.png":
+/*!*******************************************!*\
+  !*** ./public/images/homepage_custom.png ***!
+  \*******************************************/
 /***/ ((module) => {
 
-module.exports = "/images/homepage.png?1730e70a10302da0a369ee83899823e4";
+module.exports = "/images/homepage_custom.png?a40f8f68c03dcf6d2989efcbdacb64d0";
 
 /***/ }),
 

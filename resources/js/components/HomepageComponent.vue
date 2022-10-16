@@ -3,14 +3,14 @@
        <section id="welcome">
             <div class="row align-items-center my-homepage">
                 <div class="col-md-6">
-                    <h6 class="main-heading-light">Here for the kids</h6>
+                    <h6 class="main-heading-light">Here for the kids...</h6>
                     <h6 class="sub-heading mt-4">We want each young person to find their place in the career world, or outside of it!</h6>
                 </div>
                 <div class="col-md-6 mt-3">
                     <img class="img-homepage float-right" v-bind:src="img_home" />
                 </div>
             </div>
-            <router-link tag = "button" class="btn btn-wrap" to = "/a-level-points">Start my Journey</router-link>
+            <router-link tag = "button" class="btn btn-primary btn-wrap" to = "/a-level-points">Start my Journey</router-link>
        </section>
         <!--section class="mt-5">
             <h3 class="sub-heading d-flex justify-content-center">What can you do with Aggregate?</h3>
@@ -42,7 +42,7 @@
 </template>
 <script>
 
-import img_home from '../../../public/images/homepage.png';
+import img_home from '../../../public/images/homepage_custom.png';
 
 export default {
     name : "HomepageComponent",

@@ -6,6 +6,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\CombinationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,5 @@ Route::apiResource('field', CombinationController::class)->only('index', 'show')
 Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
+
+Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
