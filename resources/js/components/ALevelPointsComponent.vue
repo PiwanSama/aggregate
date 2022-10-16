@@ -22,7 +22,7 @@
                             <half-circle-spinner
                                 :animation-duration="1000"
                                 :size="60"
-                                :color="'#4F8FF7'"
+                                :color="'#002333'"
                             />
                         </div>
                         <div v-if="loaded">
@@ -119,7 +119,7 @@
                     <fulfilling-bouncing-circle-spinner
                         :animation-duration="1000"
                         :size="60"
-                        :color="'#4F8FF7'"
+                        :color="'#002333'"
                     />
                 </div>
                 <div class="alert alert-success" role="alert">

@@ -33,6 +33,7 @@
         "cross-env": "^7.0.3",
         "epic-spinners": "^1.1.0",
         "vue-axios": "^3.4.1",
-        "vue-router": "^3.5.1"
+        "vue-router": "^3.5.1",
+        "vuex": "^4.1.0"
     }
 }

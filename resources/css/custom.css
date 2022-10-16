@@ -8,13 +8,13 @@ body{
     font-family: Manrope;
     font-size : 60px;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
-    color : #4F8FF7;
+    color : #002333;
 }
 
 .main-heading-light{
     font-family: Manrope;
     font-size : 60px;
-    color : #4F8FF7 !important;
+    color : #002333 !important;
 }
 
 .sub-heading{
@@ -32,7 +32,7 @@ body{
 .subtitle{
     font-family: Manrope;
     font-size : 16px;
-    color : #4F8FF7;
+    color : #002333;
 }
 
 .ui-list{
@@ -99,11 +99,11 @@ body{
 }
 
 .bg-custom{
-    background-color: #4F8FF7;
+    background-color: #002333;
 }
 
 .btn-custom{
-    background-color: #4F8FF7 !important;
+    background-color: #002333 !important;
     color: #fff !important;
 }
 
@@ -131,7 +131,7 @@ body{
 input[type=text] {
     font-family: Manrope;
     font-size : 16px;
-    color : #4F8FF7;
+    color : #002333;
 }
 
 .input-group-append{
@@ -170,7 +170,7 @@ input[type=text] {
 .btn-wrap{
     width: 160px;
     font-family: Manrope;
-    background-color: #4F8FF7 !important;
+    background-color: #002333 !important;
     color: #fff !important;
     border-color: transparent !important;
     font-weight: 700;
