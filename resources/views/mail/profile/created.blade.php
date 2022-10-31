@@ -74,7 +74,7 @@
             </tr>
             <tr>
               <td style="padding:30px;text-align:center;font-size:12px;background-color:#002333;color:#fff;">
-                <p style="margin:0;font-size:14px;line-height:20px;">&reg; Aggregate, Uganda 2022<br><a class="unsub" href="http://www.aggregate.ug" style="color:#fff;text-decoration:underline;">Website</a></p>
+                <p style="margin:0;font-size:14px;line-height:20px;">&reg; Aggregate, Uganda 2022<br><a class="unsub" href="http://www.example.com/" style="color:#fff;text-decoration:underline;">Visit our website</a></p>
               </td>
             </tr>
           </table>
