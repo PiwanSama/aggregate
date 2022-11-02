@@ -60,20 +60,20 @@
           <![endif]-->
           <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
           <tr>
-              <td style="padding:36px;background-color:#002333;">
+              <td style="padding:36px;background-color:#002855;">
                 <h1 style="margin-top:0;margin-bottom:16px;font-size:24px;line-height:32px;font-weight:bold;letter-spacing:-0.02em; color:#E95530;text-align:center;">Ziyal, welcome to Aggregate!</h1>
               </td>
             </tr>
             <tr>
-              <td style="padding:36px;text-align:center;font-size:16px;background-color:#fff;color:#002333;">
+              <td style="padding:36px;text-align:center;font-size:16px;background-color:#fff;color:#002855;">
                 <div class="col-lge" style="display:inline-block;width:100%;max-width:395px;vertical-align:top;padding-bottom:20px;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
                   <p style="margin-top:0;margin-bottom:18px;">We are here to show you everything you can be!</p>
-                  <p style="margin:0;"><a href="https://example.com/" style="background: #002333; text-decoration: none; padding: 10px 25px; color: #ffffff; border-radius: 4px; display:inline-block; mso-padding-alt:0;text-underline-color:#002333"><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%;mso-text-raise:20pt">&nbsp;</i><![endif]--><span style="mso-text-raise:10pt;font-weight:bold;">Go to Account</span><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%">&nbsp;</i><![endif]--></a></p>
+                  <p style="margin:0;"><a href="https://example.com/" style="background: #002855; text-decoration: none; padding: 10px 25px; color: #ffffff; border-radius: 4px; display:inline-block; mso-padding-alt:0;text-underline-color:#002855"><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%;mso-text-raise:20pt">&nbsp;</i><![endif]--><span style="mso-text-raise:10pt;font-weight:bold;">Go to Account</span><!--[if mso]><i style="letter-spacing: 25px;mso-font-width:-100%">&nbsp;</i><![endif]--></a></p>
                 </div>
               </td>
             </tr>
             <tr>
-              <td style="padding:30px;text-align:center;font-size:12px;background-color:#002333;color:#fff;">
+              <td style="padding:30px;text-align:center;font-size:12px;background-color:#002855;color:#fff;">
                 <p style="margin:0;font-size:14px;line-height:20px;">&reg; Aggregate, Uganda 2022<br><a class="unsub" href="http://www.example.com/" style="color:#fff;text-decoration:underline;">Visit our website</a></p>
               </td>
             </tr>

@@ -6248,7 +6248,7 @@ var render = function render() {
     attrs: {
       "animation-duration": 1000,
       size: 60,
-      color: "#002333"
+      color: "#002855"
     }
   })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_vm.isArts ? _c("div", {
     staticClass: "form-group col-md-4"
@@ -6511,7 +6511,7 @@ var render = function render() {
     attrs: {
       "animation-duration": 1000,
       size: 60,
-      color: "#002333"
+      color: "#002855"
     }
   })], 1) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "alert alert-success",
