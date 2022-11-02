@@ -169,7 +169,7 @@ input[type=text] {
 .btn-wrap{
     width: 160px;
     font-family: Manrope;
-    background-color: #E95530 !important;
+    background-color: #FA5947 !important;
     color: #fff !important;
     border-color: transparent !important;
     font-weight: 700;
@@ -203,25 +203,25 @@ input[type=radio] {
     color: #fff !important;
 }
 .form-check-input:checked {
-    background-color:#E95530 !important;
-    border-color: #E95530 !important;
+    background-color:#FA5947 !important;
+    border-color: #FA5947 !important;
 }
 
 .btn-primary {
     --bs-btn-color: #fff !important;
-    --bs-btn-bg: #E95530 !important;
-    --bs-btn-border-color: #E95530 !important;
+    --bs-btn-bg: #FA5947 !important;
+    --bs-btn-border-color: #FA5947 !important;
     --bs-btn-hover-color: #fff !important;
-    --bs-btn-hover-bg: #E95530 !important;
-    --bs-btn-hover-border-color: #E95530 !important;
+    --bs-btn-hover-bg: #FA5947 !important;
+    --bs-btn-hover-border-color: #FA5947 !important;
     --bs-btn-focus-shadow-rgb: 49, 132, 253 !important;
     --bs-btn-active-color: #fff !important;
-    --bs-btn-active-bg: #E95530 !important;
-    --bs-btn-active-border-color: #E95530 !important;
+    --bs-btn-active-bg: #FA5947 !important;
+    --bs-btn-active-border-color: #FA5947 !important;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
     --bs-btn-disabled-color: #fff !important;
-    --bs-btn-disabled-bg: #E95530 !important;
-    --bs-btn-disabled-border-color: #E95530 !important;
+    --bs-btn-disabled-bg: #FA5947 !important;
+    --bs-btn-disabled-border-color: #FA5947 !important;
 }
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)

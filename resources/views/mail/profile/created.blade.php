@@ -61,7 +61,7 @@
           <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
           <tr>
               <td style="padding:36px;background-color:#002855;">
-                <h1 style="margin-top:0;margin-bottom:16px;font-size:24px;line-height:32px;font-weight:bold;letter-spacing:-0.02em; color:#E95530;text-align:center;">Ziyal, welcome to Aggregate!</h1>
+                <h1 style="margin-top:0;margin-bottom:16px;font-size:24px;line-height:32px;font-weight:bold;letter-spacing:-0.02em; color:#FA5947;text-align:center;">Ziyal, welcome to Aggregate!</h1>
               </td>
             </tr>
             <tr>
