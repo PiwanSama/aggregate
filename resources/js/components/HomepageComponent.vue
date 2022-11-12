@@ -10,7 +10,7 @@
                     <img class="img-homepage float-right" v-bind:src="img_home" />
                 </div>
             </div>
-            <router-link tag = "button" class="btn btn-primary btn-wrap" to = "/a-level-points">Start my Journey</router-link>
+            <router-link tag = "button" class="btn btn-primary-custom btn-wrap" to = "/a-level-points">Start my Journey</router-link>
        </section>
         <!--section class="mt-5">
             <h3 class="sub-heading d-flex justify-content-center">What can you do with Aggregate?</h3>

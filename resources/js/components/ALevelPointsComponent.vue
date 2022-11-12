@@ -110,11 +110,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <input class="btn btn-primary mt-5 col-12" type="submit" value="Calculate my grades!"/>
+                            <input class="btn btn-primary-custom mt-5 col-12" type="submit" value="Calculate my grades!"/>
                         </form>
                 </div>
                 </div>
-                <div v-if = "submitted">
+                <div>
                 <div v-if = "showSpinner">
                     <fulfilling-bouncing-circle-spinner
                         :animation-duration="1000"
@@ -127,7 +127,12 @@
                         <p>Aww yeah, you scored <span style="color:fff; font-weight: 700;">{{points}}</span> points!</p>
                         <hr>
                         <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
-                        <button type="button" class="btn btn-white-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button>
+                </div>
+                <div>
+                    <button type="button" class="btn btn-dark-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button><br><br>
+                    <p class="text-center text-muted">OR</p>
+                    <button type="button" class="btn btn-dark-custom col-12">Register an Account<span style="margin-left: 10px;"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></span></button><br><br>
+                    <p class="text-center text-muted">Already registered? Login <router-link to = "#">here</router-link></p>
                 </div>
             </div>
             </div>

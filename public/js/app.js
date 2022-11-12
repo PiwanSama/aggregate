@@ -6502,12 +6502,12 @@ var render = function render() {
       value: ""
     }
   }, [_vm._v("Please select one")]), _vm._v(" "), _c("option", [_vm._v("1")]), _vm._v(" "), _c("option", [_vm._v("0")])])])]), _vm._v(" "), _c("input", {
-    staticClass: "btn btn-primary mt-5 col-12",
+    staticClass: "btn btn-primary-custom mt-5 col-12",
     attrs: {
       type: "submit",
       value: "Calculate my grades!"
     }
-  })])]) : _vm._e()]), _vm._v(" "), _vm.submitted ? _c("div", [_vm.showSpinner ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
+  })])]) : _vm._e()]), _vm._v(" "), _c("div", [_vm.showSpinner ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
     attrs: {
       "animation-duration": 1000,
       size: 60,
@@ -6527,8 +6527,8 @@ var render = function render() {
     }
   }, [_vm._v(_vm._s(_vm.points))]), _vm._v(" points!")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", {
     staticClass: "mb-0"
-  }, [_vm._v("Do you want to create an account? You can save your grades and find the best university programs based on your grades!")]), _c("br"), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-white-custom col-12",
+  }, [_vm._v("Do you want to create an account? You can save your grades and find the best university programs based on your grades!")]), _c("br")]), _vm._v(" "), _c("div", [_c("button", {
+    staticClass: "btn btn-dark-custom col-12",
     attrs: {
       type: "button"
     }
@@ -6540,7 +6540,28 @@ var render = function render() {
     attrs: {
       icon: "fa-brands fa-google"
     }
-  })], 1)])])]) : _vm._e()])])]);
+  })], 1)]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+    staticClass: "text-center text-muted"
+  }, [_vm._v("OR")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-dark-custom col-12",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("Register an Account"), _c("span", {
+    staticStyle: {
+      "margin-left": "10px"
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-solid fa-pen-to-square"
+    }
+  })], 1)]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+    staticClass: "text-center text-muted"
+  }, [_vm._v("Already registered? Login "), _c("router-link", {
+    attrs: {
+      to: "#"
+    }
+  }, [_vm._v("here")])], 1)])])])])]);
 };
 
 var staticRenderFns = [];
@@ -6581,7 +6602,7 @@ var render = function render() {
       src: _vm.img_home
     }
   })])]), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary btn-wrap",
+    staticClass: "btn btn-primary-custom btn-wrap",
     attrs: {
       tag: "button",
       to: "/a-level-points"
@@ -6667,7 +6688,7 @@ var render = function render() {
       }, [_vm._v(_vm._s(university.district))]), _vm._v(" "), _c("p", {
         staticClass: "card-text"
       }, [_vm._v(_vm._s(university.university) + " is a " + _vm._s(university.type.toLowerCase()) + " institution in the " + _vm._s(university.region) + " part of Uganda. \n                        It operates under the " + _vm._s(university.award) + " award")]), _vm._v(" "), _c("button", {
-        staticClass: "btn btn-primary shadow col-12 my-3",
+        staticClass: "btn btn-orange shadow col-12 my-3",
         attrs: {
           type: "button"
         }
