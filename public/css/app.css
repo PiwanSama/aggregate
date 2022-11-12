@@ -34,6 +34,13 @@ body{
     color : #002855;
 }
 
+.title-sm-bold{
+    font-family: Manrope;
+    font-size : 16px;
+    color : #002855;
+    font-weight: 700;
+}
+
 .ui-list{
     list-style-type: none;
 }
@@ -123,8 +130,8 @@ body{
 
 .form-control {
     border: none !important;
-    height: 4rem;
-    padding: 30px !important;
+    height: 2rem;
+    padding: 20px !important;
 }
 
 input[type=text] {

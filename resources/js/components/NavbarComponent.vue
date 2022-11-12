@@ -17,7 +17,7 @@
             <a href = "#" class="nav-item nav-link">Scholarships</a>
         </li>
         <li class="nav-item">
-            <a href = "#" class="nav-item nav-link">My Account</a>
+          <router-link to = "/account" class="nav-item nav-link">My Account</router-link>
         </li>
       </ul>
     </div>

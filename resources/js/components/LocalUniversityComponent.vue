@@ -16,7 +16,7 @@
                         <h6 class="card-subtitle mb-2 subtitle">{{university.district}}</h6>
                         <p class="card-text">{{university.university}} is a {{university.type.toLowerCase()}} institution in the {{university.region}} part of Uganda. 
                             It operates under the {{university.award}} award</p>
-                        <button type="button" class="btn btn-orange shadow col-12 my-3">See more</button>
+                        <button type="button" class="btn btn-primary-custom shadow col-12 my-3">See more</button>
                     </div>
                 </div>
             </div>

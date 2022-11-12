@@ -114,7 +114,7 @@
                         </form>
                 </div>
                 </div>
-                <div>
+                <div v-if = "submitted">
                 <div v-if = "showSpinner">
                     <fulfilling-bouncing-circle-spinner
                         :animation-duration="1000"
@@ -129,10 +129,10 @@
                         <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-dark-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button><br><br>
-                    <p class="text-center text-muted">OR</p>
-                    <button type="button" class="btn btn-dark-custom col-12">Register an Account<span style="margin-left: 10px;"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></span></button><br><br>
-                    <p class="text-center text-muted">Already registered? Login <router-link to = "#">here</router-link></p>
+                    <button type="button" class="btn btn-primary-custom col-12">Continue with Google<span style="margin-left: 10px;"><font-awesome-icon icon="fa-brands fa-google" /></span></button><br><br>
+                    <p class="text-center form-text text-muted">OR</p>
+                    <button type="button" class="btn btn-primary-custom col-12">Register an Account<span style="margin-left: 10px;"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></span></button><br><br>
+                    <p class="text-center text-muted">Already registered? Login <router-link to = "/account">here</router-link></p>
                 </div>
             </div>
             </div>
