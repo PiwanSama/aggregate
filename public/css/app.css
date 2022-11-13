@@ -7,13 +7,13 @@ body{
     font-family: Manrope;
     font-size : 60px;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
-    color : #002855;
+    color : #112D4E;
 }
 
 .main-heading-light{
     font-family: Manrope;
     font-size : 60px;
-    color : #002855 !important;
+    color : #112D4E !important;
 }
 
 .sub-heading{
@@ -31,14 +31,7 @@ body{
 .subtitle{
     font-family: Manrope;
     font-size : 16px;
-    color : #002855;
-}
-
-.title-sm-bold{
-    font-family: Manrope;
-    font-size : 16px;
-    color : #002855;
-    font-weight: 700;
+    color : #112D4E;
 }
 
 .ui-list{
@@ -87,13 +80,13 @@ body{
     left: 0;
     height: 3px;
     width: 100%;
-    background-color: #2C9CDD;
+    background-color: #DBE2EF;
     transform-origin: right top;
     transform: scale(0, 1);
     transition: color 0.1s,transform 0.2s ease-out;
 }
 .nav-link:active::before {
-    background-color: #2C9CDD;
+    background-color: #DBE2EF;
 }
 .nav-link:hover::before, .nav-link:focus::before {
     transform-origin: left top;
@@ -105,11 +98,11 @@ body{
 }
 
 .bg-custom{
-    background-color: #002855;
+    background-color: #112D4E;
 }
 
 .btn-custom{
-    background-color: #002855 !important;
+    background-color: #112D4E !important;
     color: #fff !important;
 }
 
@@ -137,7 +130,7 @@ body{
 input[type=text] {
     font-family: Manrope;
     font-size : 16px;
-    color : #002855;
+    color : #112D4E;
 }
 
 .input-group-append{
@@ -176,7 +169,7 @@ input[type=text] {
 .btn-wrap{
     width: 160px;
     font-family: Manrope;
-    background-color: #FA5947 !important;
+    background-color: #3F72AF !important;
     color: #fff !important;
     border-color: transparent !important;
     font-weight: 700;
@@ -203,50 +196,81 @@ input[type=radio] {
 }
 
 .alert{
-    background-color: #4CAF50 !important;
+    background-color: #00C79D !important;
 }
 
 .alert-success {
     color: #fff !important;
 }
 .form-check-input:checked {
-    background-color:#FA5947 !important;
-    border-color: #FA5947 !important;
+    background-color:#3F72AF !important;
+    border-color: #3F72AF !important;
 }
 
 .btn-primary-custom {
     --bs-btn-color: #fff !important;
-    --bs-btn-bg: #FA5947 !important;
-    --bs-btn-border-color: #FA5947 !important;
+    --bs-btn-bg: #3F72AF !important;
+    --bs-btn-border-color: #3F72AF !important;
     --bs-btn-hover-color: #fff !important;
-    --bs-btn-hover-bg: #FA5947 !important;
-    --bs-btn-hover-border-color: #FA5947 !important;
+    --bs-btn-hover-bg: #3F72AF !important;
+    --bs-btn-hover-border-color: #3F72AF !important;
     --bs-btn-focus-shadow-rgb: 49, 132, 253 !important;
     --bs-btn-active-color: #fff !important;
-    --bs-btn-active-bg: #FA5947 !important;
-    --bs-btn-active-border-color: #FA5947 !important;
+    --bs-btn-active-bg: #3F72AF !important;
+    --bs-btn-active-border-color: #3F72AF !important;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
     --bs-btn-disabled-color: #fff !important;
-    --bs-btn-disabled-bg: #FA5947 !important;
-    --bs-btn-disabled-border-color: #FA5947 !important;
+    --bs-btn-disabled-bg: #3F72AF !important;
+    --bs-btn-disabled-border-color: #3F72AF !important;
 }
 
 .btn-dark-custom {
     --bs-btn-color: #fff !important;
-    --bs-btn-bg: #002855 !important;
-    --bs-btn-border-color: #002855 !important;
+    --bs-btn-bg: #112D4E !important;
+    --bs-btn-border-color: #112D4E !important;
     --bs-btn-hover-color: #fff !important;
-    --bs-btn-hover-bg: #002855 !important;
-    --bs-btn-hover-border-color: #002855 !important;
+    --bs-btn-hover-bg: #112D4E !important;
+    --bs-btn-hover-border-color: #112D4E !important;
     --bs-btn-focus-shadow-rgb: 49, 132, 253 !important;
     --bs-btn-active-color: #fff !important;
-    --bs-btn-active-bg: #002855 !important;
-    --bs-btn-active-border-color: #002855 !important;
+    --bs-btn-active-bg: #112D4E !important;
+    --bs-btn-active-border-color: #112D4E !important;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
     --bs-btn-disabled-color: #fff !important;
-    --bs-btn-disabled-bg: #002855 !important;
-    --bs-btn-disabled-border-color: #002855 !important;
+    --bs-btn-disabled-bg: #112D4E !important;
+    --bs-btn-disabled-border-color: #112D4E !important;
 }
+
+.btn-google {
+    width: 100%;
+    height: 42px;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+}
+.btn-google:hover {
+    box-shadow: 0 0 6px #4285F4;
+  }
+.btn-google:active {
+    background: #4285F4;
+}
+
+.or-text {
+    display: flex;
+    flex-direction: row;
+  }
+ .or-text:before, .or-text:after{
+    content: "";
+    flex: 1 1;
+    border-bottom: 1px solid;
+    margin: auto;
+    color: #dedede;
+  }
+  .or-text:before {
+    margin-right: 10px
+  }
+  .or-text:after {
+    margin-left: 10px
+  }
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

@@ -6527,21 +6527,8 @@ var render = function render() {
     }
   }, [_vm._v(_vm._s(_vm.points))]), _vm._v(" points!")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", {
     staticClass: "mb-0"
-  }, [_vm._v("Do you want to create an account? You can save your grades and find the best university programs based on your grades!")]), _c("br")]), _vm._v(" "), _c("div", [_c("button", {
-    staticClass: "btn btn-primary-custom col-12",
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("Continue with Google"), _c("span", {
-    staticStyle: {
-      "margin-left": "10px"
-    }
-  }, [_c("font-awesome-icon", {
-    attrs: {
-      icon: "fa-brands fa-google"
-    }
-  })], 1)]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "text-center form-text text-muted"
+  }, [_vm._v("Do you want to create an account? You can save your grades and find the best university programs based on your grades!")]), _c("br")]), _vm._v(" "), _c("div", [_vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+    staticClass: "text-center form-text text-muted or-text"
   }, [_vm._v("OR")]), _vm._v(" "), _c("button", {
     staticClass: "btn btn-primary-custom col-12",
     attrs: {
@@ -6564,7 +6551,26 @@ var render = function render() {
   }, [_vm._v("here")])], 1)])]) : _vm._e()])])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("button", {
+    staticClass: "btn btn-google col my-2",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-right": "10px"
+    }
+  }, [_c("img", {
+    staticClass: "google-icon",
+    attrs: {
+      src: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+    }
+  })]), _vm._v("Continue with Google")]);
+}];
 render._withStripped = true;
 
 
@@ -6591,38 +6597,48 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "row justify-content-center"
   }, [_c("div", {
-    staticClass: "card shadow p-4 my-5 col-sm-6"
+    staticClass: "card shadow p-4 my-5 col-sm-4"
   }, [_c("div", {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title sub-heading m-3 text-center"
-  }, [_vm._v("Hello there!")]), _vm._v(" "), _c("h6", {
-    staticClass: "card-subtitle m-3 subtitle text-center"
-  }, [_vm._v("Welcome back to your account")]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary-custom col-12",
-    attrs: {
-      type: "button"
-    }
-  }, [_vm._v("Continue with Google"), _c("span", {
-    staticStyle: {
-      "margin-left": "10px"
-    }
-  }, [_c("font-awesome-icon", {
-    attrs: {
-      icon: "fa-brands fa-google"
-    }
-  })], 1)]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "text-center form-text text-muted"
-  }, [_vm._v("OR")]), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "text-center text-muted"
+  }, [_vm._v("Log In!")]), _vm._v(" "), _c("p", {
+    staticClass: "text-center text-muted my-2"
   }, [_vm._v("Not registered yet? Sign up "), _c("router-link", {
     attrs: {
       to: "#"
     }
-  }, [_vm._v("here")])], 1)])])])]);
+  }, [_vm._v("here")])], 1), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+    staticClass: "text-center form-text text-muted or-text"
+  }, [_vm._v("OR")]), _vm._v(" "), _vm._m(1), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+    staticClass: "text-center text-muted"
+  }, [_c("router-link", {
+    attrs: {
+      to: "#"
+    }
+  }, [_vm._v("Forgot Password?")])], 1)])])])]);
 };
 
 var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("button", {
+    staticClass: "btn btn-google col my-2",
+    attrs: {
+      type: "button"
+    }
+  }, [_c("span", {
+    staticStyle: {
+      "margin-right": "10px"
+    }
+  }, [_c("img", {
+    staticClass: "google-icon",
+    attrs: {
+      src: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+    }
+  })]), _vm._v("Continue with Google")]);
+}, function () {
   var _vm = this,
       _c = _vm._self._c;
 
@@ -6656,7 +6672,7 @@ var staticRenderFns = [function () {
       placeholder: "Password"
     }
   })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary-custom col-12 my-4",
+    staticClass: "btn btn-primary-custom col-12 mt-4",
     attrs: {
       type: "submit"
     }
