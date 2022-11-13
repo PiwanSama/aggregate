@@ -10,6 +10,8 @@ class District extends Model
 {
     use HasFactory;
 
+    protected $table = 'district';
+
     protected $fillable = [
         'id',
         'name',

@@ -6798,7 +6798,7 @@ var render = function render() {
         staticClass: "card-title sub-heading my-3"
       }, [_vm._v(_vm._s(university.university))]), _vm._v(" "), _c("h6", {
         staticClass: "card-subtitle mb-2 subtitle"
-      }, [_vm._v(_vm._s(university.district))]), _vm._v(" "), _c("p", {
+      }, [_vm._v(_vm._s(university.district.name))]), _vm._v(" "), _c("p", {
         staticClass: "card-text"
       }, [_vm._v(_vm._s(university.university) + " is a " + _vm._s(university.type.toLowerCase()) + " institution in the " + _vm._s(university.region) + " part of Uganda. \n                        It operates under the " + _vm._s(university.award) + " award")]), _vm._v(" "), _c("button", {
         staticClass: "btn btn-primary-custom shadow col-12 my-3",

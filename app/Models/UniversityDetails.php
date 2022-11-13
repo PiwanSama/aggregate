@@ -52,6 +52,6 @@ class UniversityDetails extends Model
     }
 
     function scholarships(){
-        return $this->hasMany(CampusProgram::class, 'id', 'location_id');
+        return $this->hasMany(Scholarships::class, 'id', 'location_id');
     }
 }
