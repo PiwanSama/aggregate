@@ -25,6 +25,4 @@ Route::apiResource('field', CombinationController::class)->only('index', 'show')
 Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
-Route::get('/getUniversityDetails', [UniversityController::class, 'universityWithDetails']);
-
 Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);

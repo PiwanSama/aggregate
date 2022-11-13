@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\LocalUniversity;
-use App\Models\LocalUniversityWithDetails;
+use App\Models\UniversityDetails;
 
 class UniversityController extends Controller
 {
+    protected $table = 'university_details';
     
     public function index()
     {
@@ -14,10 +15,10 @@ class UniversityController extends Controller
         return response()->json($universities);
     }
 
-    public function universityWithDetails()
+    public function show($id)
     {
-        $university_details = LocalUniversityWithDetails::with('district', 'details')->get();
-        return response()->json($university_details);
+        $university = UniversityDetails::where('university_id', $id)->get();
+        return response()->json($university);
     }
 
 }
