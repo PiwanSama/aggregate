@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\District;
+use App\Models\UniversityDetails;
 
 class LocalUniversity extends Model
 {
@@ -11,10 +12,20 @@ class LocalUniversity extends Model
     protected $table_name = 'local_universities';
 
     protected $fillable = [
-        'name',
+        'id',
+        'university',
         'region',
-        'district',
         'award',
-        'type'
+        'type',
+        'district_id',
+        'location_id',
     ];
+
+    function district(){
+        return $this->hasOne(District::class,'id','district_id');
+    }
+
+    function details(){
+        return $this->hasOne(UniversityDetails::class,'id','district_id');
+    }
 }
