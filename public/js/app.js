@@ -6202,7 +6202,7 @@ var render = function render() {
   }, [_c("div", {
     staticClass: "my-5 card col-sm-8 col-md-8 col-lg-6 p-5"
   }, [_c("div", [_c("h2", {
-    staticClass: "sub-heading"
+    staticClass: "sub-heading-light"
   }, [_vm._v("What's your field of study?")]), _vm._v(" "), _c("div", {
     staticClass: "form-check"
   }, [_c("input", {
@@ -6243,7 +6243,7 @@ var render = function render() {
   }, [_vm._v("\n                        Sciences\n                    ")])]), _vm._v(" "), _c("div", {
     staticClass: "row my-3"
   }, [_c("h2", {
-    staticClass: "sub-heading"
+    staticClass: "sub-heading-light"
   }, [_vm._v("What combination did you do?")]), _vm._v(" "), _vm.loading ? _c("div", [_c("half-circle-spinner", {
     attrs: {
       "animation-duration": 1000,
@@ -6309,7 +6309,7 @@ var render = function render() {
   }), 0)]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _vm.selected ? _c("div", {
     staticClass: "row my-3"
   }, [_c("h2", {
-    staticClass: "sub-heading"
+    staticClass: "sub-heading-light"
   }, [_vm._v("What's were your grades in " + _vm._s(_vm.selected.combination) + "?")]), _vm._v(" "), _c("form", {
     staticClass: "form",
     attrs: {
@@ -6759,7 +6759,7 @@ var render = function render() {
   return _c("div", {
     staticClass: "container"
   }, [_c("h2", {
-    staticClass: "my-5 sub-heading"
+    staticClass: "my-5 sub-heading-light"
   }, [_vm._v("All Universities")]), _vm._v(" "), _c("div", {
     staticClass: "input-group shadow col-md-6 mb-5"
   }, [_c("input", {

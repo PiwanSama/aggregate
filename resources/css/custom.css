@@ -17,10 +17,18 @@ body{
     color : #112D4E !important;
 }
 
+.sub-heading-light{
+    line-height: inherit;
+    font-family: Manrope;
+    font-size : 25px !important;
+    color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
+}
+
 .sub-heading{
     line-height: inherit;
     font-family: Manrope;
     font-size : 25px !important;
+    font-weight: 700;
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
@@ -32,7 +40,8 @@ body{
 .subtitle{
     font-family: Manrope;
     font-size : 16px;
-    color : #112D4E;
+    color: #3f72af;
+    font-weight: 700;
 }
 
 .ui-list{
