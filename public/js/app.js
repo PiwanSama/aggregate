@@ -6060,14 +6060,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/homepage_custom.png */ "./public/images/homepage_custom.png");
-/* harmony import */ var _public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _public_images_undraw_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/undraw.png */ "./public/images/undraw.png");
+/* harmony import */ var _public_images_undraw_png__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_images_undraw_png__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "HomepageComponent",
   data: function data() {
     return {
-      img_home: (_public_images_homepage_custom_png__WEBPACK_IMPORTED_MODULE_0___default())
+      img_home: (_public_images_undraw_png__WEBPACK_IMPORTED_MODULE_0___default())
     };
   }
 });
@@ -6085,16 +6085,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _public_images_badge_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../public/images/badge.jpg */ "./public/images/badge.jpg");
-/* harmony import */ var _public_images_badge_jpg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_public_images_badge_jpg__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var epic_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! epic-spinners */ "./node_modules/epic-spinners/src/lib.js");
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "local-universities",
+  components: {
+    FulfillingBouncingCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.FulfillingBouncingCircleSpinner
+  },
   data: function data() {
     return {
       universities: [],
       searchQuery: "",
-      badge: (_public_images_badge_jpg__WEBPACK_IMPORTED_MODULE_0___default())
+      loading: true,
+      loaded: false
     };
   },
   created: function created() {
@@ -6108,6 +6111,8 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (res) {
         _this.universities = res;
+        _this.loading = false;
+        _this.loaded = true;
       });
     }
   },
@@ -6173,6 +6178,75 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this.subjects = res;
       });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var epic_spinners__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! epic-spinners */ "./node_modules/epic-spinners/src/lib.js");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "university-profile",
+  components: {
+    FulfillingBouncingCircleSpinner: epic_spinners__WEBPACK_IMPORTED_MODULE_0__.FulfillingBouncingCircleSpinner
+  },
+  data: function data() {
+    return {
+      currentUniversity: null,
+      universityHeader: null,
+      universityBadge: null,
+      universityHeaderUrl: "",
+      universityBadgeUrl: "",
+      facultiesArray: [],
+      scholarshipsArray: [],
+      loading: true,
+      loaded: false
+    };
+  },
+  created: function created() {
+    this.loadUniversityProfile(this.$route.params.id);
+  },
+  methods: {
+    loadUniversityProfile: function loadUniversityProfile(id) {
+      var _this = this;
+
+      fetch('/v1/universities/' + id).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.currentUniversity = res[0];
+
+        _this.loadPageData();
+      });
+    },
+    loadPageData: function loadPageData() {
+      this.loaded = true;
+      this.universityBadge = this.currentUniversity.details.uni_badge_url;
+      this.universityHeader = this.currentUniversity.details.uni_header_url;
+      this.facultiesArray = this.currentUniversity.faculties;
+      this.scholarshipsArray = this.currentUniversity.scholarships;
+      this.universityBadgeUrl = '/images/badges/' + this.universityBadge;
+      this.universityHeaderUrl = '/images/headers/' + this.universityHeader;
+      this.loading = false;
+    }
+  },
+  computed: {
+    loadFaculties: function loadFaculties() {
+      return _.chunk(this.facultiesArray, 3);
+    },
+    loadScholarships: function loadScholarships() {
+      return _.chunk(this.scholarshipsArray, 2);
     }
   }
 });
@@ -6248,7 +6322,7 @@ var render = function render() {
     attrs: {
       "animation-duration": 1000,
       size: 60,
-      color: "#002855"
+      color: "#247BA0"
     }
   })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_vm.isArts ? _c("div", {
     staticClass: "form-group col-md-4"
@@ -6511,7 +6585,7 @@ var render = function render() {
     attrs: {
       "animation-duration": 1000,
       size: 60,
-      color: "#002855"
+      color: "#247BA0"
     }
   })], 1) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "alert alert-success",
@@ -6707,34 +6781,29 @@ var render = function render() {
     }
   }, [_c("div", {
     staticClass: "row align-items-center my-homepage"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
+  }, [_c("div", {
+    staticClass: "col-md-6"
+  }, [_c("h6", {
+    staticClass: "main-heading"
+  }, [_vm._v("Here for the kids.")]), _vm._v(" "), _c("h6", {
+    staticClass: "sub-heading mt-4"
+  }, [_vm._v("We want each young person to find their place in the career world, or outside of it!")]), _vm._v(" "), _c("router-link", {
+    staticClass: "btn btn-primary-custom btn-wrap",
+    attrs: {
+      tag: "button",
+      to: "/a-level-points"
+    }
+  }, [_vm._v("Start my Journey")])], 1), _vm._v(" "), _c("div", {
     staticClass: "col-md-6 mt-3"
   }, [_c("img", {
     staticClass: "img-homepage float-right",
     attrs: {
       src: _vm.img_home
     }
-  })])]), _vm._v(" "), _c("router-link", {
-    staticClass: "btn btn-primary-custom btn-wrap",
-    attrs: {
-      tag: "button",
-      to: "/a-level-points"
-    }
-  }, [_vm._v("Start my Journey")])], 1)]);
+  })])])])]);
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "col-md-6"
-  }, [_c("h6", {
-    staticClass: "main-heading-light"
-  }, [_vm._v("Here for the kids...")]), _vm._v(" "), _c("h6", {
-    staticClass: "sub-heading mt-4"
-  }, [_vm._v("We want each young person to find their place in the career world, or outside of it!")])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -6760,7 +6829,13 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h2", {
     staticClass: "my-5 sub-heading-light"
-  }, [_vm._v("All Universities")]), _vm._v(" "), _c("div", {
+  }, [_vm._v("All Universities")]), _vm._v(" "), _vm.loading ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
+    attrs: {
+      "animation-duration": 1000,
+      size: 60,
+      color: "#247BA0"
+    }
+  })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_c("div", {
     staticClass: "input-group shadow col-md-6 mb-5"
   }, [_c("input", {
     directives: [{
@@ -6792,7 +6867,7 @@ var render = function render() {
       return _c("div", {
         key: university.id,
         staticClass: "card shadow p-4 mb-5 col-sm-4"
-      }, [_c("div", {
+      }, [university.district ? _c("div", {
         staticClass: "card-body"
       }, [_c("h5", {
         staticClass: "card-title sub-heading my-3"
@@ -6800,14 +6875,23 @@ var render = function render() {
         staticClass: "card-subtitle mb-2 subtitle"
       }, [_vm._v(_vm._s(university.district.name))]), _vm._v(" "), _c("p", {
         staticClass: "card-text"
-      }, [_vm._v(_vm._s(university.university) + " is a " + _vm._s(university.type.toLowerCase()) + " institution in the " + _vm._s(university.region) + " part of Uganda. \n                        It operates under the " + _vm._s(university.award) + " award")]), _vm._v(" "), _c("button", {
+      }, [_vm._v(_vm._s(university.university) + " is a " + _vm._s(university.type.toLowerCase()) + " institution in the " + _vm._s(university.region) + " part of Uganda. \n                        It operates under the " + _vm._s(university.award) + " award")]), _vm._v(" "), _c("router-link", {
+        attrs: {
+          to: {
+            name: "UniversityProfile",
+            params: {
+              id: university.id
+            }
+          }
+        }
+      }, [_c("button", {
         staticClass: "btn btn-primary-custom shadow col-12 my-3",
         attrs: {
           type: "button"
         }
-      }, [_vm._v("See more")])])]);
+      }, [_vm._v("See more")])])], 1) : _vm._e()]);
     }), 0);
-  }), 0) : _vm._e()]);
+  }), 0) : _vm._e()]) : _vm._e()]);
 };
 
 var staticRenderFns = [];
@@ -6833,11 +6917,11 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("nav", {
-    staticClass: "navbar navbar-expand-lg navbar-dark bg-custom"
+    staticClass: "navbar navbar-expand-lg"
   }, [_c("div", {
     staticClass: "container-fluid"
   }, [_c("router-link", {
-    staticClass: "navbar-brand text-light",
+    staticClass: "navbar-brand text-dark",
     attrs: {
       to: "/"
     }
@@ -6945,6 +7029,130 @@ render._withStripped = true;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function render() {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "container"
+  }, [_vm.loading ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
+    attrs: {
+      "animation-duration": 1000,
+      size: 60,
+      color: "#247BA0"
+    }
+  })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_c("div", [_c("img", {
+    staticClass: "img-header",
+    attrs: {
+      id: "header",
+      src: this.universityHeaderUrl
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-blue shadow mb-5 col-sm-4",
+    attrs: {
+      id: "universityCard"
+    }
+  }, [_c("div", {
+    staticClass: "row"
+  }, [_c("img", {
+    staticClass: "col-2 img-card-blue",
+    attrs: {
+      src: this.universityBadgeUrl
+    }
+  }), _vm._v(" "), _c("div", {
+    staticClass: "card-body col-10"
+  }, [_c("h5", {
+    staticClass: "card-title card-heading-white mt-2"
+  }, [_vm._v(_vm._s(this.currentUniversity.details.uni_name))]), _vm._v(" "), _c("h6", {
+    staticClass: "card-subtitle card-subheading-white my-3"
+  }, [_vm._v(_vm._s(this.currentUniversity.details.uni_motto))])])])]), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "topSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue my-3"
+  }, [_vm._v("About " + _vm._s(_vm.currentUniversity.details.uni_name))]), _vm._v(" "), _c("p", {
+    staticClass: "my-3"
+  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_details))])]), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "aboutSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Colleges and Faculties")]), _vm._v(" "), _vm._l(_vm.loadFaculties, function (group) {
+    return _c("div", {
+      staticClass: "row justify-content-around"
+    }, _vm._l(group, function (faculty) {
+      return _c("div", {
+        key: faculty.id,
+        staticClass: "card shadow p-2 my-2 col-sm-3"
+      }, [faculty.name ? _c("div", {
+        staticClass: "card-body"
+      }, [_c("h5", {
+        staticClass: "card-title my-3"
+      }, [_vm._v(_vm._s(faculty.name))])]) : _vm._e()]);
+    }), 0);
+  })], 2), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "aboutSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Tuition and Aid")]), _vm._v(" "), _vm._l(_vm.loadScholarships, function (group) {
+    return _c("div", {
+      staticClass: "row justify-content-around"
+    }, _vm._l(group, function (scholarship) {
+      return _c("div", {
+        key: scholarship.id,
+        staticClass: "card shadow p-2 m-2 col-sm-5"
+      }, [scholarship.name ? _c("div", {
+        staticClass: "card-body"
+      }, [_c("h5", {
+        staticClass: "card-title subtitle my-3"
+      }, [_vm._v(_vm._s(scholarship.name))]), _vm._v(" "), _c("h6", {
+        staticClass: "card-subtitle mb-2"
+      }, [_vm._v(_vm._s(scholarship.details))]), _vm._v(" "), scholarship.website_url ? _c("div", [_c("span", {
+        staticClass: "mx-2"
+      }, [_c("font-awesome-icon", {
+        attrs: {
+          icon: "fa-solid fa-globe"
+        }
+      })], 1), _vm._v(" "), _c("span", [_c("a", {
+        staticClass: "website-link",
+        attrs: {
+          target: "_blank",
+          rel: "noopener noreferrer",
+          href: scholarship.website_url
+        }
+      }, [_vm._v("Visit Website")])])]) : _vm._e(), _vm._v(" "), scholarship.contact ? _c("div", [_c("span", {
+        staticClass: "mx-2"
+      }, [_c("font-awesome-icon", {
+        attrs: {
+          icon: "fa-solid fa-phone"
+        }
+      })], 1), _vm._v(" "), _c("span", [_vm._v(_vm._s(scholarship.contact))])]) : _vm._e()]) : _vm._e()]);
+    }), 0);
+  })], 2)])]) : _vm._e()]);
+};
+
+var staticRenderFns = [];
+render._withStripped = true;
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -6965,7 +7173,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faGlobe, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone);
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
 Vue.component('navbar', (__webpack_require__(/*! ./components/NavbarComponent.vue */ "./resources/js/components/NavbarComponent.vue")["default"]));
@@ -7024,13 +7232,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_SubjectListComponent_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SubjectListComponent.vue */ "./resources/js/components/SubjectListComponent.vue");
 /* harmony import */ var _components_LocalUniversityComponent_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/LocalUniversityComponent.vue */ "./resources/js/components/LocalUniversityComponent.vue");
 /* harmony import */ var _components_HomepageComponent_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/HomepageComponent.vue */ "./resources/js/components/HomepageComponent.vue");
 /* harmony import */ var _components_ALevelPointsComponent_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/ALevelPointsComponent.vue */ "./resources/js/components/ALevelPointsComponent.vue");
 /* harmony import */ var _components_AccountComponent_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AccountComponent.vue */ "./resources/js/components/AccountComponent.vue");
+/* harmony import */ var _components_UniversityProfile__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/UniversityProfile */ "./resources/js/components/UniversityProfile.vue");
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
 
 
@@ -7039,7 +7248,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]);
+
+vue__WEBPACK_IMPORTED_MODULE_6__["default"].use(vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]);
 var routes = [{
   path: '/',
   name: 'Home',
@@ -7053,15 +7263,20 @@ var routes = [{
   name: 'Universities',
   component: _components_LocalUniversityComponent_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
 }, {
+  path: '/universities/:id',
+  name: 'UniversityProfile',
+  component: _components_UniversityProfile__WEBPACK_IMPORTED_MODULE_5__["default"],
+  props: true
+}, {
   path: '/a-level-points',
   name: 'ALevelPoints',
   component: _components_ALevelPointsComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
   path: '/account',
-  name: 'User Account',
+  name: 'UserAccount',
   component: _components_AccountComponent_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
 }];
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_6__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_7__["default"]({
   mode: "history",
   base: process.env.BASE_URL,
   routes: routes,
@@ -12988,23 +13203,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./public/images/badge.jpg":
-/*!*********************************!*\
-  !*** ./public/images/badge.jpg ***!
-  \*********************************/
+/***/ "./public/images/undraw.png":
+/*!**********************************!*\
+  !*** ./public/images/undraw.png ***!
+  \**********************************/
 /***/ ((module) => {
 
-module.exports = "/images/badge.jpg?1202a9b8c75923c745437a0cf7c89c18";
-
-/***/ }),
-
-/***/ "./public/images/homepage_custom.png":
-/*!*******************************************!*\
-  !*** ./public/images/homepage_custom.png ***!
-  \*******************************************/
-/***/ ((module) => {
-
-module.exports = "/images/homepage_custom.png?a40f8f68c03dcf6d2989efcbdacb64d0";
+module.exports = "/images/undraw.png?21c5f885b13c30e09263ac5c3df1c498";
 
 /***/ }),
 
@@ -34014,6 +34219,45 @@ component.options.__file = "resources/js/components/SubjectListComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/UniversityProfile.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/UniversityProfile.vue ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UniversityProfile.vue?vue&type=template&id=e21eda40& */ "./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40&");
+/* harmony import */ var _UniversityProfile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UniversityProfile.vue?vue&type=script&lang=js& */ "./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UniversityProfile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__.render,
+  _UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/UniversityProfile.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/ALevelPointsComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/ALevelPointsComponent.vue?vue&type=script&lang=js& ***!
@@ -34091,6 +34335,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SubjectListComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubjectListComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectListComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UniversityProfile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UniversityProfile.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UniversityProfile_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -34192,6 +34452,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectListComponent_vue_vue_type_template_id_0d0f1f9e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_SubjectListComponent_vue_vue_type_template_id_0d0f1f9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SubjectListComponent.vue?vue&type=template&id=0d0f1f9e& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SubjectListComponent.vue?vue&type=template&id=0d0f1f9e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40& ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_UniversityProfile_vue_vue_type_template_id_e21eda40___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./UniversityProfile.vue?vue&type=template&id=e21eda40& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/UniversityProfile.vue?vue&type=template&id=e21eda40&");
 
 
 /***/ }),

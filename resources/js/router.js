@@ -5,6 +5,7 @@ import Universities from './components/LocalUniversityComponent.vue'
 import Homepage from './components/HomepageComponent.vue'
 import ALevelPoints from './components/ALevelPointsComponent.vue'
 import UserAccount from './components/AccountComponent.vue'
+import UniversityProfile from './components/UniversityProfile'
 
 Vue.use(VueRouter);
 
@@ -25,13 +26,19 @@ const routes = [
         component :  Universities
     },
     {
+        path : '/universities/:id',
+        name : 'UniversityProfile',
+        component :  UniversityProfile,
+        props:true
+    },
+    {
         path : '/a-level-points',
         name : 'ALevelPoints',
         component :  ALevelPoints
     },
     {
         path : '/account',
-        name : 'User Account',
+        name : 'UserAccount',
         component : UserAccount
     }
 ]

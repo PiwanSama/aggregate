@@ -9,13 +9,20 @@ class Scholarship extends Model
 {
     use HasFactory;
 
+    protected $table = 'university_scholarships_data';
+
     protected $fillable = [
         'id',
         'name',
+        'details',
         'logo_url',
-        'contact',
         'website_url',
-        'university_id',
-        'added_on'
+        'contact',
+        'fk_scholarship_university_id '
     ];
+
+    function university(){
+        return $this->belongsTo(LocalUniversity::class, 'id','fk_scholarship_university_id');
+    }
+
 }

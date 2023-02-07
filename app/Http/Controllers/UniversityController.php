@@ -3,22 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Models\LocalUniversity;
-use App\Models\UniversityDetails;
 
 class UniversityController extends Controller
 {
-    protected $table = 'university_details';
     
-    public function index()
+    public function listAll()
     {
         $universities = LocalUniversity::with('district')->get();
         return response()->json($universities);
     }
 
-    public function show($id)
+    public function getUniversityProfile($id)
     {
-        $university = UniversityDetails::where('university_id', $id)->get();
-        return response()->json($university);
+        $universityProfile = 
+            LocalUniversity::where('id', $id)
+                        ->with('district')
+                        ->with('details')
+                        ->with('faculties')
+                        ->with('location')
+                        ->with('services')
+                        ->with('programs')
+                        ->with('scholarships')
+                        ->get();
+        return response()->json($universityProfile);
+    }
+
+    public function getUniversityFaculties($id)
+    {
+        $universityFaculties = 
+            LocalUniversity::where('id', $id)
+                             ->with('location')
+                             ->with('services')
+                             ->with('programs')
+                             ->with('scholarships')
+                             ->get();
+        return response()->json($universityFaculties);
     }
 
 }

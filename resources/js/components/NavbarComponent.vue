@@ -1,7 +1,7 @@
 <template>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-custom">
+        <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <router-link to = "/" class="navbar-brand text-light">Aggregate</router-link>
+    <router-link to = "/" class="navbar-brand text-dark">Aggregate</router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -19,9 +19,12 @@ use App\Http\Controllers\MailController;
 |
 */
 Route::apiResource('subjects', SubjectController::class)->only('index', 'show');
-Route::apiResource('universities', UniversityController::class)->only('index', 'show');
 Route::apiResource('combinations', CombinationController::class)->only('index', 'show');
 Route::apiResource('field', CombinationController::class)->only('index', 'show');
+Route::get('/universities', [UniversityController::class, 'listAll']);
+Route::get('/universities/{id}', [UniversityController::class, 'getUniversityProfile']);
+Route::get('/universitiy/{id}/faculties', [UniversityController::class, 'getUniversityFaculties']);
+Route::get('/universitiy/{id}/faculty/{name}/programs', [UniversityController::class, 'getUniversityPrograms']);
 Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);

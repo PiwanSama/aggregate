@@ -10,15 +10,15 @@ class District extends Model
 {
     use HasFactory;
 
-    protected $table = 'district';
+    protected $table = 'district_data';
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'id',
-        'name',
-        'added_on'
+        'name'
     ];
 
     function universities(){
-        return $this->belongsToMany(LocalUniversity::class);
+        return $this->hasMany(LocalUniversity::class, 'fk_district_id');
     }
 }

@@ -9,12 +9,14 @@ class Faculty extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id';
+    protected $table = 'university_faculty_data';
+
     protected $fillable = [
         'id',
         'name',
         'details',
         'website_url',
-        'university_id',
-        'added_on'
+        'fk_university_faculty_id '
     ];
 }

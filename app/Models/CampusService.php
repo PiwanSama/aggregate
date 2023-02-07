@@ -9,11 +9,17 @@ class CampusService extends Model
 {
     use HasFactory;
 
+    protected $table = 'university_service_data';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
         'name',
         'icon_url',
-        'university_id',
-        'added_on'
+        'fk_service_university_id'
     ];
+
+    function university(){
+        return $this->belongsTo(LocalUniversity::class, 'id','fk_service_university_id');
+    }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Combination extends Model
 {
     
-    protected $table_name = 'combinations';
+    protected $table = 'combinations_data';
 
     protected $fillable = [
         'id',

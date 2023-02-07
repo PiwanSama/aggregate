@@ -9,11 +9,17 @@ class UniversityLocation extends Model
 {
     use HasFactory;
 
+    protected $table = 'university_location_data';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id',
         'latitude',
         'longitude',
-        'university_id',
-        'added_on'
+        'fk_university_location_id'
     ];
+
+    function university(){
+        return $this->belongsTo(LocalUniversity::class, 'id','fk_university_location_id');
+    }
 }
