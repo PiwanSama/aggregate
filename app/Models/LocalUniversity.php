@@ -40,7 +40,7 @@ class LocalUniversity extends Model
     }
 
     function programs(){
-        return $this->hasMany(CampusProgram::class, 'fk_university_id');
+        return $this->hasMany(CampusProgram::class, 'fk_program_university_id');
     }
 
     function scholarships(){

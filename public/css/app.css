@@ -1,8 +1,12 @@
 @import url(https://fonts.googleapis.com/css2?family=Albert+Sans&display=swap);
 body{
-    background-color: #FFF;
+    background-color: #fff !important;
     font-family: 'Albert Sans' !important;
-    font-size: 16px;
+    font-size: 18px;
+}
+
+.uni-profile{
+    background-color: #EEF2FA;
 }
 
 .main-heading{
@@ -24,11 +28,29 @@ body{
     color : rgba(var(--bs-primary-custom), var(--bs-bg-opacity)) !important;
 }
 
-.sub-heading-blue{
+/*.sub-heading-blue{
     line-height: inherit;
-    font-size : 20px !important;
-    font-weight: 700;
+    font-size : 30px !important;
+    font-size: 22px !important;
+    font-weight: 400; 
     color: #247BA0;
+    margin-top: 1.5rem;
+}*/
+
+.sub-heading-blue{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2rem;
+    margin: 0 0.5rem 1rem 0;
+    color: #05293c;
+}
+
+.sub-heading-grey{
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 2rem;
+    margin: 0 0.5rem 1rem 0;
+    color: #35363A;
 }
 
 .radio-text{
@@ -36,9 +58,19 @@ body{
 }
 
 .subtitle{
-    font-size : 16px;
-    color: #247BA0;
+    font-size: 1rem;
     font-weight: 700;
+    line-height: 2rem;
+    margin: 0 0.5rem 1rem 0;
+    color: #35363A;
+}
+
+.subtitle-sm{
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 2rem;
+    margin: 0 0.5rem 1rem 0;
+    color: #35363A;
 }
 
 .ui-list{
@@ -46,8 +78,18 @@ body{
 }
 
 .card{
-    border: none !important;
+    border: 1px #05293c !important;
     background-color: #fff !important;
+    background-color: #fff;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 2px 2px 0 rgb(63 92 110 / 15%);
+    display: block;
+    padding: 1rem 1.5rem;
+}
+
+.card-bordered{
+    border: 2px solid #EDF3F6 !important;
+    text-align: center;
 }
 
 .card-blue{
@@ -327,13 +369,24 @@ input[type=radio] {
     color : #247BA0 !important;
   }
 
-  #topSection{
+  .img-icon{
+    width: 50px;
+    height: 50px;
+  }
+
+  section{
+    margin-top: 30px;
+  }
+
+  #headerSection{
     margin-top: 100px;
   }
 
   #aboutSection{
     margin-top: 40px;
   }
+
+a.icon-link  { color: #05293c !important; }
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

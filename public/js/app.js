@@ -6205,12 +6205,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       currentUniversity: null,
-      universityHeader: null,
-      universityBadge: null,
-      universityHeaderUrl: "",
-      universityBadgeUrl: "",
       facultiesArray: [],
       scholarshipsArray: [],
+      servicesArray: [],
+      programsArray: [],
       loading: true,
       loaded: false
     };
@@ -6236,9 +6234,21 @@ __webpack_require__.r(__webpack_exports__);
       this.universityHeader = this.currentUniversity.details.uni_header_url;
       this.facultiesArray = this.currentUniversity.faculties;
       this.scholarshipsArray = this.currentUniversity.scholarships;
-      this.universityBadgeUrl = '/images/badges/' + this.universityBadge;
-      this.universityHeaderUrl = '/images/headers/' + this.universityHeader;
-      this.loading = false;
+      this.servicesArray = this.currentUniversity.services;
+      this.programsArray = this.currentUniversity.programs;
+      this.wesbiteLink = this.currentUniversity.details.uni_website, this.twitterLink = this.currentUniversity.details.twitter_url, this.facebookLink = this.currentUniversity.details.facebook_url, this.instagramLink = this.currentUniversity.details.instagram_url, this.linkedinLink = this.currentUniversity.details.linkedin_url, this.loading = false;
+    },
+    getBadgeLogo: function getBadgeLogo(imagePath) {
+      return '/images/badges/' + imagePath;
+    },
+    getHeaderLogo: function getHeaderLogo(imagePath) {
+      return '/images/headers/' + imagePath;
+    },
+    getProgramLogo: function getProgramLogo(imagePath) {
+      return '/images/clubs/' + imagePath;
+    },
+    getServiceLogo: function getServiceLogo(imagePath) {
+      return '/images/icons/' + imagePath;
     }
   },
   computed: {
@@ -6247,6 +6257,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     loadScholarships: function loadScholarships() {
       return _.chunk(this.scholarshipsArray, 2);
+    },
+    loadServices: function loadServices() {
+      return _.chunk(this.servicesArray, 2);
+    },
+    loadPrograms: function loadPrograms() {
+      return _.chunk(this.programsArray, 2);
     }
   }
 });
@@ -7046,6 +7062,8 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
+    staticClass: "uni-profile"
+  }, [_c("div", {
     staticClass: "container"
   }, [_vm.loading ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
     attrs: {
@@ -7053,11 +7071,11 @@ var render = function render() {
       size: 60,
       color: "#247BA0"
     }
-  })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_c("div", [_c("img", {
+  })], 1) : _vm._e(), _vm._v(" "), _vm.loaded ? _c("div", [_c("img", {
     staticClass: "img-header",
     attrs: {
       id: "header",
-      src: this.universityHeaderUrl
+      src: _vm.getHeaderLogo(_vm.currentUniversity.details.uni_header_url)
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "card-blue shadow mb-5 col-sm-4",
@@ -7069,65 +7087,79 @@ var render = function render() {
   }, [_c("img", {
     staticClass: "col-2 img-card-blue",
     attrs: {
-      src: this.universityBadgeUrl
+      src: _vm.getBadgeLogo(_vm.currentUniversity.details.uni_badge_url)
     }
   }), _vm._v(" "), _c("div", {
     staticClass: "card-body col-10"
   }, [_c("h5", {
     staticClass: "card-title card-heading-white mt-2"
-  }, [_vm._v(_vm._s(this.currentUniversity.details.uni_name))]), _vm._v(" "), _c("h6", {
+  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_name))]), _vm._v(" "), _c("h6", {
     staticClass: "card-subtitle card-subheading-white my-3"
-  }, [_vm._v(_vm._s(this.currentUniversity.details.uni_motto))])])])]), _vm._v(" "), _c("section", {
+  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_motto))])])])]), _vm._v(" "), _c("section", {
     attrs: {
-      id: "topSection"
+      id: "headerSection"
     }
   }, [_c("h3", {
-    staticClass: "sub-heading-blue my-3"
-  }, [_vm._v("About " + _vm._s(_vm.currentUniversity.details.uni_name))]), _vm._v(" "), _c("p", {
+    staticClass: "card-title sub-heading-blue"
+  }, [_vm._v("About " + _vm._s(_vm.currentUniversity.details.uni_name))]), _vm._v(" "), _c("div", {
+    staticClass: "card mt-3"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("p", {
     staticClass: "my-3"
-  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_details))])]), _vm._v(" "), _c("section", {
+  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_details))])])])]), _vm._v(" "), _c("section", {
     attrs: {
-      id: "aboutSection"
+      id: "facultySection"
     }
+  }, [_c("div", [_c("div", {
+    staticClass: "card-body"
   }, [_c("h3", {
-    staticClass: "sub-heading-blue"
+    staticClass: "card-title sub-heading-blue"
   }, [_vm._v("Colleges and Faculties")]), _vm._v(" "), _vm._l(_vm.loadFaculties, function (group) {
     return _c("div", {
       staticClass: "row justify-content-around"
     }, _vm._l(group, function (faculty) {
       return _c("div", {
         key: faculty.id,
-        staticClass: "card shadow p-2 my-2 col-sm-3"
+        staticClass: "card card-bordered p-2 my-2 col-sm-3"
       }, [faculty.name ? _c("div", {
         staticClass: "card-body"
       }, [_c("h5", {
-        staticClass: "card-title my-3"
+        staticClass: "subtitle-sm my-3"
       }, [_vm._v(_vm._s(faculty.name))])]) : _vm._e()]);
     }), 0);
-  })], 2), _vm._v(" "), _c("section", {
+  })], 2)])]), _vm._v(" "), _c("section", {
     attrs: {
-      id: "aboutSection"
+      id: "scholarshipSection"
     }
   }, [_c("h3", {
     staticClass: "sub-heading-blue"
-  }, [_vm._v("Tuition and Aid")]), _vm._v(" "), _vm._l(_vm.loadScholarships, function (group) {
+  }, [_vm._v("Tuition and Aid")]), _vm._v(" "), _c("h3", {
+    staticClass: "sub-heading-grey"
+  }, [_vm._v("1. Government Scholarships")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("h3", {
+    staticClass: "sub-heading-grey mt-4"
+  }, [_vm._v("2. Private Sponsorship")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("h3", {
+    staticClass: "sub-heading-grey mt-3"
+  }, [_vm._v("3. Scholarship Programs")]), _vm._v(" "), _vm._l(_vm.loadScholarships, function (group) {
     return _c("div", {
-      staticClass: "row justify-content-around"
+      staticClass: "row m-3 justify-content-between"
     }, _vm._l(group, function (scholarship) {
       return _c("div", {
         key: scholarship.id,
-        staticClass: "card shadow p-2 m-2 col-sm-5"
+        staticClass: "card p-3 m-2 col-sm-5"
       }, [scholarship.name ? _c("div", {
         staticClass: "card-body"
       }, [_c("h5", {
-        staticClass: "card-title subtitle my-3"
-      }, [_vm._v(_vm._s(scholarship.name))]), _vm._v(" "), _c("h6", {
-        staticClass: "card-subtitle mb-2"
-      }, [_vm._v(_vm._s(scholarship.details))]), _vm._v(" "), scholarship.website_url ? _c("div", [_c("span", {
-        staticClass: "mx-2"
+        staticClass: "subtitle"
+      }, [_vm._v(_vm._s(scholarship.name))]), _vm._v(" "), _c("p", {
+        staticClass: "card-subtitle"
+      }, [_vm._v(_vm._s(scholarship.details))]), _vm._v(" "), scholarship.website_url ? _c("div", {
+        staticClass: "my-2"
+      }, [_c("span", {
+        staticClass: "my-2"
       }, [_c("font-awesome-icon", {
         attrs: {
-          icon: "fa-solid fa-globe"
+          icon: "fa-solid fa-circle-info"
         }
       })], 1), _vm._v(" "), _c("span", [_c("a", {
         staticClass: "website-link",
@@ -7136,18 +7168,266 @@ var render = function render() {
           rel: "noopener noreferrer",
           href: scholarship.website_url
         }
-      }, [_vm._v("Visit Website")])])]) : _vm._e(), _vm._v(" "), scholarship.contact ? _c("div", [_c("span", {
-        staticClass: "mx-2"
+      }, [_vm._v("Visit Website")])])]) : _vm._e(), _vm._v(" "), scholarship.contact ? _c("div", {
+        staticClass: "my-2"
+      }, [_c("span", {
+        staticClass: "my-2"
       }, [_c("font-awesome-icon", {
         attrs: {
           icon: "fa-solid fa-phone"
         }
       })], 1), _vm._v(" "), _c("span", [_vm._v(_vm._s(scholarship.contact))])]) : _vm._e()]) : _vm._e()]);
     }), 0);
-  })], 2)])]) : _vm._e()]);
+  })], 2), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "servicesSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Digital Student Support")]), _vm._v(" "), _vm._l(_vm.loadServices, function (group) {
+    return _c("div", {
+      staticClass: "row m-2"
+    }, _vm._l(group, function (service) {
+      return _c("div", {
+        key: service.id,
+        staticClass: "card col-sm-3 p-2 m-2"
+      }, [service.name ? _c("div", {
+        staticClass: "card-body row"
+      }, [_c("div", {
+        staticClass: "col-3"
+      }, [_c("img", {
+        staticClass: "img-icon img-reponsive",
+        attrs: {
+          src: _vm.getServiceLogo(service.icon_url)
+        }
+      })]), _vm._v(" "), _c("div", {
+        staticClass: "col-9"
+      }, [_c("h5", {
+        staticClass: "card-title my-3"
+      }, [_vm._v(_vm._s(service.name))])])]) : _vm._e()]);
+    }), 0);
+  })], 2), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "learningSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Student Learning Programs")]), _vm._v(" "), _vm._l(_vm.loadPrograms, function (group) {
+    return _c("div", {
+      staticClass: "row justify-content-between m-2"
+    }, _vm._l(group, function (program) {
+      return _c("div", {
+        key: program.id,
+        staticClass: "card p-2 m-2 col-sm-5"
+      }, [program.name ? _c("div", {
+        staticClass: "card-body"
+      }, [_c("div", {
+        staticClass: "row"
+      }, [_c("div", {
+        staticClass: "col-md-3 mt-2"
+      }, [_c("img", {
+        staticClass: "img-icon",
+        attrs: {
+          src: _vm.getProgramLogo(program.logo_url)
+        }
+      })]), _vm._v(" "), _c("div", {
+        staticClass: "col-md-9"
+      }, [_c("h5", {
+        staticClass: "subtitle my-3"
+      }, [_vm._v(_vm._s(program.name))]), _vm._v(" "), _c("p", {
+        staticClass: "card-subtitle mb-2"
+      }, [_vm._v(_vm._s(program.description))])])])]) : _vm._e()]);
+    }), 0);
+  })], 2), _vm._v(" "), _vm._m(2), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "aboutLocationSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("About " + _vm._s(_vm.currentUniversity.district.name))]), _vm._v(" "), _vm._m(3)]), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "contactSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Online Presence")]), _vm._v(" "), _c("div", {
+    staticClass: "row justify-content-start m-2"
+  }, [_vm.currentUniversity.details.uni_website ? _c("div", {
+    staticClass: "col"
+  }, [_c("a", {
+    staticClass: "icon-link",
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _vm.currentUniversity.details.uni_website
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-solid fa-circle-info",
+      size: "3x"
+    }
+  })], 1)]) : _vm._e(), _vm._v(" "), _vm.currentUniversity.details.twitter_url ? _c("div", {
+    staticClass: "col"
+  }, [_c("a", {
+    staticClass: "icon-link",
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _vm.currentUniversity.details.twitter_url
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-brands fa-square-twitter",
+      size: "3x"
+    }
+  })], 1)]) : _vm._e(), _vm._v(" "), _vm.currentUniversity.details.instagram_url ? _c("div", {
+    staticClass: "col"
+  }, [_c("a", {
+    staticClass: "icon-link",
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _vm.currentUniversity.details.instagram_url
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-brands fa-square-instagram",
+      size: "3x"
+    }
+  })], 1)]) : _vm._e(), _vm._v(" "), _vm.currentUniversity.details.linkedin_url ? _c("div", {
+    staticClass: "col"
+  }, [_c("a", {
+    staticClass: "icon-link",
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _vm.currentUniversity.details.linkedin_url
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-brands fa-linkedin",
+      size: "3x"
+    }
+  })], 1)]) : _vm._e(), _vm._v(" "), _vm.currentUniversity.details.facebook_url ? _c("div", {
+    staticClass: "col"
+  }, [_c("a", {
+    staticClass: "icon-link",
+    attrs: {
+      target: "_blank",
+      rel: "noopener noreferrer",
+      href: _vm.currentUniversity.details.facebook_url
+    }
+  }, [_c("font-awesome-icon", {
+    attrs: {
+      icon: "fa-brands fa-square-facebook",
+      size: "3x"
+    }
+  })], 1)]) : _vm._e()])]), _vm._v(" "), _c("section", {
+    attrs: {
+      id: "addressSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Address")]), _vm._v(" "), _c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("p", {
+    staticClass: "card-subtitle"
+  }, [_vm._v(_vm._s(_vm.currentUniversity.details.uni_address))])])])])]) : _vm._e()])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "row mt-3"
+  }, [_c("div", {
+    staticClass: "col-md-3 mt-2"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "subtitle text-center"
+  }, [_vm._v("Government Scholarship")]), _vm._v(" "), _c("h6", {
+    staticClass: "card-subtitle text-center mb-2"
+  }, [_vm._v("Granted to students who excel academically for a course qualifed")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3 mt-2"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "subtitle text-center"
+  }, [_vm._v("Sports Scholarship")]), _vm._v(" "), _c("h6", {
+    staticClass: "card-subtitle text-center mb-2"
+  }, [_vm._v("Granted to students who have excelled in Sports activites")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3 mt-2"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "subtitle text-center"
+  }, [_vm._v("District Quota Scholarship")]), _vm._v(" "), _c("h6", {
+    staticClass: "card-subtitle text-center mb-2"
+  }, [_vm._v("Granted to students who have excelled in their district of origin")])])])]), _vm._v(" "), _c("div", {
+    staticClass: "col-md-3 mt-2"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h5", {
+    staticClass: "subtitle text-center"
+  }, [_vm._v("Loan Scheme")]), _vm._v(" "), _c("h6", {
+    staticClass: "card-subtitle text-center mb-2"
+  }, [_vm._v("A student load payable to the government once employed")])])])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "row justify-content-around mt-3"
+  }, [_c("div", {
+    staticClass: "col-sm-5 mt-2"
+  }, [_c("button", {
+    staticClass: "btn btn-info btn-lg",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("Download 2022 Undergraduate Fees Structure")])]), _vm._v(" "), _c("div", {
+    staticClass: "col-sm-5 mt-2"
+  }, [_c("button", {
+    staticClass: "btn btn-info btn-lg",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("Download 2022 Postgraduate Fees Structure")])])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("section", {
+    attrs: {
+      id: "mapSection"
+    }
+  }, [_c("h3", {
+    staticClass: "sub-heading-blue"
+  }, [_vm._v("Location")])]);
+}, function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("p", {
+    staticClass: "card-subtitle"
+  }, [_vm._v("Etiam cursus felis sed nulla dapibus accumsan. Phasellus consequat, massa id facilisis placerat, odio enim imperdiet mauris, eget imperdiet erat dolor non neque. Nullam luctus laoreet feugiat. Pellentesque quis commodo enim, in facilisis nisl. Aenean ultricies leo vitae finibus gravida. Cras at augue in risus eleifend efficitur sit amet non nulla. Vivamus non euismod augue, vel interdum mauris. Nam at magna elit. Donec malesuada dolor odio, ac congue lorem suscipit nec. Aenean sit amet turpis velit. Sed scelerisque ullamcorper erat vel aliquet. Suspendisse aliquet metus metus, vel aliquet ipsum imperdiet eget. Nullam interdum magna neque, at finibus tortor ultrices sit amet.")])])]);
+}];
 render._withStripped = true;
 
 
@@ -7173,7 +7453,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faGlobe, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareFacebook, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareTwitter, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareInstagram, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faLinkedin, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleInfo);
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
 Vue.component('navbar', (__webpack_require__(/*! ./components/NavbarComponent.vue */ "./resources/js/components/NavbarComponent.vue")["default"]));

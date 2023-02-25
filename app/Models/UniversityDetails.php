@@ -26,6 +26,7 @@ class UniversityDetails extends Model
         'twitter_url',
         'instagram_url',
         'linkedin_url',
+        'uni_address',
         'university_id'
     ];
 

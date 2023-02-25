@@ -21,6 +21,6 @@ class CampusProgram extends Model
     ];
 
     function university(){
-        return $this->belongsTo(LocalUniversity::class, 'id','fk_university_id');
+        return $this->belongsTo(LocalUniversity::class, 'id','fk_program_university_id');
     }
 }
