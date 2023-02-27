@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="my-5 card col-sm-8 col-md-8 col-lg-6 p-5">
                 <div>
-                <h2 class="sub-heading-light">What's your field of study?</h2>
+                <h2 class="sub-heading">What's your field of study?</h2>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="field-radio" id="artsRadio" value="arts" v-on:click="showArts" checked>
                         <label class="form-check-label" for="artsRadio">
@@ -17,7 +17,7 @@
                         </label>
                     </div>
                     <div class="row my-3">
-                        <h2 class="sub-heading-light">What combination did you do?</h2>
+                        <h2 class="sub-heading">What combination did you do?</h2>
                         <div v-if = "loading">
                             <half-circle-spinner
                                 :animation-duration="1000"
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="row my-3" v-if= "selected">
-                        <h2 class="sub-heading-light">What's were your grades in {{selected.combination}}?</h2>
+                        <h2 class="sub-heading-blue">What's were your grades in {{selected.combination}}?</h2>
                         <form action="#" class="form" @submit.prevent="submitData">
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">{{selected.principal_one}} : </label>

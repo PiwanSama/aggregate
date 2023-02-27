@@ -28,16 +28,4 @@ class UniversityController extends Controller
         return response()->json($universityProfile);
     }
 
-    public function getUniversityFaculties($id)
-    {
-        $universityFaculties = 
-            LocalUniversity::where('id', $id)
-                             ->with('location')
-                             ->with('services')
-                             ->with('programs')
-                             ->with('scholarships')
-                             ->get();
-        return response()->json($universityFaculties);
-    }
-
 }

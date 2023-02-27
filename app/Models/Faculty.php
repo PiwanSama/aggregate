@@ -19,4 +19,9 @@ class Faculty extends Model
         'website_url',
         'fk_university_faculty_id '
     ];
+
+    function programs(){
+        return $this->hasMany(FacultyProgram::class, 'fk_parent_faculty_id');
+    }
+    
 }

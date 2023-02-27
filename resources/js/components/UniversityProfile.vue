@@ -1,5 +1,5 @@
 <template>
-    <div class="uni-profile">
+    <div class="uni-profile pb-4">
     <div class="container">
         <div v-if = "loading">
             <fulfilling-bouncing-circle-spinner
@@ -11,8 +11,8 @@
                 <img id = "header" class = "img-header" :src= "getHeaderLogo(currentUniversity.details.uni_header_url)" />
                 <div id = "universityCard" class="card-blue shadow mb-5 col-sm-4">
                     <div class="row">
-                        <img class = "col-2 img-card-blue" :src= "getBadgeLogo(currentUniversity.details.uni_badge_url)" />
-                        <div class="card-body col-10">
+                        <img class = "col-sm-3 img-card-blue" :src= "getBadgeLogo(currentUniversity.details.uni_badge_url)" />
+                        <div class="card-body col-sm-8">
                             <h5 class="card-title card-heading-white mt-2">{{currentUniversity.details.uni_name}}</h5>
                             <h6 class="card-subtitle card-subheading-white my-3">{{currentUniversity.details.uni_motto}}</h6>
                         </div>
@@ -33,7 +33,17 @@
                             <div class="row justify-content-around" v-for="group in loadFaculties">
                                 <div v-for="faculty in group" v-bind:key = "faculty.id" class="card card-bordered p-2 my-2 col-sm-3">
                                     <div v-if = "faculty.name" class="card-body">
-                                        <h5 class="subtitle-sm my-3">{{faculty.name}}</h5>
+                                        <h5 class="subtitle-sm hlink my-3">{{faculty.name}}</h5>
+                                        <router-link
+                                            :to = "{
+                                                name : 'FacultyPrograms',
+                                                params : {
+                                                    id: faculty.id,
+                                                    uniName : currentUniversity.details.uni_name
+                                                }
+                                            }">
+                                            <button type="button" class="btn btn-info btn-sm">View Courses</button>
+                                        </router-link>                                     
                                     </div>
                                 </div>
                             </div>
@@ -139,9 +149,9 @@
                         </div>
                     </div>
                 </section>
-                <section  id="mapSection">
+                <section id="mapSection">
                     <h3 class="sub-heading-blue">Location</h3>
-                    
+                    <img class="mapHolder" :src="imgMap" />
                 </section>
                 <section  id="aboutLocationSection">
                     <h3 class="sub-heading-blue">About {{ currentUniversity.district.name }}</h3>
@@ -151,7 +161,7 @@
                         </div>
                     </div>
                 </section>
-                <section  id="contactSection">
+                <section id="contactSection">
                     <h3 class="sub-heading-blue">Online Presence</h3>
                     <div class="row justify-content-start m-2">
                         <div class="col" v-if="currentUniversity.details.uni_website">
@@ -171,11 +181,11 @@
                         </div>
                     </div>
                 </section>
-                <section  id="addressSection">
+                <section id="addressSection">
                     <h3 class="sub-heading-blue">Address</h3>
                     <div class="card">
                         <div class="card-body">
-                            <p class="card-subtitle">{{currentUniversity.details.uni_address}}</p>
+                            <p class="card-subtitle address">{{currentUniversity.details.uni_address}}</p>
                         </div>
                     </div>
                 </section>
@@ -184,10 +194,22 @@
     </div>
 </template>
 
+<style scoped>
+ 
+ a{
+    text-decoration: none;
+ }
+
+ h5.hlink:hover{
+    font-weight: 700;
+ }
+
+</style>
 <script>
 
 
 import { FulfillingBouncingCircleSpinner } from 'epic-spinners';
+import img_map from '../../../public/images/map.png';
 
 export default{
     name : "university-profile",
@@ -202,7 +224,8 @@ export default{
             servicesArray : [],
             programsArray : [],
             loading : true,
-            loaded : false
+            loaded : false,
+            imgMap : img_map
         }
     },
     created(){
@@ -219,19 +242,10 @@ export default{
         },
         loadPageData(){
             this.loaded = true;
-            this.universityBadge = this.currentUniversity.details.uni_badge_url;
-            this.universityHeader = this.currentUniversity.details.uni_header_url;
             this.facultiesArray = this.currentUniversity.faculties;
             this.scholarshipsArray = this.currentUniversity.scholarships;
             this.servicesArray = this.currentUniversity.services;
             this.programsArray = this.currentUniversity.programs;
-
-            this.wesbiteLink = this.currentUniversity.details.uni_website,
-            this.twitterLink = this.currentUniversity.details.twitter_url,
-            this.facebookLink = this.currentUniversity.details.facebook_url,
-            this.instagramLink = this.currentUniversity.details.instagram_url,
-            this.linkedinLink = this.currentUniversity.details.linkedin_url,
-
             this.loading = false;
         },
         getBadgeLogo(imagePath) {

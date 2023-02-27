@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h2 class="my-5 sub-heading-light">All Universities</h2>
+        <h2 class="my-5 sub-heading-blue">All Universities</h2>
         <div v-if = "loading">
             <fulfilling-bouncing-circle-spinner
                 :animation-duration="1000"

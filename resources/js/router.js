@@ -4,8 +4,11 @@ import Subjects from './components/SubjectListComponent.vue'
 import Universities from './components/LocalUniversityComponent.vue'
 import Homepage from './components/HomepageComponent.vue'
 import ALevelPoints from './components/ALevelPointsComponent.vue'
+import UniversityProfile from './components/UniversityProfile.vue'
+import FacultyPrograms from './components/FacultyProgramsComponent.vue'
 import UserAccount from './components/AccountComponent.vue'
-import UniversityProfile from './components/UniversityProfile'
+import Login from './components/LoginComponent.vue'
+import Signup from './components/SignUpComponent.vue'
 
 Vue.use(VueRouter);
 
@@ -28,7 +31,12 @@ const routes = [
     {
         path : '/universities/:id',
         name : 'UniversityProfile',
-        component :  UniversityProfile,
+        component :  UniversityProfile
+    },
+    {
+        path : '/universities/faculty/:id/programs',
+        name : 'FacultyPrograms',
+        component :  FacultyPrograms,
         props:true
     },
     {
@@ -40,8 +48,17 @@ const routes = [
         path : '/account',
         name : 'UserAccount',
         component : UserAccount
-    }
-]
+    },
+    {
+        path : '/login',
+        name : 'Login',
+        component : Login
+    },
+    {
+        path : '/signup',
+        name : 'Signup',
+        component : Signup
+    }];
 
 const router = new VueRouter({
     mode: "history",
