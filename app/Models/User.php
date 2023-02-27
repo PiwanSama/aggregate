@@ -4,11 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User
-{
-    use HasApiTokens, HasFactory, Notifiable;
+class User extends Model{
+
+    protected $table = 'user_account';
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +22,8 @@ class User
         'last_name',
         'gender',
         'date_of_birth',
-        'user_id'
+        'avatar_url',
+        'fk_userlogin_id'
     ];
 
 }

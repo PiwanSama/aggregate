@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use HasApiTokens, HasFactory, Notifiable;
 use App\Models\User;
 
 class UserLogin extends Authenticatable
 {
-    use HasFactory;
+
+    protected $table = 'user_login_data';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
+        'external_id',
         'email_address',
         'password_hash',
         'password_salt',
         'confirmation_token',
+        'token',
         'token_generation_time',
         'email_validation_status',
         'password_recovery_token',
