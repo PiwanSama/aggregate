@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="row my-3" v-if= "selected">
-                        <h2 class="sub-heading-blue">What's were your grades in {{selected.combination}}?</h2>
+                        <h2 class="sub-heading">What's were your grades in {{selected.combination}}?</h2>
                         <form action="#" class="form" @submit.prevent="submitData">
                             <div class="form-group row">
                                 <label for="staticEmail" class="col-sm-4 col-form-label">{{selected.principal_one}} : </label>

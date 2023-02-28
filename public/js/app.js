@@ -6469,7 +6469,7 @@ var render = function render() {
   }), 0)]) : _vm._e()]) : _vm._e()]), _vm._v(" "), _vm.selected ? _c("div", {
     staticClass: "row my-3"
   }, [_c("h2", {
-    staticClass: "sub-heading-blue"
+    staticClass: "sub-heading"
   }, [_vm._v("What's were your grades in " + _vm._s(_vm.selected.combination) + "?")]), _vm._v(" "), _c("form", {
     staticClass: "form",
     attrs: {
@@ -6753,90 +6753,208 @@ var render = function render() {
       _c = _vm._self._c;
 
   return _c("div", {
-    staticClass: "container-fluid"
+    staticClass: "container"
+  }, [_c("h2", {
+    staticClass: "mt-3 sub-heading-blue"
+  }, [_vm._v("My Account - Samalie Piwan")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, [_vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "col-md-8"
   }, [_c("div", {
-    staticClass: "row justify-content-center"
+    staticClass: "tab-content",
+    attrs: {
+      id: "nav-tabContent"
+    }
+  }, [_vm._m(1), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane fade",
+    attrs: {
+      id: "list-courses",
+      role: "tabpanel",
+      "aria-labelledby": "list-courses-list"
+    }
   }, [_c("div", {
-    staticClass: "card shadow p-4 my-5 col-sm-4"
+    staticClass: "card shadow"
   }, [_c("div", {
     staticClass: "card-body"
+  }, [_c("h3", {
+    staticClass: "sub-heading-grey"
+  }, [_vm._v("Saved Courses")]), _vm._v(" "), _c("div", [_c("div", {
+    staticClass: "list-group"
+  }, [_c("div", {
+    staticClass: "list-group-item list-group-item-action flex-column align-items-start"
+  }, [_c("div", {
+    staticClass: "d-flex w-100 justify-content-between"
   }, [_c("h5", {
-    staticClass: "card-title sub-heading m-3 text-center"
-  }, [_vm._v("Log In!")]), _vm._v(" "), _c("p", {
-    staticClass: "text-center text-muted my-2"
-  }, [_vm._v("Not registered yet? Sign up "), _c("router-link", {
+    staticClass: "mb-1"
+  }, [_vm._v("Bachelor of Computer Science")]), _vm._v(" "), _c("span", [_c("font-awesome-icon", {
     attrs: {
-      to: "#"
+      icon: "fa-regular fa-bookmark"
     }
-  }, [_vm._v("here")])], 1), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "text-center form-text text-muted or-text"
-  }, [_vm._v("OR")]), _vm._v(" "), _vm._m(1), _c("br"), _c("br"), _vm._v(" "), _c("p", {
-    staticClass: "text-center text-muted"
-  }, [_c("router-link", {
+  })], 1)]), _vm._v(" "), _c("small", [_vm._v("Mbarara University of Science and Technology")]), _c("br"), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-warning mt-2"
+  }, [_vm._v("3 years")]), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-primary mt-2"
+  }, [_vm._v("Day")]), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-info mt-2"
+  }, [_vm._v("Government Sponsored")])]), _vm._v(" "), _c("div", {
+    staticClass: "list-group-item list-group-item-action flex-column align-items-start"
+  }, [_c("div", {
+    staticClass: "d-flex w-100 justify-content-between"
+  }, [_c("h5", {
+    staticClass: "mb-1"
+  }, [_vm._v("Bachelor of Information Sciences")]), _vm._v(" "), _c("span", [_c("font-awesome-icon", {
     attrs: {
-      to: "#"
+      icon: "fa-regular fa-bookmark"
     }
-  }, [_vm._v("Forgot Password?")])], 1)])])])]);
+  })], 1)]), _vm._v(" "), _c("small", [_vm._v("Makerere University")]), _c("br"), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-warning mt-2"
+  }, [_vm._v("3 years")]), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-primary mt-2"
+  }, [_vm._v("Day")]), _vm._v(" "), _c("span", {
+    staticClass: "badge badge-info mt-2"
+  }, [_vm._v("Government Sponsored")])])])]), _vm._v(" "), _c("br"), _c("br")])])]), _vm._v(" "), _c("div", {
+    staticClass: "tab-pane fade",
+    attrs: {
+      id: "list-settings",
+      role: "tabpanel",
+      "aria-labelledby": "list-settings-list"
+    }
+  }, [_vm._v("4")])])])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", {
-    staticClass: "btn btn-google col my-2",
+  return _c("div", {
+    staticClass: "col-md-4"
+  }, [_c("div", {
+    staticClass: "list-group",
     attrs: {
-      type: "button"
+      id: "list-tab",
+      role: "tablist"
     }
-  }, [_c("span", {
-    staticStyle: {
-      "margin-right": "10px"
-    }
-  }, [_c("img", {
-    staticClass: "google-icon",
+  }, [_c("a", {
+    staticClass: "list-group-item list-group-item-action active",
     attrs: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+      id: "list-grades-list",
+      "data-toggle": "list",
+      href: "#list-grades",
+      role: "tab",
+      "aria-controls": "grades"
     }
-  })]), _vm._v("Continue with Google")]);
+  }, [_vm._v("My Grades")]), _vm._v(" "), _c("a", {
+    staticClass: "list-group-item list-group-item-action",
+    attrs: {
+      id: "list-courses-list",
+      "data-toggle": "list",
+      href: "#list-courses",
+      role: "tab",
+      "aria-controls": "courses"
+    }
+  }, [_vm._v("Saved Courses")]), _vm._v(" "), _c("a", {
+    staticClass: "list-group-item list-group-item-action",
+    attrs: {
+      id: "list-settings-list",
+      "data-toggle": "list",
+      href: "#list-settings",
+      role: "tab",
+      "aria-controls": "settings"
+    }
+  }, [_vm._v("Account Settings")])])]);
 }, function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("form", [_c("div", {
-    staticClass: "form-group"
-  }, [_c("label", {
-    staticClass: "title-sm-bold my-2",
+  return _c("div", {
+    staticClass: "tab-pane fade show active",
     attrs: {
-      "for": "inputEmail"
+      id: "list-grades",
+      role: "tabpanel",
+      "aria-labelledby": "list-grades-list"
     }
-  }, [_vm._v("Email address")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
+  }, [_c("div", {
+    staticClass: "card shadow"
+  }, [_c("div", {
+    staticClass: "card-body"
+  }, [_c("h3", {
+    staticClass: "sub-heading-grey"
+  }, [_vm._v("My Grades - BCM/IT")]), _vm._v(" "), _c("div", [_c("form", [_c("div", {
+    staticClass: "form-group row mt-2"
+  }, [_c("label", {
+    staticClass: "col-sm-4 col-form-label",
     attrs: {
-      type: "email",
-      id: "inputEmail",
-      "aria-describedby": "emailHelp",
-      placeholder: "Enter email"
+      "for": "principalOne"
+    }
+  }, [_vm._v("Mathematics : ")]), _vm._v(" "), _c("input", {
+    staticClass: "col-sm-6 form-control-sm",
+    attrs: {
+      type: "text",
+      id: "principalOne",
+      value: "A",
+      readonly: ""
     }
   })]), _vm._v(" "), _c("div", {
-    staticClass: "form-group"
+    staticClass: "form-group row mt-2"
   }, [_c("label", {
-    staticClass: "title-sm-bold my-2",
+    staticClass: "col-sm-4 col-form-label",
     attrs: {
-      "for": "inputPassword"
+      "for": "principalTwo"
     }
-  }, [_vm._v("Password")]), _vm._v(" "), _c("input", {
-    staticClass: "form-control",
+  }, [_vm._v("Economics : ")]), _vm._v(" "), _c("input", {
+    staticClass: "col-sm-6 form-control-sm",
     attrs: {
-      type: "password",
-      id: "inputPassword",
-      placeholder: "Password"
+      type: "text",
+      id: "principalTwo",
+      value: "A",
+      readonly: ""
     }
-  })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary-custom col-12 mt-4",
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group row mt-2"
+  }, [_c("label", {
+    staticClass: "col-sm-4 col-form-label",
     attrs: {
-      type: "submit"
+      "for": "principalThree"
     }
-  }, [_vm._v("Login")])])]);
+  }, [_vm._v("Geography : ")]), _vm._v(" "), _c("input", {
+    staticClass: "col-sm-6 form-control-sm",
+    attrs: {
+      type: "text",
+      id: "principalThree",
+      value: "C",
+      readonly: ""
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group row mt-2"
+  }, [_c("label", {
+    staticClass: "col-sm-4 col-form-label",
+    attrs: {
+      "for": "subsidiary"
+    }
+  }, [_vm._v("Mathematics : ")]), _vm._v(" "), _c("input", {
+    staticClass: "col-sm-6 form-control-sm",
+    attrs: {
+      type: "text",
+      id: "subsidiary",
+      value: "1",
+      readonly: ""
+    }
+  })]), _vm._v(" "), _c("div", {
+    staticClass: "form-group row mt-2"
+  }, [_c("label", {
+    staticClass: "col-sm-4 col-form-label",
+    attrs: {
+      "for": "generalPaper"
+    }
+  }, [_vm._v("Mathematics : ")]), _vm._v(" "), _c("input", {
+    staticClass: "col-sm-6 form-control-sm",
+    attrs: {
+      type: "text",
+      id: "generalPaper",
+      value: "1",
+      readonly: ""
+    }
+  })])])]), _c("br"), _c("br")])])]);
 }];
 render._withStripped = true;
 
@@ -7272,7 +7390,7 @@ var staticRenderFns = [function () {
     staticClass: "form-control",
     attrs: {
       type: "password",
-      id: "inputPassword",
+      id: "inputPasswordConfirmation",
       autocomplete: "off",
       placeholder: "Confirm Password"
     }
@@ -7363,21 +7481,27 @@ var render = function render() {
   }, [_c("router-link", {
     staticClass: "nav-item nav-link",
     attrs: {
-      to: "/a-level-points"
+      to: {
+        name: "ALevelPoints"
+      }
     }
   }, [_vm._v("My Grades")])], 1), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("router-link", {
     staticClass: "nav-item nav-link",
     attrs: {
-      to: "/universities"
+      to: {
+        name: "Universities"
+      }
     }
-  }, [_vm._v("Explore Universities")])], 1), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("li", {
+  }, [_vm._v("Explore Universities")])], 1), _vm._v(" "), _c("li", {
     staticClass: "nav-item"
   }, [_c("router-link", {
     staticClass: "nav-item nav-link",
     attrs: {
-      to: "/login"
+      to: {
+        name: "Login"
+      }
     }
   }, [_vm._v("My Account")])], 1)])])], 1)]);
 };
@@ -7399,18 +7523,6 @@ var staticRenderFns = [function () {
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
   })]);
-}, function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("li", {
-    staticClass: "nav-item"
-  }, [_c("a", {
-    staticClass: "nav-item nav-link",
-    attrs: {
-      href: "#"
-    }
-  }, [_vm._v("Scholarships")])]);
 }];
 render._withStripped = true;
 
@@ -7947,19 +8059,19 @@ var routes = [{
   component: _components_FacultyProgramsComponent_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
   props: true
 }, {
-  path: '/a-level-points',
+  path: '/grades',
   name: 'ALevelPoints',
   component: _components_ALevelPointsComponent_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
-  path: '/account',
+  path: '/account/profile',
   name: 'UserAccount',
   component: _components_AccountComponent_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
 }, {
-  path: '/login',
+  path: '/account/login',
   name: 'Login',
   component: _components_LoginComponent_vue__WEBPACK_IMPORTED_MODULE_7__["default"]
 }, {
-  path: '/signup',
+  path: '/account/signup',
   name: 'Signup',
   component: _components_SignUpComponent_vue__WEBPACK_IMPORTED_MODULE_8__["default"]
 }];

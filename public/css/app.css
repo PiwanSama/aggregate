@@ -162,10 +162,10 @@ body{
     padding: 20px !important;
 }
 
-input[type=text] {
+/*input[type=text] {
     font-size : 16px;
     color : #247BA0;
-}
+}*/
 
 .input-group-append{
     background: transparent;
@@ -370,6 +370,25 @@ textarea{
 
 .btn-info{
     color: #fff !important;
+}
+
+.list-group-item.active {
+    color: #fff !important;
+    background-color: #247BA0 !important;
+    border : 1px solid #d2d2d2 !important;
+}
+
+.list-group-item.active.body-list-item {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.list-group{
+    border-radius: 0.2rem !important;
+}
+
+.form-control-sm {
+    border : 1px solid #d2d2d2 !important;
 }
 @charset "UTF-8"; /*!
  * Bootstrap  v5.2.2 (https://getbootstrap.com/)

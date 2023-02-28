@@ -19,7 +19,7 @@
                         </div>
                         <div class="form-group">
                             <label for="inputPassword" class="title-sm-bold my-2">Confirm Password</label>
-                            <input type="password" class="form-control" id="inputPassword" autocomplete="off" placeholder="Confirm Password">
+                            <input type="password" class="form-control" id="inputPasswordConfirmation" autocomplete="off" placeholder="Confirm Password">
                         </div>
                         <button type="submit" class="btn btn-primary-custom col-12 mt-4">Create Account</button>
                         </form>

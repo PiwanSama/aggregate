@@ -40,22 +40,22 @@ const routes = [
         props:true
     },
     {
-        path : '/a-level-points',
+        path : '/grades',
         name : 'ALevelPoints',
         component :  ALevelPoints
     },
     {
-        path : '/account',
+        path : '/account/profile',
         name : 'UserAccount',
         component : UserAccount
     },
     {
-        path : '/login',
+        path : '/account/login',
         name : 'Login',
         component : Login
     },
     {
-        path : '/signup',
+        path : '/account/signup',
         name : 'Signup',
         component : Signup
     }];
