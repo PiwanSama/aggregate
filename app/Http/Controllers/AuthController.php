@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 use App\Models\UserLogin;
 use App\Models\User;
 
@@ -16,12 +17,14 @@ class AuthController extends Controller{
 
         if(UserLogin::where('email_address', $googleUser->email)->exists()){
             //Login user
-            $loginUser = UserLogin::where('email_address', $googleUser->email)->get();
-            dd($loginUser);
+            $loginUser = UserLogin::where('email_address', $googleUser->email)->first();
             $loginUser->external_provider_token = $googleUser->token;
+            $loginUser->last_login_time = now();
             $loginUser->save();
-            //Login user
-
+            
+            Auth::login($loginUser);
+            
+            //Redirect user to homepage
         }else{
             //Create new user
             $createUser = new UserLogin; 
@@ -40,7 +43,10 @@ class AuthController extends Controller{
                 $createUserProfile->avatar_url = $googleUser->user['picture'];
                 $createUserProfile->fk_userlogin_id = $createUser->id;
                 $createUserProfile->save();
-                //Login user
+                
+                Auth::login($createUserProfile);
+            
+                //Redirect user to homepage
                 
             }
             

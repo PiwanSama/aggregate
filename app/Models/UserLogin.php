@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use HasApiTokens, HasFactory, Notifiable;
 use App\Models\User;
 
@@ -25,7 +26,8 @@ class UserLogin extends Authenticatable
         'password_recovery_token',
         'token_recovery_time',
         'external_provider',
-        'external_provider_token'
+        'external_provider_token',
+        'last_login_time'
     ];
 
     /**
