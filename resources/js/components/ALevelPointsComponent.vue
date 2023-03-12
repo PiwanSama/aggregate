@@ -42,6 +42,12 @@
                             </div>
                         </div>
                     </div>
+                    <div v-if = "combinationsLoadedError"> 
+                        <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-heading">Sorry, something went wrong!</h4>
+                                <p class="mb-0">We had trouble loading this information. Please try again later</p><br>
+                        </div>
+                        </div>
                     <div class="row my-3" v-if= "selected">
                         <h2 class="sub-heading">What's were your grades in {{selected.combination}}?</h2>
                         <form action="#" class="form" @submit.prevent="submitData">
@@ -148,6 +154,7 @@
 <script>
 
 import { HalfCircleSpinner, FulfillingBouncingCircleSpinner } from 'epic-spinners'
+import axios from 'axios'
 
 export default {
     name : "ALevelPointsComponent",
@@ -162,6 +169,7 @@ export default {
             selected: null,
             loading : true,
             loaded : false,
+            combinationsLoadedError : false,
             isArts : true,
             isSciences : false,
             pointsCalculated : false,
@@ -181,13 +189,22 @@ export default {
     },
     methods : {
         loadCombinations(){
-            fetch('/v1/combinations')
-            .then(res => res.json())
+            axios.get('/v1/combinations')
             .then(res => {
-                this.combinations = res;
-                this.loaded = true;
-                this.loading = false;
-            });
+                const isDataAvailable = response.data && response.data.length;
+                if(isDataAvailable){
+                    this.combinations = res.data;
+                    this.loaded = true;
+                }else{
+                    const emptyDataError = new Error('Invalid data');
+                    emptyDataError.statusCode = 500;
+                    throw emptyDataError;
+                }
+            })
+            .catch(error => {
+                this.combinationsLoadedError = true;
+            })
+            .finally(() => this.loading = false);
         },
         showArts(){
             this.isSciences = false;
@@ -201,8 +218,7 @@ export default {
         },
         submitData(){
             this.showSpinner = true;
-            fetch('/v1/getPointsAdvanced', {
-            method: 'post',
+            axios.post('/v1/getPointsAdvanced', {
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
