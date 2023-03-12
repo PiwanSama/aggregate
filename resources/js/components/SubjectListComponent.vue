@@ -15,6 +15,8 @@
 
 <script>
 
+import {axios} from 'axios'
+
 export default{
     name : "subject-list",
     data : function() {
@@ -27,10 +29,9 @@ export default{
     },
     methods : {
         loadSubjects(){
-            fetch('v1/subjects')
-            .then(res => res.json())
+            axios.get('v1/subjects')
             .then(res => {
-                this.subjects = res;
+                this.subjects = res.data;
             });
         }
     }

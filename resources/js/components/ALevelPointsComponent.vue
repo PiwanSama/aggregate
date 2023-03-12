@@ -135,7 +135,7 @@
                         <p class="mb-0">Create an account to find the best university courses for your combination and marks!</p><br>
                 </div>
                 <div v-if = "resultsLoadedError"> 
-                <div class="alert alert-error" role="alert">
+                <div class="alert alert-danger" role="alert">
                         <h4 class="alert-heading">Sorry, something went wrong!</h4>
                         <p class="mb-0">We had trouble loading this information. Please try again later</p><br>
                 </div>
@@ -191,7 +191,7 @@ export default {
         loadCombinations(){
             axios.get('/v1/combinations')
             .then(res => {
-                const isDataAvailable = response.data && response.data.length;
+                const isDataAvailable = res.data && res.data.length;
                 if(isDataAvailable){
                     this.combinations = res.data;
                     this.loaded = true;
@@ -202,6 +202,7 @@ export default {
                 }
             })
             .catch(error => {
+                console.log(error);
                 this.combinationsLoadedError = true;
             })
             .finally(() => this.loading = false);
@@ -219,25 +220,21 @@ export default {
         submitData(){
             this.showSpinner = true;
             axios.post('/v1/getPointsAdvanced', {
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-            },
-            body: "principal_one="+this.principal_one+
-                  "&principal_two="+this.principal_two+
-                  "&principal_three="+this.principal_three+
-                  "&subsidiary="+this.subsidiary+
-                  "&general_paper="+this.general_paper
+                principal_one : this.principal_one,
+                principal_two:this.principal_two,
+                principal_three:this.principal_three,
+                subsidiary:this.subsidiary,
+                general_paper:this.general_paper
             })
-            .then(res => res.json())
             .then(res => {
-                this.points = res.points;
+                this.points = res.data.points;
                 this.pointsCalculated = true;
                 this.resultsLoaded = true;
                 localStorage.selected = JSON.stringify(this.selected);
-                localStorage.points = res.points;
+                localStorage.points = res.data.points;
             })
             .catch(function (error) {
-                //this.resultsLoadedError = true;
+                this.resultsLoadedError = true;
                 console.log('Request failed', error);
             })
             .finally(() => this.showSpinner = false);
@@ -266,21 +263,6 @@ export default {
         },
         subsidiary(principal_sub_val) {
             localStorage.principal_sub = principal_sub_val;
-        },
-        principal_one_subject(principal_one_subject) {
-            localStorage.principal_one_subject = principal_one_subject;
-        },
-        principal_two_subject(principal_two_subject) {
-            localStorage.principal_two_subject = principal_two_subject;
-        },
-        principal_three_subject(principal_three_subject) {
-            localStorage.principal_three_subject = principal_three_subject;
-        },
-        subsidiary_subject(subsidiary_subject) {
-            localStorage.subsidiary_subject = subsidiary_subject;
-        },
-        general_paper_subject(general_paper_subject) {
-            localStorage.general_paper_subject = general_paper_subject;
         }
   }
   }

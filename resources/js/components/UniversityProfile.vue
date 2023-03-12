@@ -189,7 +189,13 @@
                         </div>
                     </div>
                 </section>
+        </div>
+        <div v-if = "dataLoadedError"> 
+            <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Sorry, something went wrong!</h4>
+                    <p class="mb-0">We had trouble loading this information. Please try again later</p><br>
             </div>
+        </div>
     </div>
     </div>
 </template>
@@ -210,6 +216,7 @@
 
 import { FulfillingBouncingCircleSpinner } from 'epic-spinners';
 import img_map from '../../../public/images/map.png';
+import axios from 'axios'
 
 export default{
     name : "university-profile",
@@ -225,6 +232,7 @@ export default{
             programsArray : [],
             loading : true,
             loaded : false,
+            dataLoadedError : false,
             imgMap : img_map
         }
     },
@@ -233,20 +241,34 @@ export default{
     },
     methods : {
         loadUniversityProfile(id){
-            fetch('/v1/universities/'+id)
-            .then(res => res.json())
+            axios.get('/v1/universities/'+id)
             .then(res => {
-                this.currentUniversity = res[0];
-                this.loadPageData();
+                const isNoDataAvailable = res.data[0].details === null;
+                if(isNoDataAvailable){
+                    const emptyDataError = new Error('Invalid data');
+                    emptyDataError.statusCode = 500;
+                    throw emptyDataError;
+                }else{
+                    this.currentUniversity = res.data[0];
+                    this.loadPageData();
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                this.dataLoadedError = true;
+            })
+            .finally(() => {
+                this.loading = false;
+                this.dataLoadedError = true
             });
         },
         loadPageData(){
-            this.loaded = true;
             this.facultiesArray = this.currentUniversity.faculties;
             this.scholarshipsArray = this.currentUniversity.scholarships;
             this.servicesArray = this.currentUniversity.services;
             this.programsArray = this.currentUniversity.programs;
             this.loading = false;
+            this.loaded = true;
         },
         getBadgeLogo(imagePath) {
             return '/images/badges/'+imagePath;

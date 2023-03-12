@@ -22,6 +22,12 @@ use App\Http\Controllers\MailController;
 Route::apiResource('subjects', SubjectController::class)->only('index', 'show');
 Route::apiResource('combinations', CombinationController::class)->only('index', 'show');
 Route::apiResource('field', CombinationController::class)->only('index', 'show');
+
+Route::get('/auth/google/signin', [AuthController::class, 'initiateGoogleLogin']);
+Route::get('/auth/google/callback', [AuthController::class, 'googleLoginCallback']);
+Route::get('/callback-url', [AuthController::class, 'googleLoginCallback']);
+Route::post('/register', [AuthController::class, 'registerUser']);
+
 Route::get('/universities', [UniversityController::class, 'listAll']);
 Route::get('/universities/{id}', [UniversityController::class, 'getUniversityProfile']);
 Route::get('/universities/faculty/{id}/programs', [FacultyController::class, 'getFacultyPrograms']);

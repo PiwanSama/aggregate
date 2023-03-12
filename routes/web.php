@@ -25,8 +25,3 @@ Route::get('/', function () {
 Route::fallback(function () {
     return view('app');
 });
-
-
-Route::get('/auth/google/signin', [AuthController::class, 'initiateGoogleLogin']);
-Route::get('/auth/google/callback', [AuthController::class, 'googleLoginCallback']);
-Route::get('/callback-url', [AuthController::class, 'googleLoginCallback']);

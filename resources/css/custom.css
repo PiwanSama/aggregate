@@ -239,13 +239,11 @@ input[type=radio] {
     height: 15px;
 }
 
-.alert{
+.alert-success {
+    color: #fff !important;
     background-color: #00C79D !important;
 }
 
-.alert-success {
-    color: #fff !important;
-}
 .form-check-input:checked {
     background-color:#247BA0 !important;
     border-color: #247BA0 !important;

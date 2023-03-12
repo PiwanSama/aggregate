@@ -36,7 +36,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div v-if = "dataLoadedError"> 
+        <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Sorry, something went wrong!</h4>
+                <p class="mb-0">We had trouble loading this information. Please try again later</p><br>
         </div>
+    </div>
     </div>
 </template>
 
@@ -53,6 +59,7 @@ export default {
         return{
             universities : [],
             searchQuery : "",
+            dataLoadedError : false,
             loading : true,
             loaded: false
         };
@@ -62,13 +69,23 @@ export default {
     },
     methods : {
         loadUniversities(){
-            fetch('/v1/universities')
-            .then(res => res.json())
+            axios.get('/v1/universities')
             .then(res => {
-                this.universities = res;
-                this.loading = false;
-                this.loaded = true;
-            });
+                const isDataAvailable = res.data && res.data.length;
+                if(isDataAvailable){
+                    this.universities = res.data;
+                    this.loaded = true;
+                }else{
+                    const emptyDataError = new Error('Invalid data');
+                    emptyDataError.statusCode = 500;
+                    throw emptyDataError;
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                this.dataLoadedError = true;
+            })
+            .finally(() => this.loading = false);
         }
     },
     computed : {
