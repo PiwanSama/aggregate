@@ -11,7 +11,6 @@ class UserLogin extends Authenticatable
 {
 
     protected $table = 'user_login_data';
-    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -27,7 +26,9 @@ class UserLogin extends Authenticatable
         'token_recovery_time',
         'external_provider',
         'external_provider_token',
-        'last_login_time'
+        'last_login_time',
+        'created_at',
+        'updated_at'
     ];
 
     /**

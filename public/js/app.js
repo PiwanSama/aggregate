@@ -5976,7 +5976,8 @@ __webpack_require__.r(__webpack_exports__);
       isArts: true,
       isSciences: false,
       pointsCalculated: false,
-      submitted: false,
+      resultsLoaded: false,
+      resultsLoadedError: false,
       showSpinner: false,
       principal_one: '',
       principal_two: '',
@@ -6014,7 +6015,6 @@ __webpack_require__.r(__webpack_exports__);
     submitData: function submitData() {
       var _this2 = this;
 
-      this.submitted = true;
       this.showSpinner = true;
       fetch('/v1/getPointsAdvanced', {
         method: 'post',
@@ -6027,9 +6027,14 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         _this2.points = res.points;
         _this2.pointsCalculated = true;
-        _this2.showSpinner = false;
+        _this2.resultsLoaded = true;
+        localStorage.selected = JSON.stringify(_this2.selected);
+        localStorage.points = res.points;
       })["catch"](function (error) {
+        //this.resultsLoadedError = true;
         console.log('Request failed', error);
+      })["finally"](function () {
+        return _this2.showSpinner = false;
       });
     }
   },
@@ -6043,6 +6048,38 @@ __webpack_require__.r(__webpack_exports__);
       return this.combinations.filter(function (combination) {
         return combination.category.indexOf('Sciences');
       });
+    }
+  },
+  watch: {
+    principal_one: function principal_one(principal_one_val) {
+      localStorage.principal_one = principal_one_val;
+    },
+    principal_two: function principal_two(principal_two_val) {
+      localStorage.principal_two = principal_two_val;
+    },
+    principal_three: function principal_three(principal_three_val) {
+      localStorage.principal_three = principal_three_val;
+    },
+    general_paper: function general_paper(principal_gp_val) {
+      localStorage.gp = principal_gp_val;
+    },
+    subsidiary: function subsidiary(principal_sub_val) {
+      localStorage.principal_sub = principal_sub_val;
+    },
+    principal_one_subject: function principal_one_subject(_principal_one_subject) {
+      localStorage.principal_one_subject = _principal_one_subject;
+    },
+    principal_two_subject: function principal_two_subject(_principal_two_subject) {
+      localStorage.principal_two_subject = _principal_two_subject;
+    },
+    principal_three_subject: function principal_three_subject(_principal_three_subject) {
+      localStorage.principal_three_subject = _principal_three_subject;
+    },
+    subsidiary_subject: function subsidiary_subject(_subsidiary_subject) {
+      localStorage.subsidiary_subject = _subsidiary_subject;
+    },
+    general_paper_subject: function general_paper_subject(_general_paper_subject) {
+      localStorage.general_paper_subject = _general_paper_subject;
     }
   }
 });
@@ -6667,13 +6704,13 @@ var render = function render() {
       type: "submit",
       value: "Calculate my grades!"
     }
-  })])]) : _vm._e()]), _vm._v(" "), _vm.submitted ? _c("div", [_vm.showSpinner ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
+  })])]) : _vm._e()]), _vm._v(" "), _vm.showSpinner ? _c("div", [_c("fulfilling-bouncing-circle-spinner", {
     attrs: {
       "animation-duration": 1000,
       size: 60,
       color: "#247BA0"
     }
-  })], 1) : _vm._e(), _vm._v(" "), _c("div", {
+  })], 1) : _vm._e(), _vm._v(" "), _vm.resultsLoaded ? _c("div", [_c("div", {
     staticClass: "alert alert-success",
     attrs: {
       role: "alert"
@@ -6687,9 +6724,13 @@ var render = function render() {
     }
   }, [_vm._v(_vm._s(_vm.points))]), _vm._v(" points!")]), _vm._v(" "), _c("hr"), _vm._v(" "), _c("p", {
     staticClass: "mb-0"
-  }, [_vm._v("Do you want to create an account? You can save your grades and find the best university programs based on your grades!")]), _c("br")]), _vm._v(" "), _c("div", [_vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+  }, [_vm._v("Create an account to find the best university courses for your combination and marks!")]), _c("br")]), _vm._v(" "), _vm.resultsLoadedError ? _c("div", [_vm._m(0)]) : _vm._e(), _vm._v(" "), _c("div", [_c("p", {
     staticClass: "text-center form-text text-muted or-text"
-  }, [_vm._v("OR")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("OR")]), _vm._v(" "), _c("router-link", {
+    attrs: {
+      to: "/register"
+    }
+  }, [_c("button", {
     staticClass: "btn btn-primary-custom col-12",
     attrs: {
       type: "button"
@@ -6702,34 +6743,29 @@ var render = function render() {
     attrs: {
       icon: "fa-solid fa-pen-to-square"
     }
-  })], 1)]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+  })], 1)])]), _c("br"), _c("br"), _vm._v(" "), _c("p", {
     staticClass: "text-center text-muted"
   }, [_vm._v("Already registered? Login "), _c("router-link", {
     attrs: {
-      to: "/account"
+      to: "/login"
     }
-  }, [_vm._v("here")])], 1)])]) : _vm._e()])])]);
+  }, [_vm._v("here")])], 1)], 1)]) : _vm._e()])])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", {
-    staticClass: "btn btn-google col my-2",
+  return _c("div", {
+    staticClass: "alert alert-error",
     attrs: {
-      type: "button"
+      role: "alert"
     }
-  }, [_c("span", {
-    staticStyle: {
-      "margin-right": "10px"
-    }
-  }, [_c("img", {
-    staticClass: "google-icon",
-    attrs: {
-      src: "https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-    }
-  })]), _vm._v("Continue with Google")]);
+  }, [_c("h4", {
+    staticClass: "alert-heading"
+  }, [_vm._v("Sorry, something went wrong!")]), _vm._v(" "), _c("p", {
+    staticClass: "mb-0"
+  }, [_vm._v("We had trouble loading this information. Please try again later")]), _c("br")]);
 }];
 render._withStripped = true;
 
@@ -7954,7 +7990,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareFacebook, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareTwitter, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareInstagram, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faLinkedin, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleInfo, _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faBookmark);
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareFacebook, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareTwitter, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareInstagram, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faLinkedin, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleInfo, _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faBookmark, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPenToSquare);
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
 Vue.component('navbar', (__webpack_require__(/*! ./components/TheNavigationComponent.vue */ "./resources/js/components/TheNavigationComponent.vue")["default"]));
@@ -7986,6 +8022,7 @@ try {
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios.defaults.withCredentials = true;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

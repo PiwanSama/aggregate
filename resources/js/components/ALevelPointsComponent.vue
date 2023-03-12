@@ -114,7 +114,6 @@
                         </form>
                 </div>
                 </div>
-                <div v-if = "submitted"> 
                 <div v-if = "showSpinner">
                     <fulfilling-bouncing-circle-spinner
                         :animation-duration="1000"
@@ -122,17 +121,23 @@
                         :color="'#247BA0'"
                     />
                 </div>
+                <div v-if = "resultsLoaded"> 
                 <div class="alert alert-success" role="alert">
                         <h4 class="alert-heading">Well done!</h4>
                         <p>Aww yeah, you scored <span style="color:fff; font-weight: 700;">{{points}}</span> points!</p>
                         <hr>
-                        <p class="mb-0">Do you want to create an account? You can save your grades and find the best university programs based on your grades!</p><br>
+                        <p class="mb-0">Create an account to find the best university courses for your combination and marks!</p><br>
+                </div>
+                <div v-if = "resultsLoadedError"> 
+                <div class="alert alert-error" role="alert">
+                        <h4 class="alert-heading">Sorry, something went wrong!</h4>
+                        <p class="mb-0">We had trouble loading this information. Please try again later</p><br>
+                </div>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-google col my-2"><span style="margin-right: 10px;"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span>Continue with Google</button><br><br>
                     <p class="text-center form-text text-muted or-text">OR</p>
-                    <button type="button" class="btn btn-primary-custom col-12">Register an Account<span style="margin-left: 10px;"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></span></button><br><br>
-                    <p class="text-center text-muted">Already registered? Login <router-link to = "/account">here</router-link></p>
+                    <router-link to = "/register"><button type="button" class="btn btn-primary-custom col-12">Register an Account<span style="margin-left: 10px;"><font-awesome-icon icon="fa-solid fa-pen-to-square" /></span></button></router-link><br><br>
+                    <p class="text-center text-muted">Already registered? Login <router-link to = "/login">here</router-link></p>
                 </div>
             </div>
             </div>
@@ -160,7 +165,8 @@ export default {
             isArts : true,
             isSciences : false,
             pointsCalculated : false,
-            submitted : false,
+            resultsLoaded : false,
+            resultsLoadedError : false,
             showSpinner : false,
             principal_one : '',
             principal_two : '',
@@ -194,7 +200,6 @@ export default {
             if(this.selected != null) this.selected = null;
         },
         submitData(){
-            this.submitted = true;
             this.showSpinner = true;
             fetch('/v1/getPointsAdvanced', {
             method: 'post',
@@ -211,11 +216,15 @@ export default {
             .then(res => {
                 this.points = res.points;
                 this.pointsCalculated = true;
-                this.showSpinner = false;
+                this.resultsLoaded = true;
+                localStorage.selected = JSON.stringify(this.selected);
+                localStorage.points = res.points;
             })
             .catch(function (error) {
-            console.log('Request failed', error);
-            });
+                //this.resultsLoadedError = true;
+                console.log('Request failed', error);
+            })
+            .finally(() => this.showSpinner = false);
         }
     },
     computed : {
@@ -225,7 +234,39 @@ export default {
         scienceCombinations(){
             return this.combinations.filter(combination => combination.category.indexOf('Sciences'));
         }
-    }
+    },
+    watch: {
+        principal_one(principal_one_val) {
+            localStorage.principal_one = principal_one_val;
+        },
+        principal_two(principal_two_val) {
+            localStorage.principal_two = principal_two_val;
+        },
+        principal_three(principal_three_val) {
+            localStorage.principal_three = principal_three_val;
+        },
+        general_paper(principal_gp_val) {
+            localStorage.gp = principal_gp_val;
+        },
+        subsidiary(principal_sub_val) {
+            localStorage.principal_sub = principal_sub_val;
+        },
+        principal_one_subject(principal_one_subject) {
+            localStorage.principal_one_subject = principal_one_subject;
+        },
+        principal_two_subject(principal_two_subject) {
+            localStorage.principal_two_subject = principal_two_subject;
+        },
+        principal_three_subject(principal_three_subject) {
+            localStorage.principal_three_subject = principal_three_subject;
+        },
+        subsidiary_subject(subsidiary_subject) {
+            localStorage.subsidiary_subject = subsidiary_subject;
+        },
+        general_paper_subject(general_paper_subject) {
+            localStorage.general_paper_subject = general_paper_subject;
+        }
+  }
   }
 </script>
 

@@ -13,6 +13,8 @@ class AuthController extends Controller{
     }
 
     public function googleLoginCallback(){
+        date_default_timezone_set('Africa/Kampala');
+
         $googleUser = Socialite::driver('google')->stateless()->user();
 
         if(UserLogin::where('email_address', $googleUser->email)->exists()){
@@ -20,6 +22,7 @@ class AuthController extends Controller{
             $loginUser = UserLogin::where('email_address', $googleUser->email)->first();
             $loginUser->external_provider_token = $googleUser->token;
             $loginUser->last_login_time = now();
+            $loginUser->updated_at = now();
             $loginUser->save();
             
             Auth::login($loginUser);
@@ -32,7 +35,9 @@ class AuthController extends Controller{
             $createUser->external_id = $googleUser->id;
             $createUser->external_provider = 'Google';
             $createUser->external_provider_token = $googleUser->token;
-
+            $createUser->created_at = now();
+            $createUser->updated_at = now();
+            $createUser->last_login_time = now();
             $userCreated = $createUser->save();
 
             if($userCreated){
