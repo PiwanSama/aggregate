@@ -17,7 +17,6 @@ class UserLogin extends Authenticatable
         'external_id',
         'email_address',
         'password_hash',
-        'password_salt',
         'confirmation_token',
         'token',
         'token_generation_time',
