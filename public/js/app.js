@@ -6289,7 +6289,9 @@ __webpack_require__.r(__webpack_exports__);
       },
       loading: true,
       loaded: false,
-      showSpinner: false
+      showSpinner: false,
+      formErrorsExist: false,
+      formErrors: []
     };
   },
   methods: {
@@ -6298,17 +6300,11 @@ __webpack_require__.r(__webpack_exports__);
 
       this.showSpinner = true;
       axios__WEBPACK_IMPORTED_MODULE_1___default().post('/v1/register', this.form).then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        _this.points = res.points;
-        _this.pointsCalculated = true;
-        _this.resultsLoaded = true;
-        localStorage.selected = JSON.stringify(_this.selected);
-        localStorage.points = res.points;
-      })["catch"](function (error) {
-        //this.resultsLoadedError = true;
-        console.log('Request failed', error);
-      })["finally"](function () {
+        if (res.data.status === "Failed") {
+          _this.formErrors = res.data.errors;
+          _this.formErrorsExist = true;
+        }
+      })["catch"](function (error) {})["finally"](function () {
         return _this.showSpinner = false;
       });
     }
@@ -7503,7 +7499,16 @@ var render = function render() {
     staticClass: "card-title sub-heading m-3 text-center"
   }, [_vm._v("Sign up to Aggregate")]), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
     staticClass: "text-center form-text text-muted or-text"
-  }, [_vm._v("OR")]), _vm._v(" "), _c("div", [_c("form", {
+  }, [_vm._v("OR")]), _vm._v(" "), _c("div", [_vm.formErrorsExist ? _c("div", {
+    staticClass: "alert alert-danger",
+    attrs: {
+      role: "alert"
+    }
+  }, _vm._l(_vm.formErrors, function (error) {
+    return _c("div", [_c("small", {
+      staticClass: "alert-heading"
+    }, [_vm._v(_vm._s(error[0]))])]);
+  }), 0) : _vm._e(), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();

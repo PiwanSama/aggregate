@@ -1,18 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\RegisterRequest;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserLogin;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller{
 
     public function initiateGoogleLogin(){
         return Socialite::driver('google')->redirect();
     }
-
+    
+    //Update function to cater for email, password logins
     public function googleLoginCallback(){
         date_default_timezone_set('Africa/Kampala');
 
@@ -60,7 +64,19 @@ class AuthController extends Controller{
     }
 
     function registerUser(Request $request){
-       
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|email:rfc,dns|unique:user_login_data,email_address',
+            'password' => 'required|min:8'
+        ]);
+        if($validator->fails()){
+            return response()->json([
+                'status'=>"Failed",
+                'message'=>"Invalid Data",
+                'errors'=> $validator->errors()
+            ]);
+        }
     }
 }
 

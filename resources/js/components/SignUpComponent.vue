@@ -8,6 +8,11 @@
                 <button type="button" class="btn btn-google col my-2"><span style="margin-right: 10px;"><img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/></span>Continue with Google</button><br><br>
                 <p class="text-center form-text text-muted or-text">OR</p>
                 <div>
+                    <div class="alert alert-danger" role="alert" v-if="formErrorsExist">
+                        <div v-for="error in formErrors">
+                            <small class="alert-heading">{{error[0]}}</small>
+                        </div>
+                    </div>
                     <form @submit.prevent="registerUser">
                         <div class="form-group">
                             <label for="inputName" class="title-sm-bold my-2">First Name</label>
@@ -67,24 +72,22 @@ export default {
             loading : true,
             loaded : false,
             showSpinner : false,
-            
+            formErrorsExist : false,
+            formErrors : []
         }
     },
     methods : {    
         registerUser(){
             this.showSpinner = true;
             axios.post('/v1/register', this.form)
-            .then(res => res.json())
             .then(res => {
-                this.points = res.points;
-                this.pointsCalculated = true;
-                this.resultsLoaded = true;
-                localStorage.selected = JSON.stringify(this.selected);
-                localStorage.points = res.points;
+                if(res.data.status === "Failed"){
+                    this.formErrors = res.data.errors;
+                    this.formErrorsExist = true;
+                }
             })
             .catch(function (error) {
-                //this.resultsLoadedError = true;
-                console.log('Request failed', error);
+                
             })
             .finally(() => this.showSpinner = false);
         }
