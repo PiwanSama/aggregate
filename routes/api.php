@@ -26,8 +26,6 @@ Route::apiResource('field', CombinationController::class)->only('index', 'show')
 Route::get('/auth/google/signin', [AuthController::class, 'initiateGoogleLogin']);
 Route::get('/auth/google/callback', [AuthController::class, 'googleLoginCallback']);
 Route::get('/callback-url', [AuthController::class, 'googleLoginCallback']);
-Route::post('/register', [AuthController::class, 'registerUser']);
-
 Route::get('/universities', [UniversityController::class, 'listAll']);
 Route::get('/universities/{id}', [UniversityController::class, 'getUniversityProfile']);
 Route::get('/universities/faculty/{id}/programs', [FacultyController::class, 'getFacultyPrograms']);
@@ -35,3 +33,12 @@ Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePoint
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
 Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
+
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+    Route::post('/register', [AuthController::class, 'registerUser']);
+    Route::post('/login', [AuthController::class, 'loginUser']);
+});
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logoutUser']);
+});

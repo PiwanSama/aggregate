@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Laravel\Socialite\Facades\Socialite;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\UserLogin;
 use App\Models\User;
@@ -98,23 +97,35 @@ class AuthController extends Controller{
                 $createUserProfile->fk_userlogin_id = $createUser->id;
                 $createUserProfile->save();
                 //Redirect user to homepage
-                
+                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+                $response = ['token' => $token];
+                return response($response, 200);
             }
         }
     }
 
     function loginUser(Request $request){
-        if (Auth::attempt($request)) {
-            return response()->json([
-                'status'=>"Success",
-                'message'=>"User logged in"
-            ]);
+        $user = UserLogin::where('email_address', $request->email)->first();
+        if($user){
+            if (Hash::check($request->password, $user->password)) {
+                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+                $response = ['token' => $token];
+                return response($response, 200);
+            } else {
+                $response = ['status'=>"Failed","message" => "Password mismatch"];
+                return response($response, 422);
+            }
+        }else{
+            $response = ['status'=>"Failed",'message'=>"User not found"];
+            return response($response, 200);
         }
- 
-        return response()->json([
-            'status'=>"Failed",
-            'message'=>"Invalid username or password provided"
-        ]);
+    }
+
+    function logoutUser(Request $request){
+        $token = $request->user()->token();
+        $token->revoke();
+        $response = ['status'=>"Failed",'message' => 'You have been successfully logged out!'];
+        return response($response, 200);
     }
 }
 
