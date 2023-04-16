@@ -6298,20 +6298,17 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.showSpinner = true;
-      /*axios.get('/sanctum/csrf-cookie').then(response => {
-      axios.post('/v1/login', this.form)
-      .then(res => {
-          if(res.data.status === "Failed"){
-              this.formErrors = res.data.errors;
-              this.formErrorsExist = true;
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('/sanctum/csrf-cookie').then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default().post('/v1/login', _this.form).then(function (res) {
+          if (res.data.status === "Failed") {
+            _this.formErrors = res.data.errors;
+            _this.errorMessage = res.data.message;
+            _this.formErrorsExist = true;
           }
-      })
-      .catch(function (error) {
-          
-      })
-      .finally(() => this.showSpinner = false);
-      });*/
-
+        })["catch"](function (error) {})["finally"](function () {
+          return _this.showSpinner = false;
+        });
+      });
       axios__WEBPACK_IMPORTED_MODULE_1___default().post('/v1/login', this.form).then(function (res) {
         if (res.data.status === "Failed") {
           _this.formErrors = res.data.errors;
@@ -7611,7 +7608,7 @@ var render = function render() {
     staticClass: "card-body"
   }, [_c("h5", {
     staticClass: "card-title sub-heading m-3 text-center"
-  }, [_vm._v("Sign up to Aggregate")]), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
+  }, [_vm._v("Sign up for Aggregate")]), _vm._v(" "), _vm._m(0), _c("br"), _c("br"), _vm._v(" "), _c("p", {
     staticClass: "text-center form-text text-muted or-text"
   }, [_vm._v("OR")]), _vm._v(" "), _c("div", [_vm.formErrorsExist ? _c("div", {
     staticClass: "alert alert-danger",
@@ -7885,22 +7882,19 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("nav", {
-    staticClass: "navbar navbar-expand-lg"
+  return _c("header", {
+    staticClass: "p-2"
   }, [_c("div", {
-    staticClass: "container-fluid"
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
   }, [_c("router-link", {
-    staticClass: "navbar-brand text-dark",
+    staticClass: "navbar-brand text-dark d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none",
     attrs: {
       to: "/"
     }
-  }, [_vm._v("Aggregate")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      id: "navbarSupportedContent"
-    }
-  }, [_c("ul", {
-    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
+  }, [_vm._v("Aggregate")]), _vm._v(" "), _c("ul", {
+    staticClass: "nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
   }, [_c("li", {
     staticClass: "nav-item"
   }, [_c("router-link", {
@@ -7928,26 +7922,26 @@ var render = function render() {
         name: "Login"
       }
     }
-  }, [_vm._v("My Account")])], 1)])])], 1)]);
+  }, [_vm._v("My Account")])], 1)]), _vm._v(" "), _vm._m(0)], 1)])]);
 };
 
 var staticRenderFns = [function () {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("button", {
-    staticClass: "navbar-toggler",
+  return _c("div", {
+    staticClass: "text-end"
+  }, [_c("button", {
+    staticClass: "btn btn-outline-light me-2",
     attrs: {
-      type: "button",
-      "data-bs-toggle": "collapse",
-      "data-bs-target": "#navbarSupportedContent",
-      "aria-controls": "navbarSupportedContent",
-      "aria-expanded": "false",
-      "aria-label": "Toggle navigation"
+      type: "button"
     }
-  }, [_c("span", {
-    staticClass: "navbar-toggler-icon"
-  })]);
+  }, [_vm._v("Login")]), _vm._v(" "), _c("button", {
+    staticClass: "btn btn-warning",
+    attrs: {
+      type: "button"
+    }
+  }, [_vm._v("Sign-up")])]);
 }];
 render._withStripped = true;
 
@@ -8393,7 +8387,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareFacebook, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareTwitter, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareInstagram, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faLinkedin, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleInfo, _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faBookmark, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPenToSquare);
+
+_fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_1__.library.add(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faLocationDot, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faSearch, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleRight, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faGoogle, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPhone, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareFacebook, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareTwitter, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faSquareInstagram, _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_4__.faLinkedin, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faCircleInfo, _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faBookmark, _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__.faPenToSquare, _fortawesome_free_regular_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faHeart);
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
 Vue.component('font-awesome-icon', _fortawesome_vue_fontawesome__WEBPACK_IMPORTED_MODULE_2__.FontAwesomeIcon);
 Vue.component('navbar', (__webpack_require__(/*! ./components/TheNavigationComponent.vue */ "./resources/js/components/TheNavigationComponent.vue")["default"]));
@@ -14264,7 +14259,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.navbar[data-v-787acd43]{\r\n    background: #fff !important;\n}\n.navbar-brand[data-v-787acd43] {\r\n    color: #247BA0 !important;\r\n    font-size: 26px !important;\r\n    margin-left: 2rem;\n}\n.nav-link[data-v-787acd43]::before {\r\n    content: '';\r\n    display: block;\r\n    position: absolute;\r\n    bottom: 3px;\r\n    left: 0;\r\n    height: 3px;\r\n    width: 100%;\r\n    background-color: #247BA0;\r\n    transform-origin: right top;\r\n    transform: scale(0, 1);\r\n    transition: color 0.1s,transform 0.2s ease-out;\n}\n.navbar-nav .nav-link.active[data-v-787acd43]::before, .nav-link[data-v-787acd43]:hover::before, .nav-link[data-v-787acd43]:focus::before {\r\n    transform-origin: left top;\r\n    transform: scale(1, 1);\n}\n.nav-link[data-v-787acd43] {\r\n    position: relative;\r\n    text-decoration: none;\r\n    transition: color 0.1s,background-color 0.1s,padding 0.2s ease-in;\r\n    font-size: 15px !important;\r\n    margin: 5px;\n}\n.navbar-nav .nav-link.active[data-v-787acd43], .nav-link[data-v-787acd43]:hover, .nav-link[data-v-787acd43]:focus{\r\n    color: #247BA0 !important;\r\n    font-weight: 600;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nheader[data-v-787acd43]{\r\n    background: #fff !important;\r\n    box-shadow: 0 2px 2px rgba(63,92,110,.15);\n}\n.navbar-brand[data-v-787acd43] {\r\n    color: #247BA0 !important;\r\n    font-size: 26px !important;\r\n    margin-left: 2rem;\n}\n.nav-link[data-v-787acd43]::before {\r\n    content: '';\r\n    display: block;\r\n    position: absolute;\r\n    bottom: 3px;\r\n    left: 0;\r\n    height: 3px;\r\n    width: 100%;\r\n    background-color: #247BA0;\r\n    transform-origin: right top;\r\n    transform: scale(0, 1);\r\n    transition: color 0.1s,transform 0.2s ease-out;\n}\n.nav-link.active[data-v-787acd43]::before, .nav-link[data-v-787acd43]:hover::before, .nav-link[data-v-787acd43]:focus::before {\r\n    transform-origin: left top;\r\n    transform: scale(1, 1);\n}\n.nav .nav-link[data-v-787acd43] {\r\n    position: relative;\r\n    text-decoration: none;\r\n    transition: color 0.1s,background-color 0.1s,padding 0.2s ease-in;\r\n    font-size: 15px !important;\r\n    margin: 5px;\r\n    color: #247BA0 !important;\n}\n.nav .nav-link.active[data-v-787acd43], .nav-link[data-v-787acd43]:hover, .nav-link[data-v-787acd43]:focus{\r\n    color: #247BA0 !important;\r\n    font-weight: 600;\r\n    text-decoration: none;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

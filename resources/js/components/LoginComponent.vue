@@ -68,11 +68,12 @@ export default {
     methods : {    
         loginUser(){
             this.showSpinner = true;
-            /*axios.get('/sanctum/csrf-cookie').then(response => {
+            axios.get('/sanctum/csrf-cookie').then(response => {
             axios.post('/v1/login', this.form)
             .then(res => {
                 if(res.data.status === "Failed"){
                     this.formErrors = res.data.errors;
+                    this.errorMessage = res.data.message;
                     this.formErrorsExist = true;
                 }
             })
@@ -80,7 +81,7 @@ export default {
                 
             })
             .finally(() => this.showSpinner = false);
-        });*/
+        });
         axios.post('/v1/login', this.form)
         .then(res => {
             if(res.data.status === "Failed"){

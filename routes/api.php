@@ -36,7 +36,8 @@ Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeig
 Route::post('/register', [AuthController::class, 'registerUser']);
 Route::post('/login', [AuthController::class, 'loginUser']);
 Route::post('/logout', [AuthController::class, 'logoutUser']);
+Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
 
 Route::middleware('auth:sanctum')->group(function(){
-    Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
+    //Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
 });

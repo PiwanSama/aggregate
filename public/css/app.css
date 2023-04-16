@@ -26,7 +26,7 @@ body{
     font-weight: 400;
     line-height: 2rem;
     margin: 0 0.5rem 1rem 0;
-    color: #05293c;
+    color: #35363A;
 }
 
 /*.sub-heading-blue{
@@ -43,7 +43,7 @@ body{
     font-weight: 700;
     line-height: 2rem;
     margin: 0 0.5rem 1rem 0;
-    color: #05293c;
+    color: #35363A;
 }
 
 .sub-heading-grey{
@@ -79,7 +79,7 @@ body{
 }
 
 .card{
-    border: 1px #05293c !important;
+    border: 1px #35363A !important;
     background-color: #fff !important;
     background-color: #fff;
     border-radius: 0.5rem !important;
@@ -344,7 +344,7 @@ input[type=radio] {
     margin-top: 40px;
   }
 
-a.icon-link  { color: #05293c !important; }
+a.icon-link  { color: #35363A !important; }
 
 textarea{
     border: 0px none;
@@ -360,7 +360,7 @@ textarea{
 }
 
 .badge-primary{
-    background-color: #05293c;
+    background-color: #35363A;
 }
 
 .badge-info{
