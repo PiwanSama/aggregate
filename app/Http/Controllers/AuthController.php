@@ -8,39 +8,42 @@ use App\Models\UserLogin;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller{
+class AuthController extends Controller
+{
 
-    public function initiateGoogleLogin(){
+    public function initiateGoogleLogin()
+    {
         return Socialite::driver('google')->redirect();
     }
-    
+
     //Update function to cater for email, password logins
-    public function googleLoginCallback(){
+    public function googleLoginCallback()
+    {
         date_default_timezone_set('Africa/Kampala');
 
         $googleUser = Socialite::driver('google')->stateless()->user();
 
-        if(UserLogin::where('email_address', $googleUser->email)->exists()){
+        if (UserLogin::where('email_address', $googleUser->email)->exists()) {
             //Login user
             $loginUser = UserLogin::where('email_address', $googleUser->email)->first();
-            if($loginUser->external_provider = "Standard"){
+            if ($loginUser->external_provider = "Standard") {
                 //Request user to use email and password
-                return response()->json([
-                    'status'=>"Mismatch",
-                    'message'=>"Please login with your username and password to proceed"
-                ]);
-            }else{
+                $response = ['status' => "Mismatch", "message" => "Please login with your username and password to proceed"];
+                return response($response, 200);
+            } else {
                 //Login the user
                 $loginUser->external_provider_token = $googleUser->token;
                 $loginUser->last_login_time = now();
                 $loginUser->updated_at = now();
                 $loginUser->save();
-                //TODO redirect user to homepage
+                $response = ['status' => "Success", "message" => "Login Successful"];
+                return response($response, 200);
             }
-        }else{
+        } else {
             //Create new user
-            $createUser = new UserLogin; 
+            $createUser = new UserLogin;
             $createUser->email_address = $googleUser->email;
             $createUser->external_id = $googleUser->id;
             $createUser->external_provider = 'Google';
@@ -50,37 +53,37 @@ class AuthController extends Controller{
             $createUser->last_login_time = now();
             $userCreated = $createUser->save();
 
-            if($userCreated){
+            if ($userCreated) {
                 //Create user profile
                 $createUserProfile = new User;
                 $createUserProfile->first_name = $googleUser->user['given_name'];
                 $createUserProfile->last_name = $googleUser->user['family_name'];
                 $createUserProfile->avatar_url = $googleUser->user['picture'];
                 $createUserProfile->fk_userlogin_id = $createUser->id;
-                $createUserProfile->save();           
-                //Redirect user to homepage
-                
+                $createUserProfile->save();
+                $response = ['status' => "Success", "message" => "Registration Successful"];
+                return response($response, 200);
             }
-            
         }
     }
 
-    function registerUser(Request $request){
+    function registerUser(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'surname' => 'required',
             'email' => 'required|email:rfc,dns|unique:user_login_data,email_address',
             'password' => 'required|min:8'
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
-                'status'=>"Failed",
-                'message'=>"Invalid Data",
-                'errors'=> $validator->errors()
+                'status' => "Failed",
+                'message' => "Invalid Data",
+                'errors' => $validator->errors()
             ]);
-        }else{
+        } else {
             //Create new user
-            $createUser = new UserLogin; 
+            $createUser = new UserLogin;
             $createUser->email_address = $request->email;
             $createUser->external_provider = 'Standard';
             $createUser->created_at = now();
@@ -89,44 +92,41 @@ class AuthController extends Controller{
             $createUser->password_hash = Hash::make($request->password);
             $userCreated = $createUser->save();
 
-            if($userCreated){
+            if ($userCreated) {
                 //Create user profile
                 $createUserProfile = new User;
                 $createUserProfile->first_name = $request->first_name;
                 $createUserProfile->last_name = $request->surname;
                 $createUserProfile->fk_userlogin_id = $createUser->id;
                 $createUserProfile->save();
-                //Redirect user to homepage
-                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
+                //$token = $createUser->createToken('UserLoginToken')->plainTextToken;
+                $response = ['status' => "Sucess", "message" => "Login Successful"];
                 return response($response, 200);
             }
         }
     }
 
-    function loginUser(Request $request){
+    function loginUser(Request $request)
+    {
         $user = UserLogin::where('email_address', $request->email)->first();
-        if($user){
-            if (Hash::check($request->password, $user->password)) {
-                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-                $response = ['token' => $token];
+        if ($user) {
+            if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+                $user = Auth::user();
+                //$token = $user->createToken('UserLoginToken')->plainTextToken;
+                //$response = ['status' => "Sucess", "message" => "Login Successful", "token" => "$token"];
+                $response = ['status' => "Sucess", "message" => "Login Successful"];
                 return response($response, 200);
             } else {
-                $response = ['status'=>"Failed","message" => "Password mismatch"];
+                $response = ['status' => "Failed", "message" => "Password mismatch"];
                 return response($response, 422);
             }
-        }else{
-            $response = ['status'=>"Failed",'message'=>"User not found"];
+        } else {
+            $response = ['status' => "Failed", 'message' => "User not found"];
             return response($response, 200);
         }
     }
 
-    function logoutUser(Request $request){
-        $token = $request->user()->token();
-        $token->revoke();
-        $response = ['status'=>"Failed",'message' => 'You have been successfully logged out!'];
-        return response($response, 200);
+    function logoutUser(Request $request)
+    {
     }
 }
-
-?>

@@ -32,13 +32,11 @@ Route::get('/universities/faculty/{id}/programs', [FacultyController::class, 'ge
 Route::post('/getPointsAdvanced', [CombinationController::class, 'calculatePointsAdvanced']);
 Route::post('/getPointsOrdinary', [CombinationController::class, 'calculatePointsOrdinary']);
 Route::post('/getWeightsOrdinary', [CombinationController::class, 'calculateWeightsOrdinary']);
-Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
 
-Route::group(['middleware' => ['cors', 'json.response']], function () {
-    Route::post('/register', [AuthController::class, 'registerUser']);
-    Route::post('/login', [AuthController::class, 'loginUser']);
-});
+Route::post('/register', [AuthController::class, 'registerUser']);
+Route::post('/login', [AuthController::class, 'loginUser']);
+Route::post('/logout', [AuthController::class, 'logoutUser']);
 
-Route::middleware('auth:api')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logoutUser']);
+Route::middleware('auth:sanctum')->group(function(){
+    Route::post('/sampleMail', [MailController::class, 'notifyNewUser']);
 });
